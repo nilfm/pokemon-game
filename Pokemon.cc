@@ -1,5 +1,6 @@
 #include "includes.hh"
 #include "Pokemon.hh"
+#include "Type.hh"
 
 Pokemon::Pokemon(const Pokebase& p, int level) {
 	//TODO
@@ -43,6 +44,10 @@ int Pokemon::get_speed() const {
 
 std::string Pokemon::get_name() const {
 	return name;
+}
+
+Type get_type() const {
+	return type;
 }
 
 void Pokemon::restore_health(int health) {

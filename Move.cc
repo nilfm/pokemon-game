@@ -2,7 +2,7 @@
 #include "Move.hh"
 
 //TOFIX
-Move::Move(bool special, std::string name, std::string type, int power, int accuracy, const std::string& description, int maxpp) {
+Move::Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, const std::string& description, int maxpp) {
 	this->special = special;
 	this->name = name;
 	this->type = Type(type);

@@ -10,6 +10,7 @@ private:
 	const static int MAX_LEVEL = 100;
 	const static int MAX_XP = 55000;
 	const static int MAX_MOVES = 4;
+	Type type;
 	std::string name;
 	int maxhp, xp, level, hp, attack, defense, spattack, spdefense, speed;
 	std::map<int, Move> moveset;
@@ -56,6 +57,10 @@ public:
 	/* Pre: True */
 	/* Post: Returns the current Speed for this pokemon */
 	int get_speed() const;
+
+	/* Pre: True */
+	/* Post: Returns the type of this pokemon */
+	Type get_type() const;
 	
 	/* Pre: True */
 	/* Post: Returns the name of this pokemon */

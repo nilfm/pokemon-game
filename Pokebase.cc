@@ -1,6 +1,8 @@
 #include "includes.hh"
 #include "Pokebase.hh"
 
+Pokebase::Pokebase() {}
+
 Pokebase::Pokebase(const std::string& address) {
 	std::ifstream in(address);
 	assert(in.is_open());

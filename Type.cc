@@ -1,6 +1,8 @@
 #include "includes.hh"
 #include "Type.hh"
 
+Type::Type() {}
+
 Type::Type(std::string name) {
 	this->name = name;
 }

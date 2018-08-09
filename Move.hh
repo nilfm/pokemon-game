@@ -16,7 +16,7 @@ private:
 public:
 	/* Pre: TODO */
 	/* Post: TODO */
-	Move(bool special, std::string name, std::string type, int power, int accuracy, const std::string& description, int maxpp);
+	Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, const std::string& description, int maxpp);
 
 	/* Pre: TODO */
 	/* Post: TODO */

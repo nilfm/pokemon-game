@@ -8,6 +8,8 @@ private:
 	std::string name;
 
 public:
+	Type();
+	
 	/* Pre: TODO */
 	/* Post: TODO */
 	Type(std::string name);
