@@ -20,23 +20,35 @@ public:
 
 	/* Pre: TODO */
 	/* Post: TODO */
-	std::string get_name();
+	std::string get_name() const;
 	
 	/* Pre: TODO */
 	/* Post: TODO */
-	Type get_type();
+	Type get_type() const;
 	
 	/* Pre: TODO */
 	/* Post: TODO */
-	int get_power();
+	int get_power() const;
 	
 	/* Pre: TODO */
 	/* Post: TODO */
-	int get_accuracy();
+	int get_accuracy() const;
 	
 	/* Pre: TODO */
 	/* Post: TODO */
-	int get_description();
+	std::string get_description() const;
+	
+	/* Pre: TODO */
+	/* Post: TODO */
+	int get_pp() const;
+
+	/* Pre: TODO */
+	/* Post: TODO */
+	int get_maxpp() const;
+	
+	/* Pre: TODO */
+	/* Post: TODO */
+	void restore_pp();
 };
 
 #endif

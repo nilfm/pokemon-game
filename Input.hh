@@ -14,7 +14,7 @@ public:
 	int read_int(int minimum, int maximum, const std::string& query, const std::string& err);
 	
 	/* Pre: minimum <= maximum, query and error are the displayed messages */
-	/* Post: returns a double (n) entered by the user, minimum <= n <= maximum  *//	
+	/* Post: returns a double (n) entered by the user, minimum <= n <= maximum  */
 	double read_double(int minimum, int maximum, const std::string& query, const std::string& err);
 };
 

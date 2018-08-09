@@ -7,11 +7,11 @@
 
 class Pokemon {
 private:
-	static int MAX_LEVEL = 100;
-	static int MAX_XP = 55000;
-	static int MAX_MOVES = 4;
+	const static int MAX_LEVEL = 100;
+	const static int MAX_XP = 55000;
+	const static int MAX_MOVES = 4;
 	std::string name;
-	int max_hp, xp, level, hp, attack, defense, spattack, spdefense, speed;
+	int maxhp, xp, level, hp, attack, defense, spattack, spdefense, speed;
 	std::map<int, Move> moveset;
 	std::vector<Move> moves;
 	

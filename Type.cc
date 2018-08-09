@@ -1,4 +1,4 @@
-#include "includes"
+#include "includes.hh"
 #include "Type.hh"
 
 Type::Type(std::string name) {
@@ -11,22 +11,22 @@ std::string Type::get_name() {
 	return name;
 }
 
-static int Type::advantage(Type t1, Type t2) {
+int Type::advantage(Type t1, Type t2) {
 	std::string name1 = t1.get_name();
 	std::string name2 = t2.get_name();
 	return advantage(name1, name2);
 }
 
-static int Type::advantage(std::string t1, std::string t2) {
+int Type::advantage(std::string t1, std::string t2) {
 	std::unordered_map<std::string, int>::iterator it1 = types.find(t1);
 	std::unordered_map<std::string, int>::iterator it2 = types.find(t2);
 	assert(it1 != types.end() and it2 != types.end());
-	int n1 = types[name1];
-	int n2 = types[name2];
+	int n1 = types[t1];
+	int n2 = types[t2];
 	return weaknesses[n1][n2];
 }
 
-static void Type::initialize() {
+void Type::initialize() {
 	types["NORMAL"] = 0;
 	types["FIGHT"] = 1;
 	types["FLYING"] = 2;
@@ -43,7 +43,7 @@ static void Type::initialize() {
 	types["ICE"] = 13;
 	types["DRAGON"] = 14;
 	
-	weaknesses.resize(15, vector<int>(15));
+	weaknesses.resize(15, std::vector<int>(15));
 	weaknesses[0] = {0, 0, 0, 0, 0, -1, 0, -2, 0, 0, 0, 0, 0, 0, 0};
 	weaknesses[1] = {1, 0, -1, -1, 0, 1, -1, -2, 0, 0, 0, 0, -1, 1, 0};
 	weaknesses[2] = {0, 1, 0, 0, 0, -1, 1, 0, 0, 0, 1, -1, 0, 0, 0};
