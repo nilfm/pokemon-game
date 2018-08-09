@@ -3,6 +3,7 @@
 
 #include "includes.hh"
 #include "Move.hh"
+#include "Pokebase.hh"
 
 class Pokemon {
 private:
@@ -11,53 +12,58 @@ private:
 	static int MAX_MOVES = 4;
 	std::string name;
 	int max_hp, xp, level, hp, attack, defense, spattack, spdefense, speed;
-	std::unordered_map<int, Move> moveset;
+	std::map<int, Move> moveset;
 	std::vector<Move> moves;
 	
 public:
-	/* Pre: TODO */
-	/* Post: TODO */
+	/* Pre: Pokebase is a valid base for a pokemon, level is such that 0 < level < 101 */
+	/* Post: Returns an instance of the pokemon described in the pokebase, at the level given */
+	//NOTA: No oblidar augmentar la XP fins al punt necessari
 	Pokemon(const Pokebase& p, int level);
 
-	/* Pre: TODO */
-	/* Post: TODO */
-	int get_xp();
+	/* Pre: True */
+	/* Post: Returns the current total XP for this pokemon */
+	int get_xp() const;
 	
-	/* Pre: TODO */
-	/* Post: TODO */
-	int get_level();
+	/* Pre: True */
+	/* Post: Returns the current level for this pokemon */
+	int get_level() const;
 	
-	/* Pre: TODO */
-	/* Post: TODO */
-	int get_maxhp();
+	/* Pre: True */
+	/* Post: Returns the current maximum HP for this pokemon */
+	int get_maxhp() const;
 	
-	/* Pre: TODO */
-	/* Post: TODO */
-	int get_hp();
+	/* Pre: True */
+	/* Post: Returns the current HP for this pokemon */
+	int get_hp() const;
 	
-	/* Pre: TODO */
-	/* Post: TODO */
-	int get_attack();
+	/* Pre: True */
+	/* Post: Returns the current Attack for this pokemon */
+	int get_attack() const;
 	
-	/* Pre: TODO */
-	/* Post: TODO */
-	int get_defense();
+	/* Pre: True */
+	/* Post: Returns the current Defense for this pokemon */
+	int get_defense() const;
 	
-	/* Pre: TODO */
-	/* Post: TODO */
-	int get_spattack();
+	/* Pre: True */
+	/* Post: Returns the current Special Attack for this pokemon */
+	int get_spattack() const;
 	
-	/* Pre: TODO */
-	/* Post: TODO */
-	int get_spdefense();
+	/* Pre: True */
+	/* Post: Returns the current Special Defense for this pokemon */
+	int get_spdefense() const;
 	
-	/* Pre: TODO */
-	/* Post: TODO */
-	int get_speed();
+	/* Pre: True */
+	/* Post: Returns the current Speed for this pokemon */
+	int get_speed() const;
 	
-	/* Pre: TODO */
-	/* Post: TODO */
-	std::string get_name();
+	/* Pre: True */
+	/* Post: Returns the name of this pokemon */
+	std::string get_name() const;
+	
+	/* Pre: health contains a positive integer or -1 */
+	/* Post: If health was -1, hp was restored to full. Otherwise, the pokemon restores health hp, without going over maxhp */
+	void restore_health(int health);
 };
 
 #endif

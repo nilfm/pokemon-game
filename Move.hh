@@ -8,7 +8,7 @@ class Move {
 private:
 	std::string name;
 	Type type;
-	int power, accuracy;
+	int power, accuracy, maxpp, pp;
 	bool special;
 	
 	std::string description;
@@ -16,7 +16,7 @@ private:
 public:
 	/* Pre: TODO */
 	/* Post: TODO */
-	Move(bool special, std::string name, std::string type, int power, int accuracy, const std::string& description);
+	Move(bool special, std::string name, std::string type, int power, int accuracy, const std::string& description, int maxpp);
 
 	/* Pre: TODO */
 	/* Post: TODO */

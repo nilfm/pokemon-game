@@ -2,7 +2,7 @@
 
 Attempt to make a Pokemon copy where you can take a team and fight through trainers until you lose.
 
-Classes:
+### Classes:
 
 Pokedex: Has info about every Pokemon
 
