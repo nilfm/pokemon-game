@@ -11,10 +11,14 @@ private:
 	static int MAX_MOVES = 4;
 	std::string name;
 	int max_hp, xp, level, hp, attack, defense, spattack, spdefense, speed;
-	
+	std::unordered_map<int, Move> moveset;
 	std::vector<Move> moves;
 	
 public:
+	/* Pre: TODO */
+	/* Post: TODO */
+	Pokemon(const Pokebase& p, int level);
+
 	/* Pre: TODO */
 	/* Post: TODO */
 	int get_xp();
