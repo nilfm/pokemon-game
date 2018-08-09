@@ -23,6 +23,10 @@ public:
 	/* Pre: TODO */
 	/* Post: TODO */
 	static int advantage(std::string t1, std::string t2);
+		
+	/* Pre: TODO */
+	/* Post: TODO */
+	static void initialize();
 };
 
 #endif

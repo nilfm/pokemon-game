@@ -9,7 +9,8 @@ private:
 	static int MAX_LEVEL = 100;
 	static int MAX_XP = 55000;
 	static int MAX_MOVES = 4;
-	int xp, level, hp, attack, defense, spattack, spdefense, speed;
+	std::string name;
+	int max_hp, xp, level, hp, attack, defense, spattack, spdefense, speed;
 	
 	std::vector<Move> moves;
 	
@@ -21,6 +22,10 @@ public:
 	/* Pre: TODO */
 	/* Post: TODO */
 	int get_level();
+	
+	/* Pre: TODO */
+	/* Post: TODO */
+	int get_maxhp();
 	
 	/* Pre: TODO */
 	/* Post: TODO */
@@ -45,6 +50,10 @@ public:
 	/* Pre: TODO */
 	/* Post: TODO */
 	int get_speed();
+	
+	/* Pre: TODO */
+	/* Post: TODO */
+	std::string get_name();
 };
 
 #endif

@@ -1,7 +1,8 @@
 #include "includes.hh"
 #include "Move.hh"
 
-Move::Move(std::string name, std::string type, int power, int accuracy, const std::string& description) {
+Move::Move(bool special, std::string name, std::string type, int power, int accuracy, const std::string& description) {
+	this->special = special;
 	this->name = name;
 	this->type = Type(type);
 	this->power = power;

@@ -9,13 +9,14 @@ private:
 	std::string name;
 	Type type;
 	int power, accuracy;
+	bool special;
 	
 	std::string description;
 
 public:
 	/* Pre: TODO */
 	/* Post: TODO */
-	Move(std::string name, std::string type, int power, int accuracy, const std::string& description);
+	Move(bool special, std::string name, std::string type, int power, int accuracy, const std::string& description);
 
 	/* Pre: TODO */
 	/* Post: TODO */
