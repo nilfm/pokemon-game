@@ -3,43 +3,43 @@
 
 //TOFIX
 Move::Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, const std::string& description, int maxpp) {
-	this->special = special;
-	this->name = name;
-	this->type = Type(type);
-	this->power = power;
-	this->accuracy = accuracy;
-	this->description = description;
-	this->pp = this->maxpp = maxpp;
+    this->special = special;
+    this->name = name;
+    this->type = Type(type);
+    this->power = power;
+    this->accuracy = accuracy;
+    this->description = description;
+    this->pp = this->maxpp = maxpp;
 }
 
 std::string Move::get_name() const {
-	return name;
+    return name;
 }
 
 Type Move::get_type() const {
-	return type;
+    return type;
 }
 
 int Move::get_power() const {
-	return power;
+    return power;
 }
 
 int Move::get_accuracy() const {
-	return accuracy;
+    return accuracy;
 }
 
 std::string Move::get_description() const {
-	return description;
+    return description;
 }
 
 int Move::get_maxpp() const {
-	return maxpp;
+    return maxpp;
 }
 
 int Move::get_pp() const {
-	return pp;
+    return pp;
 }
 
 void Move::restore_pp() {
-	pp = maxpp;
+    pp = maxpp;
 }
