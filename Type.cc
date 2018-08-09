@@ -27,31 +27,37 @@ static int Type::advantage(std::string t1, std::string t2) {
 }
 
 static void Type::initialize() {
-	types["FIGHT"] = 0;
-	types["FLYING"] = 1;
-	types["POISON"] = 2;
-	types["GROUND"] = 3;
-	types["ROCK"] = 4;
-	types["BUG"] = 5;
-	types["FIRE"] = 6;
-	types["WATER"] = 7;
-	types["GRASS"] = 8;
-	types["ELECTRIC"] = 9;
-	types["PSYCHIC"] = 10;
-	types["ICE"] = 11;
+	types["NORMAL"] = 0;
+	types["FIGHT"] = 1;
+	types["FLYING"] = 2;
+	types["POISON"] = 3;
+	types["GROUND"] = 4;
+	types["ROCK"] = 5;
+	types["BUG"] = 6;
+	types["GHOST"] = 7;
+	types["FIRE"] = 8;
+	types["WATER"] = 9;
+	types["GRASS"] = 10;
+	types["ELECTRIC"] = 11;
+	types["PSYCHIC"] = 12;
+	types["ICE"] = 13;
+	types["DRAGON"] = 14;
 	
-	weaknesses.resize(12, vector<int>(12));
-	weaknesses[0] = {0, -1, -1, 0, 1, -1, 0, 0, 0, 0, 0, 0}
-	weaknesses[1] = {1, 0, 0, 0, -1, 1, 0, 0, 1, -1, 0, 0}
-	weaknesses[2] = {0, 0, -1, -1, -1, 1, 0, 0, 1, 0, 0, 0}
-	weaknesses[3] = {0, -2, 1, 0, 1, -1, 1, 0, -1, 1, 0, 0}
-	weaknesses[4] = {-1, 1, 0, -1, 0, 1, 1, 0, 0, 0, 0, 1,}
-	weaknesses[5] = {-1, -1, 1, 0, 0, 0, -1, 0, 1, 0, 1, 0}
-	weaknesses[6] = {0, 0, 0, 0, -1, 1, -1, -1, 1, 0, 0, 1}
-	weaknesses[7] = {0, 0, 0, 1, 1, 0, 1, -1, -1, 0, 0, 0} 
-	weaknesses[8] = {0, -1, -1, 1, 1, -1, -1, 1, -1, 0, 0, 0}
-	weaknesses[9] = {0, 1, 0, -2, 0, 0, 0, 1, -1, -1, 0, 0}
-	weaknesses[10] = {1, 0, 1, 0, 0, 0, 0, 0, 0, 0, -1, 0}
-	weaknesses[11] = {0, 1, 0, 1, 0, 0, 0, -1, 1, 0, 0, -1}
+	weaknesses.resize(15, vector<int>(15));
+	weaknesses[0] = {0, 0, 0, 0, 0, -1, 0, -2, 0, 0, 0, 0, 0, 0, 0};
+	weaknesses[1] = {1, 0, -1, -1, 0, 1, -1, -2, 0, 0, 0, 0, -1, 1, 0};
+	weaknesses[2] = {0, 1, 0, 0, 0, -1, 1, 0, 0, 0, 1, -1, 0, 0, 0};
+	weaknesses[3] = {0, 0, 0, -1, -1, -1, 1, -1, 0, 0, 1, 0, 0, 0, 0};
+	weaknesses[4] = {0, 0, -2, 1, 0, 1, -1, 0, 1, 0, -1, 1, 0, 0, 0};
+	weaknesses[5] = {0, -1, 1, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0};
+	weaknesses[6] = {0, -1, -1, 1, 0, 0, 0, -1, -1, 0, 1, 0, 1, 0, 0};
+	weaknesses[7] = {-2, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0};
+	weaknesses[8] = {0, 0, 0, 0, 0, -1, 1, 0, -1, -1, 1, 0, 0, 1, -1};
+	weaknesses[9] = {0, 0, 0, 0, 1, 1, 0, 0, 1, -1, -1, 0, 0, 0, -1};
+	weaknesses[10] = {0, 0, -1, -1, 1, 1, -1, 0, -1, 1, -1, 0, 0, 0, -1};
+	weaknesses[11] = {0, 0, 1, 0, -2, 0, 0, 0, 0, 1, -1, -1, 0, 0, -1};
+	weaknesses[12] = {0, 1, 0, 1, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0};
+	weaknesses[13] = {0, 0, 1, 0, 1, 0, 0, 0, 0, -1, 1, 0, 0, -1, 1};
+	weaknesses[14] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
 }
 
