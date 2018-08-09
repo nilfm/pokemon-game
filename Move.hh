@@ -14,6 +14,10 @@ private:
     std::string description;
 
 public:
+    /* Pre: True */
+    /* Post: Default constructor */
+    Move();
+
     /* Pre: TODO */
     /* Post: TODO */
     Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, const std::string& description, int maxpp);

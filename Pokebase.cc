@@ -7,7 +7,26 @@ Pokebase::Pokebase(const std::string& address) {
     std::ifstream in(address);
     assert(in.is_open());
     
-    //TODO
+    in >> name;
+    std::string garbage;
+    in >> garbage >> attack >> attack_level;
+    in >> garbage >> defense >> defense_level;
+    in >> garbage >> speed >> speed_level;
+    in >> garbage >> spdefense >> spdefense_level;
+    in >> garbage >> maxhp >> maxhp_level;
+    
+    std::string move_name;
+    int move_level, move_maxpp;
+    std::string move_type;
+    char move_special;
+    int move_power, move_accuracy;
+    while (in >> move_name >> move_level >> move_maxpp >> move_type >> move_special >> move_power >> move_accuracy) {
+        std::string move_description;
+        getline(in, move_description);
+        bool special = (move_special == 'S');
+        Move m(special, move_name, move_type, move_power, move_accuracy, move_description, move_maxpp);
+        moveset[move_level] = m;
+    }
     
     in.close();
 }
@@ -40,7 +59,7 @@ int Pokebase::get_speed() const {
     return speed;
 }
 
-int Pokebase::get_maxhp_level) const {
+int Pokebase::get_maxhp_level() const {
     return maxhp_level;
 }
 
@@ -68,7 +87,7 @@ Type Pokebase::get_type() const {
     return type;
 }
 
-std::vector<Move> get_moveset() const {
+std::map<int, Move> Pokebase::get_moveset() const{
     return moveset;
 }
 

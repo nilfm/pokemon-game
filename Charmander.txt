@@ -1,25 +1,25 @@
 Charmander
 
-Attack 2
-Defense 3
-Speed 4
-SpAttack 5
-SpDefense 3
+Attack 2 1
+Defense 3 2
+Speed 4 3
+SpAttack 5 4
+SpDefense 3 5
 MaxHP 10
 
-Scratch 1
+Scratch 1 10
 FIGHTING
 P
 40
 100
 
-Ember 7
+Ember 7 10
 FIRE
 S
 40
 100
 
-DragonRage 12
+DragonRage 12 5
 FLYING
 S
 50

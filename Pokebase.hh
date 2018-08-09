@@ -81,7 +81,7 @@ public:
     
     /* Pre: True */
     /* Post: Returns the whole moveset for this pokemon */
-    std::vector<Move> get_moveset() const;
+    std::map<int, Move> get_moveset() const;
 };
 
 #endif
