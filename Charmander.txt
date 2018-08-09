@@ -1,0 +1,27 @@
+Charmander
+
+Attack 2
+Defense 3
+Speed 4
+SpAttack 5
+SpDefense 3
+MaxHP 10
+
+Scratch 1
+FIGHTING
+P
+40
+100
+
+Ember 7
+FIRE
+S
+40
+100
+
+DragonRage 12
+FLYING
+S
+50
+100
+
