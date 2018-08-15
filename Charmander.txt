@@ -9,6 +9,7 @@ MaxHP 10
 
 Scratch 1 10
 FIGHTING
+Light scratch that causes physical damage
 P
 40
 100
@@ -16,6 +17,7 @@ P
 
 Ember 7 10
 FIRE
+Small fireball tossed at the opponent
 S
 40
 100
@@ -23,6 +25,7 @@ S
 
 DragonRage 12 5
 FLYING
+The Pokemon gets angry and lashes it all out
 S
 50
 100

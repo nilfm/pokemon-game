@@ -19,44 +19,44 @@ public:
     /* Post: Default constructor */
     Move();
 
-    /* Pre: TODO */
-    /* Post: TODO */
+    /* Pre: True */
+    /* Post: Assigns to the move the stats given */
     Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, const std::string& description, int maxpp, const Stats& change_stats);
 
-    /* Pre: TODO */
-    /* Post: TODO */
+    /* Pre: True */
+    /* Post: Returns the name of the move */
     std::string get_name() const;
     
-    /* Pre: TODO */
-    /* Post: TODO */
+    /* Pre: True */
+    /* Post: Returns the type of the move */
     Type get_type() const;
     
-    /* Pre: TODO */
-    /* Post: TODO */
+    /* Pre: True */
+    /* Post: Returns the power of the move */
     int get_power() const;
     
-    /* Pre: TODO */
-    /* Post: TODO */
+    /* Pre: True */
+    /* Post: Returns the accuracy of the move */
     int get_accuracy() const;
     
-    /* Pre: TODO */
-    /* Post: TODO */
+    /* Pre: True */
+    /* Post: Returns the description of the move */
     std::string get_description() const;
     
-    /* Pre: TODO */
-    /* Post: TODO */
+    /* Pre: True */
+    /* Post: Returns the PP of the move *//
     int get_pp() const;
 
-    /* Pre: TODO */
-    /* Post: TODO */
+    /* Pre: True */
+    /* Post: Returns the maximum PP of the move */
     int get_maxpp() const;
     
-    /* Pre: TODO */
-    /* Post: TODO */
+    /* Pre: True */
+    /* Post: Returns the struct that holds the stat changes caused by the move */
     Stats get_change_stats() const;
     
-    /* Pre: TODO */
-    /* Post: TODO */
+    /* Pre: True */
+    /* Post: Restores this move's PP to its maximum value */
     void restore_pp();
 };
 
