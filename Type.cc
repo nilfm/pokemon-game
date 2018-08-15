@@ -1,4 +1,3 @@
-#include "includes.hh"
 #include "Type.hh"
 
 Type::Type() {}

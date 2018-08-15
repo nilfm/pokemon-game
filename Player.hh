@@ -1,7 +1,7 @@
 #ifndef PLAYER_HH
 #define PLAYER_HH
 
-#include "includes.hh"
+#include "Includes.hh"
 #include "Pokemon.hh"
 #include "Pokedex.hh"
 #include "Pokebase.hh"
@@ -12,7 +12,7 @@ class Player {
 private:
     const static int MAX_POKEMON = 6;
     std::vector<Pokemon> team;
-    std::vector<Item> inventory;
+    std::map<Item, int> inventory;
     
 public:
     //This class's member functions will ask user for input

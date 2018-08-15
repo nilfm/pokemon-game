@@ -1,4 +1,3 @@
-#include "includes.hh"
 #include "Pokebase.hh"
 
 Pokebase::Pokebase() {}
@@ -7,14 +6,14 @@ Pokebase::Pokebase(const std::string& address) {
     std::ifstream in(address);
     assert(in.is_open());
     
-    in >> name;
+    in >> name >> level_evolution >> next_evolution;
     std::string garbage;
-    in >> garbage >> base_stats.attack >> level_stats.attack;
-    in >> garbage >> base_stats.defense >> level_stats.defense;
-    in >> garbage >> base_stats.spattack >> level_stats.spattack;
-    in >> garbage >> base_stats.spdefense >> level_stats.spdefense;
-    in >> garbage >> base_stats.speed >> level_stats.speed;
-    in >> garbage >> base_stats.maxhp >> level_stats.maxhp;
+    in >> garbage >> base_stats.attack    >> level_stats_min.attack    >> level_stats_max.attack;
+    in >> garbage >> base_stats.defense   >> level_stats_min.defense   >> level_stats_max.defense;
+    in >> garbage >> base_stats.spattack  >> level_stats_min.spattack  >> level_stats_max.spattack;
+    in >> garbage >> base_stats.spdefense >> level_stats_min.spdefense >> level_stats_max.spdefense;
+    in >> garbage >> base_stats.speed     >> level_stats_min.speed     >> level_stats_max.speed;
+    in >> garbage >> base_stats.maxhp     >> level_stats_min.maxhp     >> level_stats_max.maxhp;
     
     std::string move_name;
     int move_level, move_maxpp;
@@ -25,7 +24,10 @@ Pokebase::Pokebase(const std::string& address) {
         std::string move_description;
         getline(in, move_description);
         bool special = (move_special == 'S');
-        Move m(special, move_name, move_type, move_power, move_accuracy, move_description, move_maxpp);
+        Stats s_opp, s_own;
+        in >> s_opp.attack >> s_opp.defense >> s_opp.spattack >> s_opp.spdefense >> s_opp.speed >> s_opp.maxhp;
+        in >> s_own.attack >> s_own.defense >> s_own.spattack >> s_own.spdefense >> s_own.speed >> s_own.maxhp;
+        Move m(special, move_name, move_type, move_power, move_accuracy, move_description, move_maxpp, s_opp, s_own);
         moveset[move_level] = m;
     }
     in.close();
@@ -35,12 +37,24 @@ std::string Pokebase::get_name() const {
     return name;
 }
 
+int Pokebase::get_level_evolution() const {
+    return level_evolution;
+}
+
+std::string Pokebase::get_next_evolution() const {
+    return next_evolution;
+}
+
 Stats Pokebase::get_base_stats() const {
     return base_stats;
 }
 
-Stats Pokebase::get_level_stats() const {
-    return level_stats;
+Stats Pokebase::get_level_stats_min() const {
+    return level_stats_min;
+}
+
+Stats Pokebase::get_level_stats_max() const {
+    return level_stats_max;
 }
 
 Type Pokebase::get_type() const {

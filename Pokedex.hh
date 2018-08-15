@@ -1,7 +1,7 @@
 #ifndef POKEDEX_HH
 #define POKEDEX_HH
 
-#include "includes.hh"
+#include "Includes.hh"
 #include "Pokebase.hh"
 
 class Pokedex {
@@ -15,7 +15,7 @@ public:
     
     /* Pre: name contains a valid Pokemon name */
     /* Post: Returns the pokebase for the Pokemon that corresponds to the name given */
-    Pokebase get_pokebase(const std::string& name); 
+    Pokebase get_pokebase(const std::string& name) const; 
 };
 
 #endif

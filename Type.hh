@@ -1,6 +1,8 @@
 #ifndef TYPE_HH
 #define TYPE_HH
 
+#include "Includes.hh"
+
 class Type {
 private:
     static std::unordered_map<std::string, int> types;

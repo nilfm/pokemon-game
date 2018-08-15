@@ -1,32 +1,97 @@
 Charmander
+16 Charmeleon
 
-Attack 2 1
-Defense 3 2
-Speed 4 3
-SpAttack 5 4
-SpDefense 3 5
-MaxHP 10
+Attack 6 1 2
+Defense 5 1 2
+SpAttack 7 2 3
+SpDefense 5 1 2
+Speed 7 2 4
+MaxHP 6 1 3
 
-Scratch 1 10
-FIGHTING
-Light scratch that causes physical damage
+Scratch 1 35
+NORMAL
+Scratches with sharp claws.
 P
-40
-100
+40 100
+0 0 0 0 0 0
 0 0 0 0 0 0
 
-Ember 7 10
+Growl 1 40
+NORMAL
+The user growls in an endearing way, making the foe less wary. The target's Attack stat is lowered.
+P
+0 100
+-2 0 0 0 0 0 0
+0 0 0 0 0 0
+
+Ember 7 25
 FIRE
-Small fireball tossed at the opponent
+A weak fire attack.
 S
-40
-100
+40 100
+0 0 0 0 0 0
 0 0 0 0 0 0
 
-DragonRage 12 5
-FLYING
-The Pokemon gets angry and lashes it all out
+DragonRage 13 10
+DRAGON
+A Dragon-type attack.
 S
-50
-100
+50 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+
+ScaryFace 19 10
+NORMAL
+Sharply reduces the foe's Speed
+P
+0 100
+0 0 0 0 -4 0
+0 0 0 0 0 0
+
+FireFang 25 15
+FIRE
+The user bites with flame-cloaked fangs.
+P
+65 95
+0 0 0 0 0 0
+0 0 0 0 0 0
+
+FlameBurst 28 15
+FIRE
+The user attacks the target with a bursting flame. 
+S
+70 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+
+Slash 34 20
+NORMAL
+A normal-type attack.
+P
+70 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+
+Flamethrower 37 15
+FIRE
+A powerful fire-type attack.
+S
+90 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+
+FireSpin 43 15
+FIRE
+A weak fire-type attack
+S
+50 85
+0 0 0 0 0 0
+0 0 0 0 0 0
+
+Inferno 46 5
+FIRE
+The user attacks by engulfing the target in an intense fire.
+S
+100 50
+0 0 0 0 0 0
 0 0 0 0 0 0

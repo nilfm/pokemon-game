@@ -1,4 +1,3 @@
-#include "includes.hh"
 #include "Pokedex.hh"
 
 Pokedex::Pokedex(const std::vector<std::string>& addresses) {
@@ -10,7 +9,7 @@ Pokedex::Pokedex(const std::vector<std::string>& addresses) {
     }
 }
 
-Pokebase Pokedex::get_pokebase(const std::string& name) {
+Pokebase Pokedex::get_pokebase(const std::string& name) const {
     std::unordered_map<std::string, Pokebase>::iterator it = pokedex.find(name);
     assert(it != pokedex.end());
     return it->second;

@@ -1,7 +1,7 @@
 #ifndef MOVE_HH
 #define MOVE_HH
 
-#include "includes.hh"
+#include "Includes.hh"
 #include "Type.hh"
 
 class Move {
@@ -10,7 +10,8 @@ private:
     Type type;
     int power, accuracy, maxpp, pp;
     bool special;
-    Stats change_stats;
+    Stats change_stats_opponent;
+    Stats change_stats_own;
     
     std::string description;
 
@@ -21,7 +22,7 @@ public:
 
     /* Pre: True */
     /* Post: Assigns to the move the stats given */
-    Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, const std::string& description, int maxpp, const Stats& change_stats);
+    Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, const std::string& description, int maxpp, const Stats& change_stats_opponent, const Stats& change_stats_own);
 
     /* Pre: True */
     /* Post: Returns the name of the move */
@@ -44,7 +45,7 @@ public:
     std::string get_description() const;
     
     /* Pre: True */
-    /* Post: Returns the PP of the move *//
+    /* Post: Returns the PP of the move */
     int get_pp() const;
 
     /* Pre: True */
@@ -52,8 +53,12 @@ public:
     int get_maxpp() const;
     
     /* Pre: True */
-    /* Post: Returns the struct that holds the stat changes caused by the move */
-    Stats get_change_stats() const;
+    /* Post: Returns the struct that holds the stat changes caused on the opponent by the move */
+    Stats get_change_stats_opponent() const;
+    
+    /* Pre: True */
+    /* Post: Returns the struct that holds the stat changes caused on itself by the move */
+    Stats get_change_stats_own() const;
     
     /* Pre: True */
     /* Post: Restores this move's PP to its maximum value */

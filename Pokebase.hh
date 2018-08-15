@@ -1,16 +1,19 @@
 #ifndef POKEBASE_HH
 #define POKEBASE_HH
 
-#include "includes.hh"
+#include "Includes.hh"
 #include "Type.hh"
 #include "Move.hh"
 
 class Pokebase {
 private:
     std::string name;
+    int level_evolution;
+    std::string next_evolution;
     Type type;
     Stats base_stats;
-    Stats level_stats;
+    Stats level_stats_min;
+    Stats level_stats_max;
     
     std::map<int, Move> moveset;
     
@@ -28,12 +31,24 @@ public:
     std::string get_name() const;
      
     /* Pre: True */
+    /* Post: Returns the level of evolution for this pokemon (-1 if it does not evolve) */
+    int get_level_evolution() const;
+    
+    /* Pre: True */
+    /* Post: Returns the name of the next evolution for this pokemon */
+    std::string get_next_evolution() const; 
+    
+    /* Pre: True */
     /* Post: Returns the base stats for this pokemon */
     Stats get_base_stats() const;
     
     /* Pre: True */
-    /* Post: Returns the per level stats for this pokemon */
-    Stats get_level_stats() const;
+    /* Post: Returns the minimum per level stats for this pokemon */
+    Stats get_level_stats_min() const;
+
+    /* Pre: True */
+    /* Post: Returns the maximum per level stats for this pokemon */
+    Stats get_level_stats_max() const;
 
     /* Pre: True */
     /* Post: Returns the type of this pokemon */

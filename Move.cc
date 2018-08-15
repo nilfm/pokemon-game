@@ -1,9 +1,8 @@
-#include "includes.hh"
 #include "Move.hh"
 
 Move::Move() {}
 
-Move::Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, const std::string& description, int maxpp, const Stats& change_stats) {
+Move::Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, const std::string& description, int maxpp, const Stats& change_stats_opponent, const Stats& change_stats_own) {
     this->special = special;
     this->name = name;
     this->type = Type(type);
@@ -11,7 +10,8 @@ Move::Move(bool special, const std::string& name, const std::string& type, int p
     this->accuracy = accuracy;
     this->description = description;
     this->pp = this->maxpp = maxpp;
-    this->change_stats = change_stats;
+    this->change_stats_opponent = change_stats_opponent;
+    this->change_stats_own = change_stats_own;
 }
 
 std::string Move::get_name() const {
@@ -40,6 +40,14 @@ int Move::get_maxpp() const {
 
 int Move::get_pp() const {
     return pp;
+}
+
+Stats Move::get_change_stats_opponent() const {
+    return change_stats_opponent;
+}
+
+Stats Move::get_change_stats_own() const {
+    return change_stats_own;
 }
 
 void Move::restore_pp() {
