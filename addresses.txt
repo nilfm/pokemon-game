@@ -1,0 +1,2 @@
+Pokedata/Charmander.txt
+Pokedata/Charmeleon.txt
