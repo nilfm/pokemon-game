@@ -15,6 +15,7 @@ private:
     std::string name;
     int xp, hp, level;
     Stats stats;
+    Stats battle_stats;
     std::map<int, Move> moveset;
     std::vector<Move> moves;
     

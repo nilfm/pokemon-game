@@ -1,6 +1,5 @@
 #include "includes.hh"
 #include "Pokemon.hh"
-#include "Type.hh"
 
 Pokemon::Pokemon(const Pokebase& p, int level) {
     //Copy type, name
@@ -14,6 +13,7 @@ Pokemon::Pokemon(const Pokebase& p, int level) {
     stats.spdefense = p.get_base_stats().spdefense + (level-1)*p.get_level_stats().spdefense;
     stats.speed = p.get_base_stats().speed + (level-1)*p.get_level_stats().speed;
     stats.maxhp = p.get_base_stats().maxhp + (level-1)*p.get_level_stats().maxhp;
+    battle_stats = stats;
     //Choose the 4 (at most) latest moves the Pokemon can learn at that level
     moveset = p.get_moveset();
     int count_moves = 0;

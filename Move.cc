@@ -3,7 +3,7 @@
 
 Move::Move() {}
 
-Move::Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, const std::string& description, int maxpp) {
+Move::Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, const std::string& description, int maxpp, const Stats& change_stats) {
     this->special = special;
     this->name = name;
     this->type = Type(type);
@@ -11,6 +11,7 @@ Move::Move(bool special, const std::string& name, const std::string& type, int p
     this->accuracy = accuracy;
     this->description = description;
     this->pp = this->maxpp = maxpp;
+    this->change_stats = change_stats;
 }
 
 std::string Move::get_name() const {

@@ -12,16 +12,18 @@ FIGHTING
 P
 40
 100
+0 0 0 0 0 0
 
 Ember 7 10
 FIRE
 S
 40
 100
+0 0 0 0 0 0
 
 DragonRage 12 5
 FLYING
 S
 50
 100
-
+0 0 0 0 0 0

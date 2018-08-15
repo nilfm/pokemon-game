@@ -10,6 +10,7 @@ private:
     Type type;
     int power, accuracy, maxpp, pp;
     bool special;
+    Stats change_stats;
     
     std::string description;
 
@@ -20,7 +21,7 @@ public:
 
     /* Pre: TODO */
     /* Post: TODO */
-    Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, const std::string& description, int maxpp);
+    Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, const std::string& description, int maxpp, const Stats& change_stats);
 
     /* Pre: TODO */
     /* Post: TODO */
@@ -49,6 +50,10 @@ public:
     /* Pre: TODO */
     /* Post: TODO */
     int get_maxpp() const;
+    
+    /* Pre: TODO */
+    /* Post: TODO */
+    Stats get_change_stats() const;
     
     /* Pre: TODO */
     /* Post: TODO */
