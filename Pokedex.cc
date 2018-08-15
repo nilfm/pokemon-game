@@ -1,6 +1,10 @@
 #include "Pokedex.hh"
 
-Pokedex::Pokedex(const std::vector<std::string>& addresses) {
+Pokedex::Pokedex(const std::string file_addresses) {
+    std::ifstream in(file_addresses);
+    std::vector<std::string> addresses;
+    std::string addr;
+    while (in >> addr) addresses.push_back(addr);
     int size = addresses.size();
     for (int i = 0; i < size; i++) {
         Pokebase p(addresses[i]);
@@ -10,7 +14,7 @@ Pokedex::Pokedex(const std::vector<std::string>& addresses) {
 }
 
 Pokebase Pokedex::get_pokebase(const std::string& name) const {
-    std::unordered_map<std::string, Pokebase>::iterator it = pokedex.find(name);
+    std::unordered_map<std::string, Pokebase>::const_iterator it = pokedex.find(name);
     assert(it != pokedex.end());
     return it->second;
 } 

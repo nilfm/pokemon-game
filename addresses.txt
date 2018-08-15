@@ -1,2 +1,3 @@
 Pokedata/Charmander.txt
 Pokedata/Charmeleon.txt
+Pokedata/Charizard.txt

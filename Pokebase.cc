@@ -6,7 +6,9 @@ Pokebase::Pokebase(const std::string& address) {
     std::ifstream in(address);
     assert(in.is_open());
     
-    in >> name >> level_evolution >> next_evolution;
+    std::string type;
+    in >> name >> type >> level_evolution >> next_evolution;
+    this->type = Type(type);
     std::string garbage;
     in >> garbage >> base_stats.attack    >> level_stats_min.attack    >> level_stats_max.attack;
     in >> garbage >> base_stats.defense   >> level_stats_min.defense   >> level_stats_max.defense;
@@ -21,13 +23,11 @@ Pokebase::Pokebase(const std::string& address) {
     char move_special;
     int move_power, move_accuracy;
     while (in >> move_name >> move_level >> move_maxpp >> move_type >> move_special >> move_power >> move_accuracy) {
-        std::string move_description;
-        getline(in, move_description);
         bool special = (move_special == 'S');
         Stats s_opp, s_own;
         in >> s_opp.attack >> s_opp.defense >> s_opp.spattack >> s_opp.spdefense >> s_opp.speed >> s_opp.maxhp;
         in >> s_own.attack >> s_own.defense >> s_own.spattack >> s_own.spdefense >> s_own.speed >> s_own.maxhp;
-        Move m(special, move_name, move_type, move_power, move_accuracy, move_description, move_maxpp, s_opp, s_own);
+        Move m(special, move_name, move_type, move_power, move_accuracy, move_maxpp, s_opp, s_own);
         moveset[move_level] = m;
     }
     in.close();

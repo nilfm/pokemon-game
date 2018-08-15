@@ -13,8 +13,6 @@ private:
     Stats change_stats_opponent;
     Stats change_stats_own;
     
-    std::string description;
-
 public:
     /* Pre: True */
     /* Post: Default constructor */
@@ -22,7 +20,7 @@ public:
 
     /* Pre: True */
     /* Post: Assigns to the move the stats given */
-    Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, const std::string& description, int maxpp, const Stats& change_stats_opponent, const Stats& change_stats_own);
+    Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, int maxpp, const Stats& change_stats_opponent, const Stats& change_stats_own);
 
     /* Pre: True */
     /* Post: Returns the name of the move */
@@ -39,10 +37,6 @@ public:
     /* Pre: True */
     /* Post: Returns the accuracy of the move */
     int get_accuracy() const;
-    
-    /* Pre: True */
-    /* Post: Returns the description of the move */
-    std::string get_description() const;
     
     /* Pre: True */
     /* Post: Returns the PP of the move */
