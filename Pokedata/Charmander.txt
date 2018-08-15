@@ -1,4 +1,5 @@
 Charmander
+FIRE
 16 Charmeleon
 
 Attack 6 1 2
