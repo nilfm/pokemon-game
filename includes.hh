@@ -10,4 +10,8 @@
 #include <unordered_map>
 #include <fstream>
 
+struct Stats {
+    int attack, defense, spattack, spdefense, speed, maxhp;
+};
+
 #endif

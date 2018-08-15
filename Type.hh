@@ -4,7 +4,7 @@
 class Type {
 private:
     static std::unordered_map<std::string, int> types;
-    static std::vector <std::vector <int> > weaknesses;
+    static std::vector<std::vector <int> > weaknesses;
     std::string name;
 
 public:

@@ -3,6 +3,7 @@
 
 #include "includes.hh"
 #include "Move.hh"
+#include "Type.hh"
 #include "Pokebase.hh"
 
 class Pokemon {
@@ -12,7 +13,8 @@ private:
     const static int MAX_MOVES = 4;
     Type type;
     std::string name;
-    int maxhp, xp, level, hp, attack, defense, spattack, spdefense, speed;
+    int xp, hp, level;
+    Stats stats;
     std::map<int, Move> moveset;
     std::vector<Move> moves;
     
@@ -31,32 +33,12 @@ public:
     int get_level() const;
     
     /* Pre: True */
-    /* Post: Returns the current maximum HP for this pokemon */
-    int get_maxhp() const;
-    
-    /* Pre: True */
     /* Post: Returns the current HP for this pokemon */
     int get_hp() const;
     
     /* Pre: True */
-    /* Post: Returns the current Attack for this pokemon */
-    int get_attack() const;
-    
-    /* Pre: True */
-    /* Post: Returns the current Defense for this pokemon */
-    int get_defense() const;
-    
-    /* Pre: True */
-    /* Post: Returns the current Special Attack for this pokemon */
-    int get_spattack() const;
-    
-    /* Pre: True */
-    /* Post: Returns the current Special Defense for this pokemon */
-    int get_spdefense() const;
-    
-    /* Pre: True */
-    /* Post: Returns the current Speed for this pokemon */
-    int get_speed() const;
+    /* Post: Returns the current stats for this pokemon */
+    Stats get_stats() const;
 
     /* Pre: True */
     /* Post: Returns the type of this pokemon */

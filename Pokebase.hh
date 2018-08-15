@@ -9,8 +9,8 @@ class Pokebase {
 private:
     std::string name;
     Type type;
-    int maxhp, attack, defense, spattack, spdefense, speed;
-    int maxhp_level, attack_level, defense_level, spattack_level, spdefense_level, speed_level;
+    Stats base_stats;
+    Stats level_stats;
     
     std::map<int, Move> moveset;
     
@@ -28,53 +28,13 @@ public:
     std::string get_name() const;
      
     /* Pre: True */
-    /* Post: Returns the current maximum HP for this pokemon */
-    int get_maxhp() const;
+    /* Post: Returns the base stats for this pokemon */
+    Stats get_base_stats() const;
     
     /* Pre: True */
-    /* Post: Returns the current Attack for this pokemon */
-    int get_attack() const;
-    
-    /* Pre: True */
-    /* Post: Returns the current Defense for this pokemon */
-    int get_defense() const;
-    
-    /* Pre: True */
-    /* Post: Returns the current Special Attack for this pokemon */
-    int get_spattack() const;
-    
-    /* Pre: True */
-    /* Post: Returns the current Special Defense for this pokemon */
-    int get_spdefense() const;
-    
-    /* Pre: True */
-    /* Post: Returns the current Speed for this pokemon */
-    int get_speed() const;
+    /* Post: Returns the per level stats for this pokemon */
+    Stats get_level_stats() const;
 
-    /* Pre: True */
-    /* Post: Returns the current maximum HP per level for this pokemon */
-    int get_maxhp_level() const;
-    
-    /* Pre: True */
-    /* Post: Returns the current Attack per level for this pokemon */
-    int get_attack_level() const;
-    
-    /* Pre: True */
-    /* Post: Returns the current Defense per level for this pokemon */
-    int get_defense_level() const;
-    
-    /* Pre: True */
-    /* Post: Returns the current Special Attack per level for this pokemon */
-    int get_spattack_level() const;
-    
-    /* Pre: True */
-    /* Post: Returns the current Special Defense per level for this pokemon */
-    int get_spdefense_level() const;
-    
-    /* Pre: True */
-    /* Post: Returns the current Speed per level for this pokemon */
-    int get_speed_level() const;
-    
     /* Pre: True */
     /* Post: Returns the type of this pokemon */
     Type get_type() const;
