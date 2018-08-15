@@ -2,6 +2,8 @@
 
 Pokedex::Pokedex(const std::string file_addresses) {
     std::ifstream in(file_addresses);
+    assert(in.is_open());
+
     std::vector<std::string> addresses;
     std::string addr;
     while (in >> addr) addresses.push_back(addr);
@@ -11,6 +13,8 @@ Pokedex::Pokedex(const std::string file_addresses) {
         std::string s = p.get_name();
         pokedex[s] = p;
     }
+    
+    in.close();
 }
 
 Pokebase Pokedex::get_pokebase(const std::string& name) const {

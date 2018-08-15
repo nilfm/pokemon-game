@@ -7,7 +7,7 @@ Type.o: Type.cc Type.hh Includes.hh Random.cc Random.hh
 Move.o: Move.cc Type.cc Move.hh Type.hh Includes.hh Random.cc Random.hh
 	$(CC) $(OPTIONS) -c Move.cc
 
-Input.o: Input.cc Input.hh Includes.hh Random.cc Random.hh
+Input.o: Input.cc Input.hh
 	$(CC) $(OPTIONS) -c Input.cc
 
 Pokemon.o: Pokemon.cc Pokemon.hh Move.cc Move.hh Type.cc Type.hh Pokebase.cc Pokebase.hh Includes.hh Random.cc Random.hh
@@ -24,6 +24,9 @@ Item.o: Item.cc Item.hh Includes.hh Random.cc Random.hh
 
 Player.o: Player.cc Player.hh Pokemon.cc Pokemon.hh Pokebase.cc Pokebase.hh Pokedex.cc Pokedex.hh Item.cc Item.hh Move.cc Move.hh Includes.hh Random.cc Random.hh
 	$(CC) $(OPTIONS) -c Player.cc
+
+Random.o: Random.cc Random.hh
+	$(CC) $(OPTIONS) -c Random.cc
 
 clean:
 	rm -f *.o *.x
