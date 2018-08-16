@@ -145,6 +145,10 @@ void Pokemon::learn_move(const Move& move) {
     }
 }
 
+std::vector<Move> Pokemon::get_moves() const {
+    return moves;
+}
+
 int Pokemon::get_xp() const {
     return xp;
 }
@@ -202,4 +206,22 @@ void Pokemon::print_stats() const {
         moves[i].print_stats();
     }
     std::cout << std::endl << std::endl;
+}
+
+void Pokemon::add_battle_stats(const Stats& st) {
+    battle_stats.attack = std::max(1, battle_stats.attack + st.attack);
+    battle_stats.defense = std::max(1, battle_stats.defense + st.defense);
+    battle_stats.spattack = std::max(1, battle_stats.spattack + st.spattack);
+    battle_stats.spdefense = std::max(1, battle_stats.spdefense + st.spdefense);
+    battle_stats.speed = std::max(1, battle_stats.speed + st.speed);
+    battle_stats.maxhp = std::max(1, battle_stats.attack + st.maxhp);
+}
+
+void Pokemon::reset_battle_stats() {
+    battle_stats = stats;
+}
+
+void Pokemon::restore_pp(int pos, int restore) {
+    assert(pos >= 0 and pos < (int)moves.size());
+    moves[pos].restore_pp(restore);
 }

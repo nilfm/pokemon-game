@@ -20,6 +20,5 @@ Input: Has all the necessary input checking mechanisms
 ### TODO
 
 + Make txt files for every Pokemon
-+ Make txt files for every Item (Potion, Superpotion, Hyperpotion, Max Potion, Aether, Elixir, X Attack, X Defense, X Speed, etc.)
-+ Add "Price" to Item class
-+ Add a sort of "Pokedex" for items, relating name to item for every item
++ Progress with Player class
++ Start thinking about a Combat class

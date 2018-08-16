@@ -56,7 +56,7 @@ public:
     
     /* Pre: True */
     /* Post: Restores this move's PP to its maximum value */
-    void restore_pp();
+    void restore_pp(int restore);
     
     /* Pre: True */
     /* Post: Prints a formatted list with the stats for this move */

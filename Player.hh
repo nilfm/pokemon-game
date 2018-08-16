@@ -15,10 +15,10 @@ private:
     std::map<Item, int> inventory;
     
 public:
-    //This class's member functions will ask user for input
-    //use_item()
-    //use_item();
-    //switch_pokemon()
+    /* Pre: p is a valid Pokemon, i is a valid Item */
+    /* Post: The item has been used on the Pokemon */
+    void use_item(Pokemon& p, const Item& i);
+    //switch_pokemon() BELONGS TO COMBAT CLASS MAYBE
     //use_move()
 };
 

@@ -52,6 +52,10 @@ public:
     void learn_move(const Move& move);
 
     /* Pre: True */
+    /* Post: Returns this pokemon's moves */
+    std::vector<Move> get_moves() const;
+    
+    /* Pre: True */
     /* Post: Returns the current total XP for this pokemon */
     int get_xp() const;
     
@@ -90,6 +94,18 @@ public:
     /* Pre: True */
     /* Post: Prints a formatted list with the stats for this Pokemon */
     void print_stats() const;
+    
+    /* Pre: True */
+    /* Post: Adds to the battle stats the stats given */
+    void add_battle_stats(const Stats& st);
+    
+    /* Pre: True */
+    /* Post: The battle stats for this Pokemon are reset to their defaults */
+    void reset_battle_stats();
+    
+    /* Pre: 0 <= pos < number of moves this Pokemon has */
+    /* Post: The move at position pos has restored the PP given */
+    void restore_pp(int pos, int restore);
 };
 
 #endif

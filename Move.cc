@@ -45,8 +45,9 @@ Stats Move::get_change_stats_own() const {
     return change_stats_own;
 }
 
-void Move::restore_pp() {
-    pp = maxpp;
+void Move::restore_pp(int restore) {
+    if (restore == -1) pp = maxpp;
+    else pp = std::min(pp + restore, maxpp);
 }
 
 void Move::print_stats() const {
