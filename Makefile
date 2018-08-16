@@ -1,32 +1,38 @@
 CC = g++
 OPTIONS = -std=c++11 -Wall -Wextra -Wpedantic -O2
 
-Type.o: Type.cc Type.hh Includes.hh Random.cc Random.hh Globals.hh
+all: main.o Type.o Move.o Pokemon.o Pokebase.o Pokedex.o Item.o Player.o Input.o Random.o
+	$(CC) $(OPTIONS) -o Pokegame.x main.cc Type.cc Move.cc Pokemon.cc Pokebase.cc Pokedex.cc Item.cc Player.cc Input.cc Random.cc
+
+Type.o: Type.cc Type.hh Includes.hh Random.cc Random.hh
 	$(CC) $(OPTIONS) -c Type.cc
 
-Move.o: Move.cc Type.cc Move.hh Type.hh Includes.hh Random.cc Random.hh Globals.hh
+Move.o: Move.cc Type.cc Move.hh Type.hh Includes.hh Random.cc Random.hh
 	$(CC) $(OPTIONS) -c Move.cc
 
-Pokemon.o: Pokemon.cc Pokemon.hh Move.cc Move.hh Type.cc Type.hh Pokebase.cc Pokebase.hh Includes.hh Random.cc Random.hh Globals.hh
+Pokemon.o: Pokemon.cc Pokemon.hh Move.cc Move.hh Type.cc Type.hh Pokebase.cc Pokebase.hh Includes.hh Random.cc Random.hh
 	$(CC) $(OPTIONS) -c Pokemon.cc
 
-Pokebase.o: Pokebase.cc Pokebase.hh Move.cc Move.hh Type.cc Type.hh Includes.hh Random.cc Random.hh Globals.hh
+Pokebase.o: Pokebase.cc Pokebase.hh Move.cc Move.hh Type.cc Type.hh Includes.hh Random.cc Random.hh
 	$(CC) $(OPTIONS) -c Pokebase.cc
 
-Pokedex.o: Pokedex.cc Pokedex.hh Pokebase.cc Pokebase.hh Includes.hh Random.cc Random.hh Globals.hh
+Pokedex.o: Pokedex.cc Pokedex.hh Pokebase.cc Pokebase.hh Includes.hh Random.cc Random.hh
 	$(CC) $(OPTIONS) -c Pokedex.cc
 
-Item.o: Item.cc Item.hh Includes.hh Random.cc Random.hh Globals.hh
+Item.o: Item.cc Item.hh Includes.hh Random.cc Random.hh
 	$(CC) $(OPTIONS) -c Item.cc
 
-Player.o: Player.cc Player.hh Pokemon.cc Pokemon.hh Pokebase.cc Pokebase.hh Pokedex.cc Pokedex.hh Item.cc Item.hh Move.cc Move.hh Includes.hh Random.cc Random.hh Globals.hh
+Player.o: Player.cc Player.hh Pokemon.cc Pokemon.hh Pokebase.cc Pokebase.hh Pokedex.cc Pokedex.hh Item.cc Item.hh Move.cc Move.hh Includes.hh Random.cc Random.hh
 	$(CC) $(OPTIONS) -c Player.cc
 
-Input.o: Input.cc Input.hh Globals.hh
+Input.o: Input.cc Input.hh
 	$(CC) $(OPTIONS) -c Input.cc
 
 Random.o: Random.cc Random.hh 
 	$(CC) $(OPTIONS) -c Random.cc
+
+main.o: Player.cc Player.hh Pokemon.cc Pokemon.hh Pokebase.cc Pokebase.hh Pokedex.cc Pokedex.hh Item.cc Item.hh Move.cc Move.hh Includes.hh Random.cc Random.hh Type.cc Type.hh Input.cc Input.hh Random.hh
+	$(CC) $(OPTIONS) -c main.cc
 
 clean:
 	rm -f *.o *.x

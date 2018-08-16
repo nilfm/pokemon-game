@@ -6,7 +6,7 @@ Pokemon::Pokemon(const Pokebase& p, int level) {
     //Copy type, name
     type = p.get_type();
     name = p.get_name();
-    
+    this->level = level;
     
     //Calculate stats at that level
     xp = 5*level*(level-1);
@@ -24,25 +24,30 @@ Pokemon::Pokemon(const Pokebase& p, int level) {
     level_evolution = p.get_level_evolution();
     if (level_evolution != -1) next_evolution = p.get_next_evolution();
     
-    //Choose the 4 (at most) latest moves the Pokemon can learn at that level
+    //Choose 4 random moves the Pokemon can learn at that level
     moveset = p.get_moveset();
-    int count_moves = 0;
-    for (int i = level; i > 0 and count_moves < MAX_MOVES; i--) {
+    std::vector<Move> possible_moves;
+    for (int i = 1; i <= level; i++) {
         std::map<int, Move>::iterator it = moveset.find(i);
         if (it != moveset.end()) {
-            moves.push_back(it->second);
-            count_moves++;
+            possible_moves.push_back(it->second);
         }
+    }
+    for (int i = 0; i < 4 and (int)possible_moves.size() > 0; i++) {
+        int rnd = Random::randint(0, (int)possible_moves.size()-1);
+        moves.push_back(possible_moves[rnd]);
+        possible_moves.erase(possible_moves.begin()+rnd);
     }
 }
 
-Pokemon::Pokemon(const Pokebase& p, int level, const std::vector<Move>& moves) {
+Pokemon::Pokemon(const Pokebase& p, int level, const std::vector<Move>& moves, int xp) {
     //Copy type, name
     type = p.get_type();
     name = p.get_name();
+    this->level = level;
+    this->xp = xp;
     
     //Calculate stats at that level
-    xp = 5*level*(level-1);
     per_level_min   = p.get_level_stats_min();
     per_level_max   = p.get_level_stats_max();
     stats.attack    = p.get_base_stats().attack    + (level-1)*Random::randint(per_level_min.attack, per_level_max.attack);
@@ -63,8 +68,17 @@ Pokemon::Pokemon(const Pokebase& p, int level, const std::vector<Move>& moves) {
 }
 
 void Pokemon::evolve() {
-    Pokebase p = Pokedex::get_pokebase(next_evolution);
-    *this = Pokemon(p, level, this->moves);
+    std::string old_name = name;
+    std::cout << "Your " << name << " wants to evolve to a " << next_evolution << "!" << std::endl;
+    std::string query = "Enter 1 to evolve, 2 to prevent evolution: ";
+    std::string error = "Oops. Enter either 1 or 2";
+    int choice = Input::read_int(1, 2, query, error);
+    if (choice == 2) std::cout << "Evolution stopped" << std::endl << std::endl;
+    else {
+        Pokebase p = Pokedex::get_pokebase(next_evolution);
+        *this = Pokemon(p, level, moves, xp);
+        std::cout << "Your " << old_name << " just evolved to a " << name << "!" << std::endl << std::endl;
+    }
 }
 
 void Pokemon::level_up() {
@@ -78,13 +92,13 @@ void Pokemon::level_up() {
     improv.speed     = Random::randint(per_level_min.attack, per_level_max.attack);
     improv.maxhp     = Random::randint(per_level_min.attack, per_level_max.attack);
     //Write improvements
-    std::cout << name << " leveled up to level " << level << "!" << std::endl;
+    std::cout << name << " leveled up to level " << level << "!" << std::endl << std::endl;
     std::cout << name << " gained " << improv.attack << " attack." << std::endl;
     std::cout << name << " gained " << improv.defense << " defense." << std::endl;
     std::cout << name << " gained " << improv.spattack << " special attack." << std::endl;
     std::cout << name << " gained " << improv.spdefense << " special defense." << std::endl;
     std::cout << name << " gained " << improv.speed << " speed." << std::endl;
-    std::cout << name << " gained " << improv.maxhp << " maximum HP." << std::endl;
+    std::cout << name << " gained " << improv.maxhp << " maximum HP." << std::endl << std::endl;
     //Add improvements to stats
     stats.attack += improv.attack;
     stats.defense += improv.defense;
@@ -95,17 +109,11 @@ void Pokemon::level_up() {
     hp += improv.maxhp;
     //If necessary, (ask to) evolve
     if (level >= level_evolution) {
-        std::cout << "Your " << name << " wants to evolve to a " << next_evolution << "!" << std::endl;
-        std::string query = "Enter 1 to evolve, 2 to prevent evolution: ";
-        std::string error = "Oops. Enter either 1 or 2";
-        int choice = Input::read_int(1, 2, query, error);
-        if (choice == 1) evolve();
-        else std::cout << "Evolution stopped" << std::endl;
+        evolve();
     }
     //If necessary, (ask to) learn a new move
     std::map<int, Move>::iterator it = moveset.find(level);
     if (it != moveset.end()) { 
-        //Wants to learn a move
         learn_move(it->second);
     }
 }
@@ -120,19 +128,19 @@ void Pokemon::learn_move(const Move& move) {
         std::cout << name << " wants to learn " << move_name << "." << std::endl;
         std::cout << "But " << name << " cannot learn more than " << MAX_MOVES << " moves." << std::endl;
         std::cout << "Do you want " << name << " to forget a move and learn " << move_name << "?" << std::endl;
-        std::string query = "Enter 1, 2, 3 or 4 to forget the corresponding move. Enter 0 to not learn " + move_name;
+        std::string query = "Enter 1, 2, 3 or 4 to forget the corresponding move. Enter 0 to not learn " + move_name + ": ";
         std::string error = "Oops. Enter a number between 0 and 4";
         std::cout << "Your moves are: " << std::endl 
-        << "1. " << moves[0].get_name() << std::endl
-        << "2. " << moves[1].get_name() << std::endl
-        << "3. " << moves[2].get_name() << std::endl
-        << "4. " << moves[3].get_name() << std::endl;
+        << "  1. " << moves[0].get_name() << std::endl
+        << "  2. " << moves[1].get_name() << std::endl
+        << "  3. " << moves[2].get_name() << std::endl
+        << "  4. " << moves[3].get_name() << std::endl << std::endl;
         int choice = Input::read_int(0, 4, query, error);
-        if (choice == 0) std::cout << name << " didn't learn " << move_name << "." << std::endl;
+        if (choice == 0) std::cout << name << " didn't learn " << move_name << "." << std::endl << std::endl;
         else {
             std::string old_move = moves[choice-1].get_name();
             moves[choice-1] = move;
-            std::cout << "Puff. " << name << " forgot " << old_move << " and learned " << move_name << "!" << std::endl;
+            std::cout << "Puff. " << name << " forgot " << old_move << " and learned " << move_name << "!" << std::endl << std::endl;
         }
     }
 }
@@ -172,4 +180,26 @@ Type Pokemon::get_type() const {
 void Pokemon::restore_health(int health) {
     if (health == -1) hp = stats.maxhp;
     else hp = std::min(stats.maxhp, hp + health);
+}
+
+void Pokemon::print_stats() const {
+    std::cout << "Name: " << name << std::endl;
+    std::cout << "Level: " << level << std::endl;
+    std::cout << "Total XP: " << xp << std::endl;
+    std::cout << "XP to next level: ";
+    if (level == 100) std::cout << "ALREADY MAX LEVEL" << std::endl;
+    else std::cout << 5*level*(level+1) - xp << std::endl;
+    
+    std::cout << "Attack: " << stats.attack << std::endl;
+    std::cout << "Defense: " << stats.defense << std::endl;
+    std::cout << "Special Attack: " << stats.spattack << std::endl;
+    std::cout << "Special Defense: " << stats.spdefense << std::endl;
+    std::cout << "Speed: " << stats.speed << std::endl;
+    std::cout << "Maximum HP: " << stats.maxhp << std::endl;
+
+    for (int i = 0; i < (int)moves.size(); i++) {
+        std::cout << std::endl << "Move #" << i+1 << std::endl;
+        moves[i].print_stats();
+    }
+    std::cout << std::endl << std::endl;
 }

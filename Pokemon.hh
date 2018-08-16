@@ -36,7 +36,7 @@ public:
     //This is for evolving Pokemon and keeping movesets
     /* Pre: Pokebase is a valid base for a pokemon, level is such that 0 < level < 101 */
     /* Post: Returns an instance of the pokemon described in the pokebase, at the level given, with the moveset given */
-    Pokemon(const Pokebase& p, int level, const std::vector<Move>& moves);
+    Pokemon(const Pokebase& p, int level, const std::vector<Move>& moves, int xp);
     
     /* Pre: name_evolution is a valid pokemon name, 0 < level < 101 */
     /* Post: The pokemon object becomes its evolution, at the level give, with the same moveset */
@@ -86,6 +86,10 @@ public:
     /* Pre: health contains a positive integer or -1 */
     /* Post: If health was -1, hp was restored to full. Otherwise, the pokemon restores health hp, without going over maxhp */
     void restore_health(int health);
+    
+    /* Pre: True */
+    /* Post: Prints a formatted list with the stats for this Pokemon */
+    void print_stats() const;
 };
 
 #endif

@@ -1,5 +1,7 @@
 #include "Pokedex.hh"
 
+std::unordered_map<std::string, Pokebase> Pokedex::pokedex;
+
 void Pokedex::initialize(const std::string file_addresses) {
     std::ifstream in(file_addresses);
     assert(in.is_open());

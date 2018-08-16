@@ -1,6 +1,8 @@
 #ifndef ITEM_HH
 #define ITEM_HH
 
+#include "Includes.hh"
+
 class Item {
 private:
     int type;

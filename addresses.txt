@@ -1,3 +1,6 @@
+Pokedata/Bulbasaur.txt
+Pokedata/Ivysaur.txt
+Pokedata/Venusaur.txt
 Pokedata/Charmander.txt
 Pokedata/Charmeleon.txt
 Pokedata/Charizard.txt

@@ -20,7 +20,7 @@ public:
 
     /* Pre: True */
     /* Post: Returns the name of the type */
-    std::string get_name();
+    std::string get_name() const;
     
     /* Pre: Type 1 and 2 are valid types */
     /* Post: Returns 1 if t1 is super effective vs t2

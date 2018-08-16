@@ -57,6 +57,10 @@ public:
     /* Pre: True */
     /* Post: Restores this move's PP to its maximum value */
     void restore_pp();
+    
+    /* Pre: True */
+    /* Post: Prints a formatted list with the stats for this move */
+    void print_stats() const;
 };
 
 #endif

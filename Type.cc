@@ -1,12 +1,15 @@
 #include "Type.hh"
 
+std::unordered_map<std::string, int> Type::types;
+std::vector< std::vector<int> > Type::weaknesses;
+
 Type::Type() {}
 
 Type::Type(std::string name) {
     this->name = name;
 }
 
-std::string Type::get_name() {
+std::string Type::get_name() const {
     std::unordered_map<std::string, int>::iterator it = types.find(name);
     assert(it != types.end());
     return name;

@@ -48,3 +48,33 @@ Stats Move::get_change_stats_own() const {
 void Move::restore_pp() {
     pp = maxpp;
 }
+
+void Move::print_stats() const {
+    std::cout << "  Name: " << name << std::endl;
+    std::cout << "  Type: " << type.get_name() << std::endl;
+    std::cout << "  PP: " << pp << std::endl;
+    std::cout << "  Power: " << power << std::endl;
+    std::cout << "  Accuracy: " << accuracy << std::endl;
+    
+    if (change_stats_opponent.attack < 0) std::cout << "  Opponent's attack is reduced by " << -change_stats_opponent.attack << std::endl;
+    if (change_stats_opponent.attack > 0) std::cout << "  Opponent's attack is increased by " << change_stats_opponent.attack << std::endl;
+    if (change_stats_opponent.defense < 0) std::cout << "  Opponent's defense is reduced by " << -change_stats_opponent.defense << std::endl;
+    if (change_stats_opponent.defense > 0) std::cout << "  Opponent's defense is increased by " << change_stats_opponent.defense << std::endl;
+    if (change_stats_opponent.spattack < 0) std::cout << "  Opponent's special attack is reduced by " << -change_stats_opponent.spattack << std::endl;
+    if (change_stats_opponent.spattack > 0) std::cout << "  Opponent's special attack is increased by " << change_stats_opponent.spattack << std::endl;
+    if (change_stats_opponent.spdefense < 0) std::cout << "  Opponent's special defense is reduced by " << -change_stats_opponent.spdefense << std::endl;
+    if (change_stats_opponent.spdefense > 0) std::cout << "  Opponent's special defense is increased by " << change_stats_opponent.spdefense << std::endl;
+    if (change_stats_opponent.speed < 0) std::cout << "  Opponent's speed is reduced by " << -change_stats_opponent.speed << std::endl;
+    if (change_stats_opponent.speed > 0) std::cout << "  Opponent's speed is increased by " << change_stats_opponent.speed << std::endl;
+
+    if (change_stats_own.attack < 0) std::cout << "  Own attack is reduced by " << -change_stats_own.attack << std::endl;
+    if (change_stats_own.attack > 0) std::cout << "  Own attack is increased by " << change_stats_own.attack << std::endl;
+    if (change_stats_own.defense < 0) std::cout << "  Own defense is reduced by " << -change_stats_own.defense << std::endl;
+    if (change_stats_own.defense > 0) std::cout << "  Own defense is increased by " << change_stats_own.defense << std::endl;
+    if (change_stats_own.spattack < 0) std::cout << "  Own special attack is reduced by " << -change_stats_own.spattack << std::endl;
+    if (change_stats_own.spattack > 0) std::cout << "  Own special attack is increased by " << change_stats_own.spattack << std::endl;
+    if (change_stats_own.spdefense < 0) std::cout << "  Own special defense is reduced by " << -change_stats_own.spdefense << std::endl;
+    if (change_stats_own.spdefense > 0) std::cout << "  Own special defense is increased by " << change_stats_own.spdefense << std::endl;
+    if (change_stats_own.speed < 0) std::cout << "  Own speed is reduced by " << -change_stats_own.speed << std::endl;
+    if (change_stats_own.speed > 0) std::cout << "  Own speed is increased by " << change_stats_own.speed << std::endl;
+}

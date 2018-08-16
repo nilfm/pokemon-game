@@ -3,6 +3,9 @@
 
 #include <limits>
 #include <iostream>
+#include <unordered_set>
+#include <string>
+#include <cassert>
 
 namespace Input {
     /* Pre: choices (non-empty) contains all possible correct choices, query and error are the displayed messages */
