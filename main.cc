@@ -6,8 +6,6 @@
 #include "Pokebase.hh"
 #include "Player.hh"
 #include "Random.hh"
-using std::unordered_map;
-using std::vector;
 
 int main() {
     srand(time(0));
