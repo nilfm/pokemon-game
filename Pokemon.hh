@@ -40,7 +40,16 @@ public:
     
     /* Pre: name_evolution is a valid pokemon name, 0 < level < 101 */
     /* Post: The pokemon object becomes its evolution, at the level give, with the same moveset */
-    void evolve(const std::string& name_evolution, int level, const Pokedex& pokedex);
+    void evolve();
+
+    /* Pre: The Pokemon has achieved enough XP to level up for 1 level */
+    /* Post: The Pokemon is one level higher, has evolved if necessary, and has learned a new move if necessary */
+    void level_up();
+    
+    /* Pre: The Pokemon wants to learn this move at this level */
+    /* Post: If the Pokemon has less than MAX_MOVES moves, it learns the move automatically.
+     *       Otherwise, it asks the player for a move to forget */
+    void learn_move(const Move& move);
 
     /* Pre: True */
     /* Post: Returns the current total XP for this pokemon */

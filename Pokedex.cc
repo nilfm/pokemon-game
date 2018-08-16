@@ -1,6 +1,6 @@
 #include "Pokedex.hh"
 
-Pokedex::Pokedex(const std::string file_addresses) {
+void Pokedex::initialize(const std::string file_addresses) {
     std::ifstream in(file_addresses);
     assert(in.is_open());
 
@@ -14,10 +14,10 @@ Pokedex::Pokedex(const std::string file_addresses) {
         pokedex[s] = p;
     }
     
-    in.close();
+    in.close();    
 }
 
-Pokebase Pokedex::get_pokebase(const std::string& name) const {
+Pokebase Pokedex::get_pokebase(const std::string& name) {
     std::unordered_map<std::string, Pokebase>::const_iterator it = pokedex.find(name);
     assert(it != pokedex.end());
     return it->second;

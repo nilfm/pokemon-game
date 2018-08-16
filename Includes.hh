@@ -1,5 +1,5 @@
-#ifndef Includes_HH
-#define Includes_HH
+#ifndef INCLUDES_HH
+#define INCLUDES_HH
 
 #include <fstream>
 #include <string>
