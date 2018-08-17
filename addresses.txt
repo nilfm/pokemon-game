@@ -4,3 +4,5 @@ Pokedata/Venusaur.txt
 Pokedata/Charmander.txt
 Pokedata/Charmeleon.txt
 Pokedata/Charizard.txt
+Pokedata/Squirtle.txt
+Pokedata/Wartortle.txt

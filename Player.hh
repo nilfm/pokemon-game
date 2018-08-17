@@ -18,8 +18,9 @@ public:
     /* Pre: p is a valid Pokemon, i is a valid Item */
     /* Post: The item has been used on the Pokemon */
     void use_item(Pokemon& p, const Item& i);
-    //switch_pokemon() BELONGS TO COMBAT CLASS MAYBE
-    //use_move()
+    //switch_pokemon() BELONGS TO COMBAT CLASS MAYBE?
+    //use_move() ALSO BELONGS TO COMBAT CLASS?
+    //maybe by building up the main it'll be clearer which functions go here
 };
 
 #endif

@@ -6,7 +6,7 @@ Attack 20 2 3
 Defense 15 2 3
 SpAttack 25 2 4
 SpDefense 20 2 3
-Speed 25 2 4
+Speed 23 2 4
 MaxHP 20 2 4
 
 WingAttack 1 35
