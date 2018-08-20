@@ -58,6 +58,10 @@ public:
     /* Post: Returns the player's inventory */
     std::map<Item, int> get_inventory() const;
     
+    /* Pre: True */
+    /* Post: Asks player to swap Pokemon around in their team */
+    void sort_team();
+    
     //switch_pokemon() BELONGS TO COMBAT CLASS MAYBE?
     //use_move() ALSO BELONGS TO COMBAT CLASS?
     //maybe by building up the main it'll be clearer which functions go here

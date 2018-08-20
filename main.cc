@@ -60,7 +60,31 @@ int main() {
         std::cout << "Hi, " << player.get_name() << std::endl << std::endl;
     }
     
-    gamesave.update(player.get_name(), player.get_money(), player.get_trainers(), player.get_team(), player.get_inventory());
+    player.sort_team();
     
+    //int trainers = player.get_trainers();
+    //bool cont = true;
+    //while (cont)
+        //Menu:
+        //  -Switch Pokemon around
+        //  -Shop
+        //  -See Pokemon stats
+        //  -Next fight
+        
+        //When player picks next fight
+        //trainers++;
+        //Enemy enemy(trainers);
+        //bool player_wins = fight(player, enemy); (STILL HAVE TO DECIDE WHETHER TO MAKE COMBAT CLASS)
+        //if (player_wins) 
+        //  -"yes you won!"
+        //  -Pick a pokemon from enemy team (0 = dont want to pick any)
+        //else
+        //  -"oh no you lost"
+        //  -cont = false;
+        //  -register to high scores
+    //
+    
+    //Save and quit
+    gamesave.update(player.get_name(), player.get_money(), player.get_trainers(), player.get_team(), player.get_inventory());
     gamesave.save();
 }

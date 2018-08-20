@@ -1,1 +1,18 @@
+N 1000 0
+POKEMON Caterpie 1 0
+3 4 3 3 4 7
+Tackle
+StringShot
+ENDMOVES
+
+POKEMON Weedle 1 0
+6 2 3 3 6 4
+StringShot
+Tackle
+ENDMOVES
+
+POKEMON Squirtle 1 0
+6 9 7 8 3 7
+Tackle
+ENDMOVES
 

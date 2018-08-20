@@ -96,3 +96,28 @@ std::vector<Pokemon> Player::get_team() const {
 std::map<Item, int> Player::get_inventory() const {
     return inventory;
 }
+
+void Player::sort_team() {
+    std::cout << std::endl;
+    for (int i = 0; i < 3; i++) {
+        std::cout << i+1 << " - " << team[i].get_name() << "(Level " << team[i].get_level() << ")" << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::string query1 = "Choose first pokemon to swap (1-3) (0 to exit): ";
+    std::string query2 = "Choose second pokemon to swap (1-3) (0 to exit): ";
+    std::string error = "Oops. Enter a number between 1 and 3";
+    int p1 = Input::read_int(0, 3, query1, error);
+    if (p1 == 0) return;
+    int p2 = Input::read_int(0, 3, query2, error);
+    if (p2 == 0) return;
+    Pokemon aux = team[p1-1];
+    team[p1-1] = team[p2-1];
+    team[p2-1] = aux;
+
+    std::cout << std::endl;
+    for (int i = 0; i < 3; i++) {
+        std::cout << i+1 << " - " << team[i].get_name() << "(Level " << team[i].get_level() << ")" << std::endl;
+    }
+    std::cout << std::endl;
+}

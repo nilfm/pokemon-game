@@ -25,5 +25,4 @@ Gamesave: Has all the info that needs to be saved and loaded back
 
 + Make txt files for every Pokemon
 + Progress with Player class
-+ Start thinking about a Combat class
-+ Maybe make an Enemy class?
++ Make an Enemy class with basic AI
