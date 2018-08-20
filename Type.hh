@@ -10,6 +10,7 @@ private:
     std::string name;
 
 public:
+    //CONSTRUCTORS
     /* Pre: True */
     /* Post: Default constructor */
     Type();
@@ -18,6 +19,8 @@ public:
     /* Post: Creates a type object with the name given */
     Type(std::string name);
 
+
+    //GETTERS
     /* Pre: True */
     /* Post: Returns the name of the type */
     std::string get_name() const;
@@ -35,7 +38,9 @@ public:
      *       Returns -1 if t1 is not very effective vs t2
      *       Returns -2 if t1 can't damage t2 */
     static int advantage(std::string t1, std::string t2);
-        
+    
+    
+    //INITIALIZERS
     /* Pre: True */
     /* Post: When called, fills up the data tables for this class */
     static void initialize();

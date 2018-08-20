@@ -1,5 +1,6 @@
 #include "Pokebase.hh"
 
+//CONSTRUCTORS
 Pokebase::Pokebase() {}
 
 Pokebase::Pokebase(const std::string& address) {
@@ -33,6 +34,8 @@ Pokebase::Pokebase(const std::string& address) {
     in.close();
 }
 
+
+//GETTERS
 std::string Pokebase::get_name() const {
     return name;
 }
@@ -65,6 +68,8 @@ std::map<int, std::vector<Move> > Pokebase::get_moveset() const{
     return moveset;
 }
 
+
+//OPERATORS
 bool Pokebase::operator<(const Pokebase& p2) const {
     return name < p2.name;
 }

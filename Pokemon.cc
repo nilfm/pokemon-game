@@ -1,5 +1,6 @@
 #include "Pokemon.hh"
 
+//CONSTRUCTORS
 Pokemon::Pokemon() {}
 
 Pokemon::Pokemon(const Pokebase& p, int level) {
@@ -97,6 +98,71 @@ Pokemon::Pokemon(const Pokebase& p, int level, int xp, const Stats& current, con
     }
 }
 
+
+//GETTERS
+std::vector<Move> Pokemon::get_moves() const {
+    return moves;
+}
+
+int Pokemon::get_xp() const {
+    return xp;
+}
+
+int Pokemon::get_level() const {
+    return level;
+}
+
+int Pokemon::get_hp() const {
+    return hp;
+}
+
+int Pokemon::get_level_evolution() const {
+    return level_evolution;
+}
+
+std::string Pokemon::get_next_evolution() const {
+    return next_evolution;
+}
+
+Stats Pokemon::get_stats() const {
+    return stats;
+}
+
+std::string Pokemon::get_name() const {
+    return name;
+}
+
+Type Pokemon::get_type() const {
+    return type;
+}
+
+
+//SETTERS
+void Pokemon::add_battle_stats(const Stats& st) {
+    battle_stats.attack = std::max(1, battle_stats.attack + st.attack);
+    battle_stats.defense = std::max(1, battle_stats.defense + st.defense);
+    battle_stats.spattack = std::max(1, battle_stats.spattack + st.spattack);
+    battle_stats.spdefense = std::max(1, battle_stats.spdefense + st.spdefense);
+    battle_stats.speed = std::max(1, battle_stats.speed + st.speed);
+    battle_stats.maxhp = std::max(1, battle_stats.attack + st.maxhp);
+}
+
+void Pokemon::reset_battle_stats() {
+    battle_stats = stats;
+}
+
+void Pokemon::restore_health(int health) {
+    if (health == -1) hp = stats.maxhp;
+    else hp = std::min(stats.maxhp, hp + health);
+}
+
+void Pokemon::restore_pp(int pos, int restore) {
+    assert(pos >= 0 and pos < (int)moves.size());
+    moves[pos].restore_pp(restore);
+}
+
+
+//ACTIONS
 void Pokemon::evolve() {
     std::string old_name = name;
     std::cout << "Your " << name << " wants to evolve to a " << next_evolution << "!" << std::endl;
@@ -175,47 +241,8 @@ void Pokemon::learn_move(const Move& move) {
     }
 }
 
-std::vector<Move> Pokemon::get_moves() const {
-    return moves;
-}
 
-int Pokemon::get_xp() const {
-    return xp;
-}
-
-int Pokemon::get_level() const {
-    return level;
-}
-
-int Pokemon::get_hp() const {
-    return hp;
-}
-
-int Pokemon::get_level_evolution() const {
-    return level_evolution;
-}
-
-std::string Pokemon::get_next_evolution() const {
-    return next_evolution;
-}
-
-Stats Pokemon::get_stats() const {
-    return stats;
-}
-
-std::string Pokemon::get_name() const {
-    return name;
-}
-
-Type Pokemon::get_type() const {
-    return type;
-}
-
-void Pokemon::restore_health(int health) {
-    if (health == -1) hp = stats.maxhp;
-    else hp = std::min(stats.maxhp, hp + health);
-}
-
+//SHOWERS
 void Pokemon::print_stats() const {
     std::cout << "Name: " << name << std::endl;
     std::cout << "Level: " << level << std::endl;
@@ -238,20 +265,6 @@ void Pokemon::print_stats() const {
     std::cout << std::endl << std::endl;
 }
 
-void Pokemon::add_battle_stats(const Stats& st) {
-    battle_stats.attack = std::max(1, battle_stats.attack + st.attack);
-    battle_stats.defense = std::max(1, battle_stats.defense + st.defense);
-    battle_stats.spattack = std::max(1, battle_stats.spattack + st.spattack);
-    battle_stats.spdefense = std::max(1, battle_stats.spdefense + st.spdefense);
-    battle_stats.speed = std::max(1, battle_stats.speed + st.speed);
-    battle_stats.maxhp = std::max(1, battle_stats.attack + st.maxhp);
-}
 
-void Pokemon::reset_battle_stats() {
-    battle_stats = stats;
-}
 
-void Pokemon::restore_pp(int pos, int restore) {
-    assert(pos >= 0 and pos < (int)moves.size());
-    moves[pos].restore_pp(restore);
-}
+

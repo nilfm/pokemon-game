@@ -25,6 +25,7 @@ private:
     std::vector<Move> moves;
     
 public:
+    //CONSTRUCTORS
     /* Pre: True */
     /* Post: Default constructor */
     Pokemon();
@@ -43,19 +44,8 @@ public:
     /* Post: Returns an instance of the pokemon described in the pokebase, at the level given, with the moveset given, with the current stats given */
     Pokemon(const Pokebase& p, int level, int xp, const Stats& current, const std::vector<std::string> moves);
 
-    /* Pre: name_evolution is a valid pokemon name, 0 < level < 101 */
-    /* Post: The pokemon object becomes its evolution, at the level give, with the same moveset */
-    void evolve();
 
-    /* Pre: The Pokemon has achieved enough XP to level up for 1 level */
-    /* Post: The Pokemon is one level higher, has evolved if necessary, and has learned a new move if necessary */
-    void level_up();
-    
-    /* Pre: The Pokemon wants to learn this move at this level */
-    /* Post: If the Pokemon has less than MAX_MOVES moves, it learns the move automatically.
-     *       Otherwise, it asks the player for a move to forget */
-    void learn_move(const Move& move);
-
+    //GETTERS
     /* Pre: True */
     /* Post: Returns this pokemon's moves */
     std::vector<Move> get_moves() const;
@@ -92,14 +82,8 @@ public:
     /* Post: Returns the name of this pokemon */
     std::string get_name() const;
     
-    /* Pre: health contains a positive integer or -1 */
-    /* Post: If health was -1, hp was restored to full. Otherwise, the pokemon restores health hp, without going over maxhp */
-    void restore_health(int health);
     
-    /* Pre: True */
-    /* Post: Prints a formatted list with the stats for this Pokemon */
-    void print_stats() const;
-    
+    //SETTERS
     /* Pre: True */
     /* Post: Adds to the battle stats the stats given */
     void add_battle_stats(const Stats& st);
@@ -108,9 +92,35 @@ public:
     /* Post: The battle stats for this Pokemon are reset to their defaults */
     void reset_battle_stats();
     
+    /* Pre: health contains a positive integer or -1 */
+    /* Post: If health was -1, hp was restored to full. Otherwise, the pokemon restores health hp, without going over maxhp */
+    void restore_health(int health);
+
     /* Pre: 0 <= pos < number of moves this Pokemon has */
     /* Post: The move at position pos has restored the PP given */
     void restore_pp(int pos, int restore);
+    
+    
+    //ACTIONS
+    /* Pre: name_evolution is a valid pokemon name, 0 < level < 101 */
+    /* Post: The pokemon object becomes its evolution, at the level give, with the same moveset */
+    void evolve();
+
+    /* Pre: The Pokemon has achieved enough XP to level up for 1 level */
+    /* Post: The Pokemon is one level higher, has evolved if necessary, and has learned a new move if necessary */
+    void level_up();
+    
+    /* Pre: The Pokemon wants to learn this move at this level */
+    /* Post: If the Pokemon has less than MAX_MOVES moves, it learns the move automatically.
+     *       Otherwise, it asks the player for a move to forget */
+    void learn_move(const Move& move);
+
+
+    //SHOWERS
+    /* Pre: True */
+    /* Post: Prints a formatted list with the stats for this Pokemon */
+    void print_stats() const;
+
 };
 
 #endif

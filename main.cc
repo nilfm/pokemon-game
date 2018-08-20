@@ -75,6 +75,7 @@ int main() {
             //if (player_wins) 
             //  -"yes you won!"
             //  -Pick a pokemon from enemy team (0 = dont want to pick any)
+            //  -player.increment_money(500);
             //else
             //  -"oh no you lost"
             //  -cont = false;

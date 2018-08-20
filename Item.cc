@@ -2,6 +2,7 @@
 
 std::unordered_map<std::string, Item> Item::items;
 
+//CONSTRUCTORS
 Item::Item() {}
 
 Item::Item(const std::string name, int price, int type, int restored_hp, int restored_pp, const Stats& improvement) {
@@ -13,6 +14,7 @@ Item::Item(const std::string name, int price, int type, int restored_hp, int res
     this->price = price;
 }
 
+//GETTERS
 int Item::get_type() const {
     return type;
 }
@@ -43,6 +45,8 @@ Item Item::get_item(const std::string& name) {
     return it->second;
 }
 
+
+//INITIALIZERS
 void Item::initialize_items(const std::string address) {
     std::ifstream in(address);
     assert(in.is_open());
@@ -54,6 +58,8 @@ void Item::initialize_items(const std::string address) {
     }
 }
 
+
+//OPERATORS
 bool Item::operator<(const Item& i) const {
     return name < i.name;
 }

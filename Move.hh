@@ -14,6 +14,7 @@ private:
     Stats change_stats_own;
     
 public:
+    //CONSTRUCTORS
     /* Pre: True */
     /* Post: Default constructor */
     Move();
@@ -22,6 +23,7 @@ public:
     /* Post: Assigns to the move the stats given */
     Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, int maxpp, const Stats& change_stats_opponent, const Stats& change_stats_own);
 
+    //GETTERS
     /* Pre: True */
     /* Post: Returns the name of the move */
     std::string get_name() const;
@@ -54,14 +56,20 @@ public:
     /* Post: Returns the struct that holds the stat changes caused on itself by the move */
     Stats get_change_stats_own() const;
     
-    /* Pre: True */
-    /* Post: Restores this move's PP to its maximum value */
-    void restore_pp(int restore);
     
+    //SHOWERS
     /* Pre: True */
     /* Post: Prints a formatted list with the stats for this move */
     void print_stats() const;
     
+    
+    //ACTIONS
+    /* Pre: True */
+    /* Post: Restores this move's PP to its maximum value */
+    void restore_pp(int restore);
+
+    
+    //SEARCHERS
     /* Pre: name is the name of a move that exists within the map */
     /* Post: Returns the move given my name */
     static Move search_move(const std::string& name, const std::map<int, std::vector<Move> >& moveset);

@@ -6,6 +6,7 @@ const std::vector<std::string> hp_items = {"Potion", "Superpotion", "Hyperpotion
 const std::vector<std::string> pp_items = {"Ether", "MaxEther", "Elixir", "MaxElixir"};
 const std::vector<std::string> x_items = {"XAttack", "XDefense", "XSpecialAttack", "XSpecialDefense", "XSpeed"};
 
+//CONSTRUCTORS
 Enemy::Enemy(int trainers) {
     //Set the trainer variable
     trainer = trainers;
@@ -34,6 +35,19 @@ Enemy::Enemy(int trainers) {
     }
 }
 
+
+//SHOWERS
+void Enemy::show_team_stats() const {
+    assert(team.size() == 3);
+    
+    std::cout << std::endl << "ENEMY TEAM'S STATS" << std::endl << std::endl;
+    for (int i = 0; i < 3; i++) {
+        team[i].print_stats();
+    }
+}
+
+
+//AUXILIARY
 std::vector<int> Enemy::calculate_tiers(int trainer) {
     std::vector<int> tiers(4, 0);
     if (trainer < 5) {
@@ -74,11 +88,3 @@ std::vector<int> Enemy::calculate_tiers(int trainer) {
     return tiers;
 }
 
-void Enemy::show_team_stats() const {
-    assert(team.size() == 3);
-    
-    std::cout << std::endl << "ENEMY TEAM'S STATS" << std::endl << std::endl;
-    for (int i = 0; i < 3; i++) {
-        team[i].print_stats();
-    }
-}

@@ -3,16 +3,15 @@
 const std::string Player::gamesave_address = "Saves/GameSave";
 const std::string Player::address_extension = ".txt";
 
+//CONSTRUCTORS
 Player::Player(int slot) {
     this->slot = slot;
     this->money = 1000;
     this->trainers = 0;
 }
 
-std::string Player::get_address() const {
-    return gamesave_address + std::to_string(slot) + address_extension;
-}
 
+//SAVE/LOAD
 void Player::load() {
     std::string address = get_address();
     std::ifstream in(address);
@@ -53,21 +52,6 @@ void Player::save_empty() const {
     in.close();
 }
 
-void Player::presentation() const {
-    std::cout << name << " - Trainer " << trainers << std::endl;
-}
-
-bool Player::is_empty() const {
-    std::string address = get_address();
-    std::ifstream in(address);
-    assert(in.is_open());
-    std::string s = "";
-    int count = 0;
-    while (in >> s) count++;
-    return count == 0 and s == "";
-    in.close();
-}
-
 void Player::save() const {
     std::string address = get_address();
     std::ofstream out(address);
@@ -93,6 +77,111 @@ void Player::save() const {
     }
 } 
 
+
+//GETTERS
+std::string Player::get_address() const {
+    return gamesave_address + std::to_string(slot) + address_extension;
+}
+
+std::string Player::get_name() const {
+    return name;
+}
+
+int Player::get_money() const {
+    return money;
+}
+
+int Player::get_trainers() const {
+    return trainers;
+}
+
+std::vector<Pokemon> Player::get_team() const {
+    return team;
+}
+
+std::map<Item, int> Player::get_inventory() const {
+    return inventory;
+}
+
+bool Player::is_empty() const {
+    std::string address = get_address();
+    std::ifstream in(address);
+    assert(in.is_open());
+    std::string s = "";
+    int count = 0;
+    while (in >> s) count++;
+    return count == 0 and s == "";
+    in.close();
+}
+
+
+//SETTERS
+void Player::increment_trainers() {
+    trainers++;
+}
+
+void Player::increment_money(int added) {
+    money += added;
+}
+
+void Player::set_name(const std::string& name) {
+    this->name = name;
+}
+
+void Player::set_team(const std::vector<Pokemon>& team) {
+    this->team = team;
+}
+
+
+//SHOWERS
+void Player::presentation() const {
+    std::cout << name << " - Trainer " << trainers << std::endl;
+}
+
+void Player::show_team_stats() const {
+    assert(team.size() == 3);
+
+    std::cout << std::endl << "TEAM STATS" << std::endl << std::endl;
+    for (int i = 0; i < 3; i++) {
+        team[i].print_stats();
+    }
+}
+
+void Player::show_inventory() const {
+    std::cout << "\nInventory:\n\n";
+    for (std::map<Item, int>::const_iterator it = inventory.begin(); it != inventory.end(); it++) {
+        std::cout << it->second << " x " << (it->first).get_name() << std::endl;
+    }
+}
+
+
+//ACTIONS
+void Player::sort_team() {
+    assert(team.size() == 3);
+
+    std::cout << "Sorting team" << std::endl;
+    for (int i = 0; i < 3; i++) {
+        std::cout << i+1 << " - " << team[i].get_name() << "(Level " << team[i].get_level() << ")" << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::string query1 = "Choose first pokemon to swap (1-3) (0 to exit): ";
+    std::string query2 = "Choose second pokemon to swap (1-3) (0 to exit): ";
+    std::string error = "Oops. Enter a number between 1 and 3";
+    int p1 = Input::read_int(0, 3, query1, error);
+    if (p1 == 0) return;
+    int p2 = Input::read_int(0, 3, query2, error);
+    if (p2 == 0) return;
+    Pokemon aux = team[p1-1];
+    team[p1-1] = team[p2-1];
+    team[p2-1] = aux;
+
+    std::cout << std::endl;
+    for (int i = 0; i < 3; i++) {
+        std::cout << i+1 << " - " << team[i].get_name() << " (Level " << team[i].get_level() << ")" << std::endl;
+    }
+    std::cout << std::endl;
+}
 
 void Player::use_item(Pokemon& p, const Item& it) {
     int type = it.get_type();
@@ -152,81 +241,6 @@ std::vector<Pokemon> Player::choose_starters() const {
         starters.erase(choice);
     }
     return team;
-}
-
-std::string Player::get_name() const {
-    return name;
-}
-
-int Player::get_money() const {
-    return money;
-}
-
-int Player::get_trainers() const {
-    return trainers;
-}
-
-std::vector<Pokemon> Player::get_team() const {
-    return team;
-}
-
-std::map<Item, int> Player::get_inventory() const {
-    return inventory;
-}
-
-void Player::sort_team() {
-    assert(team.size() == 3);
-
-    std::cout << "Sorting team" << std::endl;
-    for (int i = 0; i < 3; i++) {
-        std::cout << i+1 << " - " << team[i].get_name() << "(Level " << team[i].get_level() << ")" << std::endl;
-    }
-    std::cout << std::endl;
-
-    std::string query1 = "Choose first pokemon to swap (1-3) (0 to exit): ";
-    std::string query2 = "Choose second pokemon to swap (1-3) (0 to exit): ";
-    std::string error = "Oops. Enter a number between 1 and 3";
-    int p1 = Input::read_int(0, 3, query1, error);
-    if (p1 == 0) return;
-    int p2 = Input::read_int(0, 3, query2, error);
-    if (p2 == 0) return;
-    Pokemon aux = team[p1-1];
-    team[p1-1] = team[p2-1];
-    team[p2-1] = aux;
-
-    std::cout << std::endl;
-    for (int i = 0; i < 3; i++) {
-        std::cout << i+1 << " - " << team[i].get_name() << " (Level " << team[i].get_level() << ")" << std::endl;
-    }
-    std::cout << std::endl;
-}
-
-void Player::show_team_stats() const {
-    assert(team.size() == 3);
-
-    std::cout << std::endl << "TEAM STATS" << std::endl << std::endl;
-    for (int i = 0; i < 3; i++) {
-        team[i].print_stats();
-    }
-}
-
-void Player::show_inventory() const {
-    std::cout << "\nInventory:\n\n";
-    for (std::map<Item, int>::const_iterator it = inventory.begin(); it != inventory.end(); it++) {
-        std::cout << it->second << " x " << (it->first).get_name() << std::endl;
-    }
-}
-
-void Player::increment_trainers() {
-    trainers++;
-}
-
-void Player::set_name(const std::string& name) {
-    this->name = name;
-}
-
-void Player::set_team(const std::vector<Pokemon>& team) {
-    this->team = team;
 }
 
 void Player::shop() {

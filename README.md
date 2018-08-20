@@ -20,9 +20,10 @@ Player: Has info about a player's Pokemon team, items, and actions he can do wit
 
 Gamesave: Has all the info that needs to be saved and loaded back
 
+Enemy: Has all the info and functions required for a bot to play against you
 
 ### TODO
 
 + Make txt files for every Pokemon
-+ Progress with Player class
 + Make an Enemy class with basic AI
++ Make a Combat class which handles battles

@@ -1,5 +1,6 @@
 #include "Move.hh"
 
+//CONSTRUCTORS
 Move::Move() {}
 
 Move::Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, int maxpp, const Stats& change_stats_opponent, const Stats& change_stats_own) {
@@ -13,6 +14,8 @@ Move::Move(bool special, const std::string& name, const std::string& type, int p
     this->change_stats_own = change_stats_own;
 }
 
+
+//GETTERS
 std::string Move::get_name() const {
     return name;
 }
@@ -45,11 +48,8 @@ Stats Move::get_change_stats_own() const {
     return change_stats_own;
 }
 
-void Move::restore_pp(int restore) {
-    if (restore == -1) pp = maxpp;
-    else pp = std::min(pp + restore, maxpp);
-}
 
+//SHOWERS
 void Move::print_stats() const {
     std::cout << "  Name: " << name << std::endl;
     std::cout << "  Type: " << type.get_name() << std::endl;
@@ -79,7 +79,16 @@ void Move::print_stats() const {
     if (change_stats_own.speed < 0) std::cout << "  Own speed is reduced by " << -change_stats_own.speed << std::endl;
     if (change_stats_own.speed > 0) std::cout << "  Own speed is increased by " << change_stats_own.speed << std::endl;
 }
-    
+
+
+//ACTIONS
+void Move::restore_pp(int restore) {
+    if (restore == -1) pp = maxpp;
+    else pp = std::min(pp + restore, maxpp);
+}
+
+
+//SEARCHERS
 Move Move::search_move(const std::string& name, const std::map<int, std::vector<Move> >& moveset) {
     Move to_return;
     bool found = false;

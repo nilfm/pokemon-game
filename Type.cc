@@ -3,12 +3,14 @@
 std::unordered_map<std::string, int> Type::types;
 std::vector< std::vector<int> > Type::weaknesses;
 
+//CONSTRUCTORS
 Type::Type() {}
 
 Type::Type(std::string name) {
     this->name = name;
 }
 
+//GETTERS
 std::string Type::get_name() const {
     std::unordered_map<std::string, int>::iterator it = types.find(name);
     assert(it != types.end());
@@ -30,6 +32,8 @@ int Type::advantage(std::string t1, std::string t2) {
     return weaknesses[n1][n2];
 }
 
+
+//INITIALIZERS
 void Type::initialize() {
     types["NORMAL"] = 0;
     types["FIGHT"] = 1;

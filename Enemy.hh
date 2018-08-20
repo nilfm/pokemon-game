@@ -21,17 +21,23 @@ private:
 
     
 public:
+    //CONSTRUCTORS
     /* Pre: trainers > 0 */
     /* Post: Returns an enemy at the level required */
     Enemy(int trainers);
     
+    
+    //SHOWERS
+    /* Pre: True */
+    /* Post: Displays a formatted list with the stats for the team */
+    void show_team_stats() const;
+
+    
+    //AUXILIARY
     /* Pre: trainers > 0 */
     /* Post: Returns a vector of 4 positions indicating how many Pokemon of each tier this enemy will have */
     std::vector<int> calculate_tiers(int trainer);
     
-    /* Pre: True */
-    /* Post: Displays a formatted list with the stats for the team */
-    void show_team_stats() const;
 };
 
 #endif

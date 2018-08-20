@@ -18,6 +18,7 @@ private:
     std::map<int, std::vector<Move> > moveset;
     
 public:
+    //CONSTRUCTORS
     /* Pre: True */
     /* Post: Default constructor */
     Pokebase();
@@ -26,6 +27,8 @@ public:
     /* Post: Returns a Pokebase from the address given */
     Pokebase(const std::string& address);
      
+     
+    //GETTERS
     /* Pre: True */
     /* Post: Returns the name of the Pokemon */
     std::string get_name() const;
@@ -58,6 +61,8 @@ public:
     /* Post: Returns the whole moveset for this pokemon */
     std::map<int, std::vector<Move> > get_moveset() const;
     
+    
+    //OPERATORS
     bool operator<(const Pokebase& p2) const;
 };
 
