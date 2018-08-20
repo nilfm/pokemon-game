@@ -51,7 +51,7 @@ void Player::use_item(Pokemon& p, const Item& it) {
     }
 }
 
-std::vector<Pokemon> Player::choose_starters() {
+std::vector<Pokemon> Player::choose_starters() const {
     std::set<std::string> starters;
     std::ifstream in("Pokedata/Starters.txt");
     assert(in.is_open());
@@ -77,10 +77,22 @@ std::vector<Pokemon> Player::choose_starters() {
     return team;
 }
 
-std::string Player::get_name() {
+std::string Player::get_name() const {
     return name;
 }
 
-std::vector<Pokemon> Player::get_team() {
+int Player::get_money() const {
+    return money;
+}
+
+int Player::get_trainers() const {
+    return trainers;
+}
+
+std::vector<Pokemon> Player::get_team() const {
     return team;
+}
+
+std::map<Item, int> Player::get_inventory() const {
+    return inventory;
 }

@@ -61,6 +61,10 @@ public:
     /* Pre: True */
     /* Post: Prints a formatted list with the stats for this move */
     void print_stats() const;
+    
+    /* Pre: name is the name of a move that exists within the map */
+    /* Post: Returns the move given my name */
+    static Move search_move(const std::string& name, const std::map<int, std::vector<Move> >& moveset);
 };
 
 #endif

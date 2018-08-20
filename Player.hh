@@ -36,15 +36,27 @@ public:
 
     /* Pre: True */
     /* Post: Asks user for input and returns a starting team of Pokemon */
-    std::vector<Pokemon> choose_starters();
+    std::vector<Pokemon> choose_starters() const;
     
     /* Pre: True */
     /* Post: Returns the player's name */
-    std::string get_name();
+    std::string get_name() const;
+    
+    /* Pre: True */
+    /* Post: Returns the player's money */
+    int get_money() const;
+    
+    /* Pre: True */
+    /* Post: Returns the player's amount of trainers beaten */
+    int get_trainers() const;
     
     /* Pre: True */
     /* Post: Returns the player's team */
-    std::vector<Pokemon> get_team();
+    std::vector<Pokemon> get_team() const;
+    
+    /* Pre: True */
+    /* Post: Returns the player's inventory */
+    std::map<Item, int> get_inventory() const;
     
     //switch_pokemon() BELONGS TO COMBAT CLASS MAYBE?
     //use_move() ALSO BELONGS TO COMBAT CLASS?

@@ -92,11 +92,8 @@ Pokemon::Pokemon(const Pokebase& p, int level, int xp, const Stats& current, con
     //Give it the given moves (fatal d'eficiencia lol)
     this->moveset = p.get_moveset();
     for (int i = 0; i < (int)moves.size(); i++) {
-        for (std::map<int, std::vector<Move> >::iterator it = moveset.begin(); it != moveset.end(); it++) {
-            for (int j = 0; j < (int)(it->second).size(); i++) {
-                if ((it->second)[j].get_name() == moves[i]) (this->moves).push_back((it->second)[j]);
-            }
-        }
+        Move to_push = Move::search_move(moves[i], moveset);
+        (this->moves).push_back(to_push);
     }
 }
 

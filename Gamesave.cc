@@ -10,9 +10,9 @@ Gamesave::Gamesave(int slot) {
 void Gamesave::load() {
     std::string address = get_address();
     std::ifstream in(address);
+    
     assert(in.is_open());
     assert(not is_empty());
-    
     in >> name >> money >> trainers;
     
     std::string input;
@@ -60,7 +60,7 @@ void Gamesave::save() {
     std::ofstream out(address);
     assert(out.is_open());
     
-    out << name << money << trainers;
+    out << name << " " << money << " " << trainers << std::endl;
     for (int i = 0; i < (int)team.size(); i++) {
         out << "POKEMON " << team[i].get_name() << " " << team[i].get_level() << " " << team[i].get_xp() << std::endl;
         Stats stats = team[i].get_stats();

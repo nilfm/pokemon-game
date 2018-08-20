@@ -79,3 +79,17 @@ void Move::print_stats() const {
     if (change_stats_own.speed < 0) std::cout << "  Own speed is reduced by " << -change_stats_own.speed << std::endl;
     if (change_stats_own.speed > 0) std::cout << "  Own speed is increased by " << change_stats_own.speed << std::endl;
 }
+    
+Move Move::search_move(const std::string& name, const std::map<int, std::vector<Move> >& moveset) {
+    Move to_return;
+    bool found = false;
+    for (std::map<int, std::vector<Move> >::const_iterator it = moveset.begin(); it != moveset.end() and not found; it++) {
+        for (int j = 0; j < (int)(it->second).size() and not found; j++) {
+            if ((it->second)[j].get_name() == name) {
+                found = true;
+                to_return = (it->second)[j];
+            }
+        }
+    }
+    return to_return;
+}

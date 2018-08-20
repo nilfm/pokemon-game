@@ -60,5 +60,7 @@ int main() {
         std::cout << "Hi, " << player.get_name() << std::endl << std::endl;
     }
     
+    gamesave.update(player.get_name(), player.get_money(), player.get_trainers(), player.get_team(), player.get_inventory());
     
+    gamesave.save();
 }

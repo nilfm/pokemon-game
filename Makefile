@@ -2,7 +2,7 @@ CC = g++
 OPTIONS = -std=c++11 -Wall -Wextra -Wpedantic -O2
 
 all: main.o Type.o Move.o Pokemon.o Pokebase.o Pokedex.o Item.o Player.o Input.o Random.o Gamesave.o
-	$(CC) $(OPTIONS) -o Pokegame.x main.o Type.o Move.o Pokemon.o Pokebase.o Pokedex.o Item.o Player.o Gamesave.o Input.o Random.o
+	$(CC) $(OPTIONS) -o Pokegame main.o Type.o Move.o Pokemon.o Pokebase.o Pokedex.o Item.o Player.o Gamesave.o Input.o Random.o
 
 Type.o: Type.cc Type.hh Includes.hh Random.cc Random.hh
 	$(CC) $(OPTIONS) -c Type.cc
@@ -34,7 +34,7 @@ Input.o: Input.cc Input.hh
 Random.o: Random.cc Random.hh 
 	$(CC) $(OPTIONS) -c Random.cc
 
-main.o: Player.cc Player.hh Pokemon.cc Pokemon.hh Pokebase.cc Pokebase.hh Pokedex.cc Pokedex.hh Item.cc Item.hh Move.cc Move.hh Includes.hh Random.cc Random.hh Type.cc Type.hh Input.cc Input.hh Random.hh
+main.o: main.cc Player.cc Player.hh Pokemon.cc Pokemon.hh Pokebase.cc Pokebase.hh Pokedex.cc Pokedex.hh Item.cc Item.hh Move.cc Move.hh Includes.hh Random.cc Random.hh Type.cc Type.hh Input.cc Input.hh Random.hh
 	$(CC) $(OPTIONS) -c main.cc
 
 clean:
