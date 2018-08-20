@@ -44,15 +44,15 @@ int main() {
         std::cout << "What's your name?" << std::endl;
         std::string name;
         std::cin >> name;
-        player.set_name(name);
         std::cout << std::endl;
+        player.set_name(name);
         player.set_team(player.choose_starters());
     }
     //If continuing game
     else {
         std::cout << "Loading game " << slot << std::endl;
         player.load();
-        std::cout << "Hi, " << player.get_name() << std::endl << std::endl;
+        std::cout << "Hi, " << player.get_name() << "!" << std::endl << std::endl;
     }
         
     bool cont = true;
