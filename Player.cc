@@ -6,6 +6,7 @@ Player::Player(const std::string& name) {
     this->name = name;
     money = 1000;
     trainers = 0;
+    //TODO: choose 3 Pokemon from a list of starters
 }
 
 Player::Player(const Gamesave& gamesave) {
