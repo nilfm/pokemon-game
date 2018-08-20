@@ -67,6 +67,37 @@ Pokemon::Pokemon(const Pokebase& p, int level, const std::vector<Move>& moves, i
     this->moveset = p.get_moveset();
 }
 
+Pokemon::Pokemon(const Pokebase& p, int level, int xp, const Stats& current, const std::vector<std::string> moves) {
+    //Copy type, name
+    type = p.get_type();
+    name = p.get_name();
+    this->level = level;
+    this->xp = xp;
+    
+    //Copy stats
+    per_level_min   = p.get_level_stats_min();
+    per_level_max   = p.get_level_stats_max();
+    stats.attack    = current.attack;
+    stats.defense   = current.defense;
+    stats.spattack  = current.spattack;
+    stats.spdefense = current.spdefense;
+    stats.speed     = current.speed;
+    stats.maxhp     = current.maxhp;
+    battle_stats    = stats;
+    
+    //Evolution stuff
+    level_evolution = p.get_level_evolution();
+    if (level_evolution != -1) next_evolution = p.get_next_evolution();
+
+    //Give it the given moves (fatal d'eficiencia lol)
+    this->moveset = p.get_moveset();
+    for (int i = 0; i < (int)moves.size(); i++) {
+        for (std::map<int, Move>::iterator it = moveset.begin(); it != moveset.end(); it++) {
+            if ((it->second).get_name() == moves[i]) (this->moves).push_back(it->second);
+        }
+    }
+}
+
 void Pokemon::evolve() {
     std::string old_name = name;
     std::cout << "Your " << name << " wants to evolve to a " << next_evolution << "!" << std::endl;

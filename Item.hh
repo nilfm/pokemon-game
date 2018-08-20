@@ -11,6 +11,7 @@ private:
     int restored_pp;
     int price;
     Stats improvement;
+    static std::unordered_map<std::string, Item> items;
     
 public:
     /* Pre: True */
@@ -48,9 +49,15 @@ public:
     /* Post: Returns the stat improvement caused by this item */
     Stats get_improvement() const;
     
+    /* Pre: name is a valid name for an item */
+    /* Post: Returns the item with the given name */
+    static Item get_item(const std::string& name);
+    
     /* Pre: address contains the address for a file with all the item info */
     /* Post: Returns a map with all items with their names as keys */
-    static std::map<std::string, Item> initialize_items(const std::string address);
+    static void initialize_items(const std::string address);
+    
+    bool operator<(const Item& i) const;
 };
 
 #endif

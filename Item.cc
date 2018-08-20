@@ -1,5 +1,7 @@
 #include "Item.hh"
 
+std::unordered_map<std::string, Item> Item::items;
+
 Item::Item() {}
 
 Item::Item(const std::string name, int price, int type, int restored_hp, int restored_pp, const Stats& improvement) {
@@ -35,8 +37,13 @@ std::string Item::get_name() const {
     return name;
 }
 
-std::map<std::string, Item> Item::initialize_items(const std::string address) {
-    std::map<std::string, Item> items;
+Item Item::get_item(const std::string& name) {
+    std::unordered_map<std::string, Item>::const_iterator it = items.find(name);
+    assert(it != items.end());
+    return it->second;
+}
+
+void Item::initialize_items(const std::string address) {
     std::ifstream in(address);
     assert(in.is_open());
     std::string name;
@@ -45,5 +52,9 @@ std::map<std::string, Item> Item::initialize_items(const std::string address) {
     while (in >> name >> type >> price >> restored_hp >> restored_pp >> improv.attack >> improv.defense >> improv.spattack >> improv.spdefense >> improv.speed >> improv.maxhp) {
         items[name] = Item(name, price, type, restored_hp, restored_pp, improv);
     }
-    return items;
 }
+
+bool Item::operator<(const Item& i) const {
+    return name < i.name;
+}
+

@@ -1,5 +1,21 @@
 #include "Player.hh"
 
+Player::Player() {}
+
+Player::Player(const std::string& name) {
+    this->name = name;
+    money = 1000;
+    trainers = 0;
+}
+
+Player::Player(const Gamesave& gamesave) {
+    name = gamesave.get_name();
+    money = gamesave.get_money();
+    trainers = gamesave.get_trainers();
+    team = gamesave.get_team();
+    inventory = gamesave.get_inventory();
+}
+
 void Player::use_item(Pokemon& p, const Item& it) {
     int type = it.get_type();
     if (type == 0) { //Restore PP for one move
