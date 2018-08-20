@@ -111,9 +111,7 @@ void Player::sort_team() {
     if (p1 == 0) return;
     int p2 = Input::read_int(0, 3, query2, error);
     if (p2 == 0) return;
-    Pokemon aux = team[p1-1];
-    team[p1-1] = team[p2-1];
-    team[p2-1] = aux;
+    std::swap(team[p1-1], team[p2-1]);
 
     std::cout << std::endl;
     for (int i = 0; i < 3; i++) {
