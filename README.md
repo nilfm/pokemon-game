@@ -16,9 +16,14 @@ Type: Has all the info related to types (fire, water, etc)
 
 Input: Has all the necessary input checking mechanisms
 
+Player: Has info about a player's Pokemon team, items, and actions he can do with them
+
+Gamesave: Has all the info that needs to be saved and loaded back
+
 
 ### TODO
 
 + Make txt files for every Pokemon
 + Progress with Player class
 + Start thinking about a Combat class
++ Maybe make an Enemy class?
