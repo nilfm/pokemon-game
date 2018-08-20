@@ -33,6 +33,19 @@ public:
     /* Pre: p is a valid Pokemon, i is a valid Item */
     /* Post: The item has been used on the Pokemon */
     void use_item(Pokemon& p, const Item& i);
+
+    /* Pre: True */
+    /* Post: Asks user for input and returns a starting team of Pokemon */
+    std::vector<Pokemon> choose_starters();
+    
+    /* Pre: True */
+    /* Post: Returns the player's name */
+    std::string get_name();
+    
+    /* Pre: True */
+    /* Post: Returns the player's team */
+    std::vector<Pokemon> get_team();
+    
     //switch_pokemon() BELONGS TO COMBAT CLASS MAYBE?
     //use_move() ALSO BELONGS TO COMBAT CLASS?
     //maybe by building up the main it'll be clearer which functions go here

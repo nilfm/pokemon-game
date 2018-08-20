@@ -21,7 +21,7 @@ private:
     Stats per_level_min;
     Stats per_level_max;
     Stats battle_stats;
-    std::map<int, Move> moveset;
+    std::map<int, std::vector<Move> > moveset;
     std::vector<Move> moves;
     
 public:

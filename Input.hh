@@ -3,14 +3,14 @@
 
 #include <limits>
 #include <iostream>
-#include <unordered_set>
+#include <set>
 #include <string>
 #include <cassert>
 
 namespace Input {
     /* Pre: choices (non-empty) contains all possible correct choices, query and error are the displayed messages */
     /* Post: returns a string entered by the user which is in the set */
-    std::string read_string(const std::unordered_set<std::string>& choices, const std::string& query, const std::string& err);
+    std::string read_string(const std::set<std::string>& choices, const std::string& query, const std::string& err);
     
     /* Pre: minimum <= maximum, query and error are the displayed messages */
     /* Post: returns an int (n) entered by the user, minimum <= n <= maximum  */

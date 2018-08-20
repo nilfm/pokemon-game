@@ -13,7 +13,7 @@ Move.o: Move.cc Type.cc Move.hh Type.hh Includes.hh Random.cc Random.hh
 Pokemon.o: Pokemon.cc Pokemon.hh Move.cc Move.hh Type.cc Type.hh Pokebase.cc Pokebase.hh Includes.hh Random.cc Random.hh
 	$(CC) $(OPTIONS) -c Pokemon.cc
 
-Pokebase.o: Pokebase.cc Pokebase.hh Move.cc Move.hh Type.cc Type.hh Includes.hh Random.cc Random.hh
+Pokebase.o: Pokebase.cc Pokebase.hh Move.cc Move.hh Type.cc Type.hh Includes.hh Random.cc Random.hh Player.cc Player.hh
 	$(CC) $(OPTIONS) -c Pokebase.cc
 
 Pokedex.o: Pokedex.cc Pokedex.hh Pokebase.cc Pokebase.hh Includes.hh Random.cc Random.hh

@@ -28,9 +28,9 @@ Pokemon::Pokemon(const Pokebase& p, int level) {
     moveset = p.get_moveset();
     std::vector<Move> possible_moves;
     for (int i = 1; i <= level; i++) {
-        std::map<int, Move>::iterator it = moveset.find(i);
+        std::map<int, std::vector<Move> >::iterator it = moveset.find(i);
         if (it != moveset.end()) {
-            possible_moves.push_back(it->second);
+            for (int j = 0; j < (int)(it->second).size(); j++) possible_moves.push_back((it->second)[j]);
         }
     }
     for (int i = 0; i < 4 and (int)possible_moves.size() > 0; i++) {
@@ -92,8 +92,10 @@ Pokemon::Pokemon(const Pokebase& p, int level, int xp, const Stats& current, con
     //Give it the given moves (fatal d'eficiencia lol)
     this->moveset = p.get_moveset();
     for (int i = 0; i < (int)moves.size(); i++) {
-        for (std::map<int, Move>::iterator it = moveset.begin(); it != moveset.end(); it++) {
-            if ((it->second).get_name() == moves[i]) (this->moves).push_back(it->second);
+        for (std::map<int, std::vector<Move> >::iterator it = moveset.begin(); it != moveset.end(); it++) {
+            for (int j = 0; j < (int)(it->second).size(); i++) {
+                if ((it->second)[j].get_name() == moves[i]) (this->moves).push_back((it->second)[j]);
+            }
         }
     }
 }
@@ -143,9 +145,9 @@ void Pokemon::level_up() {
         evolve();
     }
     //If necessary, (ask to) learn a new move
-    std::map<int, Move>::iterator it = moveset.find(level);
+    std::map<int, std::vector<Move> >::iterator it = moveset.find(level);
     if (it != moveset.end()) { 
-        learn_move(it->second);
+        for (int j = 0; j < (int)(it->second).size(); j++) learn_move((it->second)[j]);
     }
 }
 

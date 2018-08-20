@@ -15,7 +15,7 @@ private:
     Stats level_stats_min;
     Stats level_stats_max;
     
-    std::map<int, Move> moveset;
+    std::map<int, std::vector<Move> > moveset;
     
 public:
     /* Pre: True */
@@ -56,7 +56,9 @@ public:
     
     /* Pre: True */
     /* Post: Returns the whole moveset for this pokemon */
-    std::map<int, Move> get_moveset() const;
+    std::map<int, std::vector<Move> > get_moveset() const;
+    
+    bool operator<(const Pokebase& p2) const;
 };
 
 #endif

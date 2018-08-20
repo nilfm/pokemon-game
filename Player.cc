@@ -6,7 +6,7 @@ Player::Player(const std::string& name) {
     this->name = name;
     money = 1000;
     trainers = 0;
-    //TODO: choose 3 Pokemon from a list of starters
+    team = choose_starters();
 }
 
 Player::Player(const Gamesave& gamesave) {
@@ -49,4 +49,38 @@ void Player::use_item(Pokemon& p, const Item& it) {
         p.add_battle_stats(it.get_improvement());
         std::cout << p.get_name() << "'s stats have improved!" << std::endl << std::endl;
     }
+}
+
+std::vector<Pokemon> Player::choose_starters() {
+    std::set<std::string> starters;
+    std::ifstream in("Pokedata/Starters.txt");
+    assert(in.is_open());
+    std::string name;
+    while (in >> name) starters.insert(name);
+    in.close();
+    
+    std::vector<Pokemon> team(3);
+    std::cout << "Choose three Pokemon for your starting team out of the following:" << std::endl;
+    for (auto it = starters.begin(); it != starters.end(); it++) {
+        std::cout << *it << std::endl;
+    }
+            
+    std::cout << std::endl;
+    for (int i = 0; i < 3; i++) {
+        std::string query = std::to_string(3-i) + " choices left: ";
+        std::string error = "Oops. That wasn't a correct name.";
+        std::string choice = Input::read_string(starters, query, error);
+        Pokebase chosen = Pokedex::get_pokebase(choice);
+        team[i] = Pokemon(chosen, 1);
+        starters.erase(choice);
+    }
+    return team;
+}
+
+std::string Player::get_name() {
+    return name;
+}
+
+std::vector<Pokemon> Player::get_team() {
+    return team;
 }

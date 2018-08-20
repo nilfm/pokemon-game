@@ -1,6 +1,6 @@
 #include "Input.hh"
 
-std::string Input::read_string(const std::unordered_set<std::string>& choices, const std::string& query, const std::string& err) {
+std::string Input::read_string(const std::set<std::string>& choices, const std::string& query, const std::string& err) {
     assert(choices.size() > 0);
     std::string s;
     while ((std::cout << query and !(std::cin >> s)) or choices.find(s) == choices.end() or std::cin.peek() != '\n'){    
