@@ -6,8 +6,10 @@ Pokedata/Charmeleon.txt
 Pokedata/Charizard.txt
 Pokedata/Squirtle.txt
 Pokedata/Wartortle.txt
+Pokedata/Blastoise.txt
 Pokedata/Caterpie.txt
 Pokedata/Metapod.txt
 Pokedata/Butterfree.txt
 Pokedata/Weedle.txt
+Pokedata/Kakuna.txt
 Pokedata/Beedrill.txt

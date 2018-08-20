@@ -6,11 +6,11 @@ MaxEther 0 200
 0 -1
 0 0 0 0 0 0
 
-Elixir 1 300
+Elixir 1 250
 0 10
 0 0 0 0 0 0
 
-MaxElixir 1 500
+MaxElixir 1 300
 0 -1
 0 0 0 0 0 0
 
@@ -49,7 +49,3 @@ XSpecialDefense 3 200
 XSpeed 3 200
 0 0
 0 0 0 0 3 0
-
-XMaxHP 3 200
-0 0
-0 0 0 0 0 50

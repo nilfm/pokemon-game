@@ -2,7 +2,6 @@
 #define PLAYER_HH
 
 #include "Includes.hh"
-#include "Gamesave.hh"
 #include "Pokemon.hh"
 #include "Pokedex.hh"
 #include "Pokebase.hh"
@@ -11,7 +10,10 @@
 
 class Player {
 private:
-    const static int MAX_POKEMON = 6;
+    const static std::string gamesave_address;
+    const static std::string address_extension;
+    const static int MAX_POKEMON = 3;
+    int slot;
     std::string name;
     int money, trainers;
     std::vector<Pokemon> team;
@@ -20,15 +22,31 @@ private:
 public:
     /* Pre: True */
     /* Post: Default constructor */
-    Player();
+    Player(int slot);
+
+    /* Pre: This player hasn't loaded yet, the slot isn't empty */
+    /* Post: Reads the file at the corresponding slot and loads the game */
+    void load();
     
     /* Pre: True */
-    /* Post: New game constructor */
-    Player(const std::string& name);
-
+    /* Post: Removes all the contents from the file associated to the player */
+    void save_empty() const;
+    
     /* Pre: True */
-    /* Post: If gamesave is empty, makes new player. Else, loads up the player on the gamesave */
-    Player(const Gamesave& gamesave);
+    /* Post: Saves the given data to the file associated to the player */
+    void save() const;
+    
+    /* Pre: The file is not empty, the player is loaded */
+    /* Post: Prints a formatted output to the console of name and trainers */
+    void presentation() const;
+    
+    /* Pre: True */
+    /* Post: Returns true if the player's file address refers to an empty file */
+    bool is_empty() const;
+    
+    /* Pre: True */
+    /* Post: Returns the address for the file for the player */
+    std::string get_address() const;
 
     /* Pre: p is a valid Pokemon, i is a valid Item */
     /* Post: The item has been used on the Pokemon */
@@ -41,6 +59,14 @@ public:
     /* Pre: True */
     /* Post: Returns the player's name */
     std::string get_name() const;
+    
+    /* Pre: True */
+    /* Post: Sets the player's name */
+    void set_name(const std::string& name);
+    
+    /* Pre: True */
+    /* Post: Sets the player's team */
+    void set_team(const std::vector<Pokemon>& team);
     
     /* Pre: True */
     /* Post: Returns the player's money */
@@ -62,9 +88,21 @@ public:
     /* Post: Asks player to swap Pokemon around in their team */
     void sort_team();
     
-    //switch_pokemon() BELONGS TO COMBAT CLASS MAYBE?
-    //use_move() ALSO BELONGS TO COMBAT CLASS?
-    //maybe by building up the main it'll be clearer which functions go here
+    /* Pre: True */
+    /* Post: Displays a formatted list with the stats for the team */
+    void show_team_stats() const;
+    
+    /* Pre: True */
+    /* Post: Displays a formatted list with the items you have */
+    void show_inventory() const;
+    
+    /* Pre: True */
+    /* Post: Adds one to the trainers counter */
+    void increment_trainers();
+
+    /* Pre: True */
+    /* Post: The player has shopped for items */
+    void shop();
 };
 
 #endif
