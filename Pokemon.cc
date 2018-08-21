@@ -161,6 +161,12 @@ void Pokemon::restore_pp(int pos, int restore) {
     moves[pos].restore_pp(restore);
 }
 
+void Pokemon::restore_all_pp() {
+    for (int i = 0; i < (int)moves.size(); i++) {
+        restore_pp(i, -1);
+    }
+}
+
 
 //ACTIONS
 void Pokemon::evolve() {

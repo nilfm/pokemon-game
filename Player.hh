@@ -23,6 +23,10 @@ public:
     //CONSTRUCTORS
     /* Pre: True */
     /* Post: Default constructor */
+    Player();
+    
+    /* Pre: True */
+    /* Post: Slot constructor */
     Player(int slot);
 
 
@@ -86,6 +90,14 @@ public:
     /* Pre: True */
     /* Post: Adds added to the money */
     void increment_money(int added);
+    
+    /* Pre: True */
+    /* Post: Every pokemon has max HP and PP on every move */
+    void heal_pokemon();
+    
+    /* Pre: 0 <= i < MAX_POKEMON */
+    /* Post: The Pokemon at position i (0-indexed) has been replaced by p */
+    void set_pokemon(const Pokemon& p, int i);
     
     
     //SHOWERS

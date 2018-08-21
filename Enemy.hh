@@ -27,6 +27,12 @@ public:
     Enemy(int trainers);
     
     
+    //GETTERS
+    /* Pre: True */
+    /* Post: Returns the enemy's team */
+    std::vector<Pokemon> get_team() const;
+    
+    
     //SHOWERS
     /* Pre: True */
     /* Post: Displays a formatted list with the stats for the team */

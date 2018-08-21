@@ -4,6 +4,8 @@ const std::string Player::gamesave_address = "Saves/GameSave";
 const std::string Player::address_extension = ".txt";
 
 //CONSTRUCTORS
+Player::Player() {}
+
 Player::Player(int slot) {
     this->slot = slot;
     this->money = 1000;
@@ -130,6 +132,18 @@ void Player::set_name(const std::string& name) {
 
 void Player::set_team(const std::vector<Pokemon>& team) {
     this->team = team;
+}
+
+void Player::heal_pokemon() {
+    for (int i = 0; i < (int)team.size(); i++) {
+        team[i].reset_battle_stats();
+        team[i].restore_health(-1);
+        team[i].restore_all_pp();
+    }
+}
+
+void Player::set_pokemon(const Pokemon& p, int i) {
+    team[i] = p;
 }
 
 

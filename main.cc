@@ -7,6 +7,7 @@
 #include "Player.hh"
 #include "Random.hh"
 #include "Enemy.hh"
+#include "Combat.hh"
 
 int main() {
     //Things to initialize
@@ -67,20 +68,27 @@ int main() {
         std::cout << std::endl;
         
         if (choice == 1) {
-            std::cerr << "Sorry, the feature's not ready yet" << std::endl;
+            std::cout << "\nGet ready to fight!\n";
             player.increment_trainers();
             Enemy enemy(player.get_trainers());
-            //Combat combat(player, enemy);
-            //...
-            //if (player_wins) 
-            //  -"yes you won!"
-            //  -Pick a pokemon from enemy team (0 = dont want to pick any)
-            //  -player.increment_money(500);
-            //else
-            //  -"oh no you lost"
-            //  -cont = false;
-            //  -register to high scores
-            //  -player.save_empty()
+            Combat combat(player, enemy);
+            int winner = 0;
+            while (not winner) {
+                winner = combat.play_turn();
+            }
+            if (winner == 1) {
+                std::cout << "You won!" << std::endl;
+                std::cout << "You earned 500 coins" << std::endl << std::endl;
+                player.increment_money(500);
+                combat.pick_enemy_pokemon();
+                player.heal_pokemon();
+            }
+            else {
+                std::cout << "Oh no! You lost!" << std::endl;
+                cont = false;
+                player.save_empty();
+                //register high score
+            }
         }
         else if (choice == 2) {
             player.shop();

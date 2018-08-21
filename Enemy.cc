@@ -23,7 +23,6 @@ Enemy::Enemy(int trainers) {
             while (in >> s) available.push_back(s);
             for (int j = 0; j < tiers[i]; j++) {
                 int rnd = Random::randint(0, (int)available.size()-1);
-                std::cerr << "Name: " << available[rnd] << std::endl;
                 Pokebase chosen = Pokedex::get_pokebase(available[rnd]);
                 //1 <= level <= 100, 0.9*trainer <= level <= 1.1*trainer
                 int level = std::min(std::max(1, Random::randint((int)(0.9*trainer), (int)1.1*trainer)), 100);
@@ -33,6 +32,12 @@ Enemy::Enemy(int trainers) {
             in.close();
         }
     }
+}
+
+
+//CONSTRUCTORS
+std::vector<Pokemon> Enemy::get_team() const {
+    return team;
 }
 
 
