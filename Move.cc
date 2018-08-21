@@ -3,7 +3,7 @@
 //CONSTRUCTORS
 Move::Move() {}
 
-Move::Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, int maxpp, const Stats& change_stats_opponent, const Stats& change_stats_own) {
+Move::Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, int maxpp, const Stats& change_stats_opponent, const Stats& change_stats_own, const Status& status) {
     this->special = special;
     this->name = name;
     this->type = Type(type);
@@ -12,6 +12,7 @@ Move::Move(bool special, const std::string& name, const std::string& type, int p
     this->pp = this->maxpp = maxpp;
     this->change_stats_opponent = change_stats_opponent;
     this->change_stats_own = change_stats_own;
+    this->status = status;
 }
 
 
@@ -48,6 +49,10 @@ Stats Move::get_change_stats_own() const {
     return change_stats_own;
 }
 
+Status Move::get_status() const {
+    return status;
+}
+
 
 //SHOWERS
 void Move::print_stats() const {
@@ -78,6 +83,10 @@ void Move::print_stats() const {
     if (change_stats_own.spdefense > 0) std::cout << "  Own special defense is increased by " << change_stats_own.spdefense << std::endl;
     if (change_stats_own.speed < 0) std::cout << "  Own speed is reduced by " << -change_stats_own.speed << std::endl;
     if (change_stats_own.speed > 0) std::cout << "  Own speed is increased by " << change_stats_own.speed << std::endl;
+    
+    if (status.poison != 0) std::cout << "  Has a " << status.poison << "% chance of poisoning the enemy" << std::endl;
+    if (status.burn != 0) std::cout << "  Has a " << status.burn << "% chance of burning the enemy" << std::endl;
+    if (status.stun != 0) std::cout << "  Has a " << status.stun << "% chance of stunning the enemy" << std::endl;
 }
 
 

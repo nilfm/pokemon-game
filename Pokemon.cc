@@ -20,6 +20,7 @@ Pokemon::Pokemon(const Pokebase& p, int level) {
     stats.speed     = p.get_base_stats().speed     + Random::randint((level-1)*per_level_min.speed, (level-1)*per_level_max.speed);
     stats.maxhp     = p.get_base_stats().maxhp     + Random::randint((level-1)*per_level_min.maxhp, (level-1)*per_level_max.maxhp);
     battle_stats    = stats;
+    status.poison = status.burn = status.stun = 0;
     
     //Evolution stuff
     level_evolution = p.get_level_evolution();
@@ -85,7 +86,8 @@ Pokemon::Pokemon(const Pokebase& p, int level, int xp, const Stats& current, con
     stats.speed     = current.speed;
     stats.maxhp     = current.maxhp;
     battle_stats    = stats;
-    
+    status.poison = status.burn = status.stun = 0;
+
     //Evolution stuff
     level_evolution = p.get_level_evolution();
     if (level_evolution != -1) next_evolution = p.get_next_evolution();
@@ -128,12 +130,20 @@ Stats Pokemon::get_stats() const {
     return stats;
 }
 
+Stats Pokemon::get_battle_stats() const {
+    return battle_stats;
+}
+
 std::string Pokemon::get_name() const {
     return name;
 }
 
 Type Pokemon::get_type() const {
     return type;
+}
+
+Status Pokemon::get_status() const {
+    return status;
 }
 
 
@@ -165,6 +175,12 @@ void Pokemon::restore_all_pp() {
     for (int i = 0; i < (int)moves.size(); i++) {
         restore_pp(i, -1);
     }
+}
+
+void Pokemon::restore_status(const Status& change) {
+    if (change.poison == 1) status.poison = 0;
+    if (change.burn == 1) status.burn = 0;
+    if (change.stun == 1) status.stun = 0;
 }
 
 

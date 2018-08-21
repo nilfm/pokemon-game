@@ -139,6 +139,9 @@ void Player::heal_pokemon() {
         team[i].reset_battle_stats();
         team[i].restore_health(-1);
         team[i].restore_all_pp();
+        Status change;
+        change.poison = change.burn = change.stun = 1;
+        team[i].restore_status(change);
     }
 }
 
@@ -225,9 +228,20 @@ void Player::use_item(Pokemon& p, const Item& it) {
         p.restore_health(it.get_restored_hp());
         std::cout << p.get_name() << " has restored its HP." << std::endl << std::endl;
     }
-    else { //Increase stats
+    else if (type == 3) { //Increase stats
         p.add_battle_stats(it.get_improvement());
         std::cout << p.get_name() << "'s stats have improved!" << std::endl << std::endl;
+    }
+    else if (type == 4) { //Heal one type of status
+        p.restore_status(it.get_status_heal());
+        if (it.get_status_heal().poison == 1) std::cout << p.get_name() << " is no longer poisoned!" << std::endl << std::endl;
+        if (it.get_status_heal().burn == 1) std::cout << p.get_name() << " is no longer burnt!" << std::endl << std::endl;
+        if (it.get_status_heal().stun == 1) std::cout << p.get_name() << " is no longer stunned!" << std::endl << std::endl;
+    }
+    else if (type == 5) { //Restore all
+        p.restore_status(it.get_status_heal());
+        p.restore_health(it.get_restored_hp());
+        std::cout << p.get_name() << " is fully healed!" << std::endl;
     }
 }
 
@@ -258,17 +272,18 @@ std::vector<Pokemon> Player::choose_starters() const {
 }
 
 void Player::shop() {
-    std::vector<std::string> list_items(14);
-    list_items = {"Ether", "MaxEther", "Elixir", "MaxElixir", "Potion", "Superpotion", "Hyperpotion", "MaxPotion", "XAttack", "XDefense", "XSpecialAttack", "XSpecialDefense", "XSpeed"};
+    std::vector<std::string> list_items(18);
+    list_items = {"Ether", "MaxEther", "Elixir", "MaxElixir", "Potion", "Superpotion", "Hyperpotion", "MaxPotion", "XAttack", "XDefense", "XSpecialAttack", "XSpecialDefense", "XSpeed", "Antidote", "Antiburn", "Antistun", "RestoreAll"};
     bool cont = true;
     while (cont) {
         std::cout << "\nWelcome to the shop!" << std::endl;
         std::cout << "You have " << money << " coins" << std::endl;
-        std::string query = "\n  1. Ether              100\n  2. Max Ether          200\n  3. Elixir             250\n  4. Max Elixir         300\n  5. Potion              50\n  6. Superpotion        120\n  7. Hyperpotion        250\n  8. Max Potion         300\n  9. XAttack            200\n  10. XDefense          200\n  11. XSpecialAttack    200\n  12. XSpecialDefense   200\n  13. XSpeed            200\n\nEnter 0 to leave the shop\n\n";
-        std::string error = "Oops. Enter a number between 0 and 13";
+        std::string query1 = "\n  1. Ether              100\n  2. Max Ether          200\n  3. Elixir             250\n  4. Max Elixir         300\n  5. Potion              50\n  6. Superpotion        120\n  7. Hyperpotion        250\n  8. Max Potion         300\n  9. XAttack            200\n  10. XDefense          200\n  11. XSpecialAttack    200\n  12. XSpecialDefense   200\n ";
+        std::string query2 = "13. XSpeed            200\n  14. Antidote          100\n  15. Antiburn          100\n  16. Antistun          100\n  17. Restore All       500\n\nEnter 0 to leave the shop\n\n";
+        std::string error = "Oops. Enter a number between 0 and 17";
         bool corr = false;
         while (not corr) {
-            int choice = Input::read_int(0, 13, query, error);
+            int choice = Input::read_int(0, 17, query1+query2, error);
             if (choice == 0) {
                 std::cout << "Good bye!" << std::endl;
                 return;

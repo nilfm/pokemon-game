@@ -28,7 +28,9 @@ Pokebase::Pokebase(const std::string& address) {
         Stats s_opp, s_own;
         in >> s_opp.attack >> s_opp.defense >> s_opp.spattack >> s_opp.spdefense >> s_opp.speed >> s_opp.maxhp;
         in >> s_own.attack >> s_own.defense >> s_own.spattack >> s_own.spdefense >> s_own.speed >> s_own.maxhp;
-        Move m(special, move_name, move_type, move_power, move_accuracy, move_maxpp, s_opp, s_own);
+        Status status;
+        in >> status.poison >> status.burn >> status.stun;
+        Move m(special, move_name, move_type, move_power, move_accuracy, move_maxpp, s_opp, s_own, status);
         (moveset[move_level]).push_back(m);
     }
     in.close();

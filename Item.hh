@@ -11,6 +11,7 @@ private:
     int restored_pp;
     int price;
     Stats improvement;
+    Status status;
     static std::unordered_map<std::string, Item> items;
     
 public:
@@ -21,7 +22,7 @@ public:
     
     /* Pre: True */
     /* Post: Creates an Item object that has the given stats */
-    Item(const std::string name, int price, int type, int restored_hp, int restored_pp, const Stats& improvement);
+    Item(const std::string name, int price, int type, int restored_hp, int restored_pp, const Stats& improvement, const Status& status_heal);
     
     
     //GETTERS
@@ -29,7 +30,9 @@ public:
     /* Post: Returns 0 if the item is used on a move (restore PP's)
      *       Returns 1 if the item is used on all 4 moves (restore PP's)
      *       Returns 2 if the item is used on a Pokemon (restore HP)
-     *       Returns 3 if the item is used on a Pokemon (improve stats) */
+     *       Returns 3 if the item is used on a Pokemon (improve stats) 
+     *       Returns 4 if the item is used on a Pokemon (heal status)
+     *       Returns 5 if the item is used on a Pokemon (heal status and HP) */
     int get_type() const;
     
     /* Pre: True */
@@ -51,6 +54,10 @@ public:
     /* Pre: True */
     /* Post: Returns the stat improvement caused by this item */
     Stats get_improvement() const;
+    
+    /* Pre: True */
+    /* Post: Returns a 3-tuple with 1's or 0's in each spot for whether it heals that status or not */
+    Status get_status_heal() const;
     
     /* Pre: name is a valid name for an item */
     /* Post: Returns the item with the given name */

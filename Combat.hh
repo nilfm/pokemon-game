@@ -28,6 +28,11 @@ public:
     /* Pre: Player just won a combat */
     /* Post: Player has picked a pokemon from the enemy team to swap for one of his pokemon, or chosen to do nothing */
     void pick_enemy_pokemon();
+    
+    //AUXILIARY
+    /* Pre: True */
+    /* Post: Returns the damage done by this move on the defender. Critical indicates if the hit has been critical */
+    static int calculate_damage(const Pokemon& attacker, const Pokemon& defender, const Move& move, bool& critical);
 };
 
 #endif

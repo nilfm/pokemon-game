@@ -16,4 +16,8 @@ struct Stats {
     int attack, defense, spattack, spdefense, speed, maxhp;
 };
 
+struct Status {
+    int poison, burn, stun;
+};
+
 #endif

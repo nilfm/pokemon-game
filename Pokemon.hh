@@ -21,6 +21,7 @@ private:
     Stats per_level_min;
     Stats per_level_max;
     Stats battle_stats;
+    Status status;
     std::map<int, std::vector<Move> > moveset;
     std::vector<Move> moves;
     
@@ -73,6 +74,14 @@ public:
     /* Pre: True */
     /* Post: Returns the current stats for this pokemon */
     Stats get_stats() const;
+    
+    /* Pre: True */
+    /* Post: Returns the current battle stats for this pokemon */
+    Stats get_battle_stats() const;
+    
+    /* Pre: True */
+    /* Post: Returns the current status for this pokemon */
+    Status get_status() const;
 
     /* Pre: True */
     /* Post: Returns the type of this pokemon */
@@ -92,6 +101,10 @@ public:
     /* Post: The battle stats for this Pokemon are reset to their defaults */
     void reset_battle_stats();
     
+    /* Pre: change is a binary 3-tuple */
+    /* Post: For each 1 in change, the Pokemon heals that status */
+    void restore_status(const Status& change);
+    
     /* Pre: health contains a positive integer or -1 */
     /* Post: If health was -1, hp was restored to full. Otherwise, the pokemon restores health hp, without going over maxhp */
     void restore_health(int health);
@@ -103,6 +116,7 @@ public:
     /* Pre: True */
     /* Post: All the Pokemon's moves have max PP */
     void restore_all_pp();
+    
     
     //ACTIONS
     /* Pre: name_evolution is a valid pokemon name, 0 < level < 101 */

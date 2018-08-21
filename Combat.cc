@@ -46,3 +46,44 @@ void Combat::pick_enemy_pokemon() {
     }
     player.set_pokemon(team2[choice1-1], choice2-1);
 }
+
+
+//AUXILIARY
+int Combat::calculate_damage(const Pokemon& attacker, const Pokemon& defender, const Move& move, bool& critical) {
+    critical = false;
+    bool special = move.get_special();
+    int attack, defense;
+    if (special) {
+        attack = attacker.get_battle_stats().spattack;
+        defense = defender.get_battle_stats().spdefense;
+    }
+    else {
+        attack = attacker.get_battle_stats().attack;
+        defense = defender.get_battle_stats().defense;
+    }
+    double stab = 1;
+    if (attacker.get_type() == move.get_type()) stab = 1.5;
+    int power = move.get_power();
+    int accuracy = move.get_accuracy();
+    int level = attacker.get_level();
+    int rnd = Random::randint(85, 100);
+    int crit = Random::randint(0, 100); //More than or 95 -> Critical
+    int type_adv = Type::advantage(move.get_type(), defender.get_type());
+    int hitormiss = Random::randint(0, 100); //More than accuracy -> Miss
+    
+    double type = 1;
+    if (type_adv == -2 or hitormiss > accuracy) return 0;
+    if (type_adv == -1) type = 0.5;
+    else if (type_adv == 1) type = 2; 
+    
+    if (crit >= 95) {
+        crit = 2;
+        critical = true;
+    }
+    else crit = 1;
+    
+    double modifier = stab*rnd*crit*type/100;
+    double damage = (((2.0*level)/5.0 + 2)*power*(double)attack/(double)defense)/50 + 2;
+    return (int)(damage*modifier);
+    
+}
