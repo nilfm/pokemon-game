@@ -46,15 +46,14 @@ void Player::load() {
     in.close();
 }
 
-void Player::save_empty() const {
+void Player::clear_file() const {
+    std::cout << "Cleaning file..." << std::endl;
     std::string address = get_address();
-    std::ifstream in(address);
-    assert(in.is_open());
-    
-    in.close();
+    std::ofstream out(address, std::ios::out | std::ios::trunc);
+    out.close();
 }
 
-void Player::save() const {
+void Player::save() {
     std::string address = get_address();
     std::ofstream out(address);
     assert(out.is_open());
@@ -77,6 +76,7 @@ void Player::save() const {
     for (std::map<Item, int>::const_iterator it = inventory.begin(); it != inventory.end(); it++) {
         out << (it->first).get_name() << " " << it->second << std::endl;
     }
+    out.close();
 } 
 
 
@@ -99,6 +99,10 @@ int Player::get_trainers() const {
 
 std::vector<Pokemon> Player::get_team() const {
     return team;
+}
+
+Pokemon& Player::get_first_pokemon() {
+    return team[0];
 }
 
 std::map<Item, int> Player::get_inventory() const {
@@ -205,8 +209,8 @@ void Player::sort_team() {
     if (p1 == 0) return;
     int p2 = Input::read_int(0, 3, query2, error);
     if (p2 == 0) return;
-    swap_pokemon(p1-1, p2-1);
-
+    bool corr = swap_pokemon(p1-1, p2-1);
+    if (not corr) std::cout << "Can't have a fainted Pokemon as your leader" << std::endl;
     std::cout << std::endl;
     for (int i = 0; i < 3; i++) {
         std::cout << i+1 << " - " << team[i].get_name() << " (Level " << team[i].get_level() << ")" << std::endl;
@@ -295,7 +299,7 @@ void Player::shop() {
         while (not corr) {
             int choice = Input::read_int(0, 17, query1+query2, error);
             if (choice == 0) {
-                std::cout << "Good bye!" << std::endl;
+                std::cout << "Goodbye!" << std::endl;
                 return;
             }
             else {
@@ -317,8 +321,33 @@ void Player::shop() {
     }
 }
 
-void Player::swap_pokemon(int i, int j) {
+int Player::swap_fainted() const {
+    std::vector<Pokemon> options;
+    if (team[1].get_hp() != 0) options.push_back(team[1]);
+    if (team[2].get_hp() != 0) options.push_back(team[2]);
+    
+    if (options.size() == 1) {
+        if (team[1].get_hp() != 0) return 2;
+        else return 3;
+    }
+
+    std::cout << "Alive Pokemon: " << std::endl;
+    for (int i = 0; i < (int)options.size(); i++) {
+        std::cout << "  " << i+1 << ". " << options[i].get_name() << " (Level " << options[i].get_level() << ")   HP " << options[i].get_hp() << "/" << options[i].get_battle_stats().maxhp << std::endl;
+    }
+    std::string query = "Which Pokemon do you want to swap in? ";
+    std::string error = "Oops. Enter a number between 1 and 2";
+    int choice = Input::read_int(1, 2, query, error);
+    return choice+1;
+}
+
+bool Player::swap_pokemon(int i, int j) {
+    if (i == 0 and team[j].get_hp() == 0) {
+        std::cout << "Can't have a fainted Pokemon as your leader" << std::endl;
+        return false;
+    }
     Pokemon aux = team[i];
     team[i] = team[j];
     team[j] = aux;
+    return true;
 }

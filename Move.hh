@@ -64,6 +64,12 @@ public:
     /* Pre: True */
     /* Post: Returns true iff the move is a special move */
     bool is_special() const;
+
+
+    //SETTERS
+    /* Pre: pp > 0 */
+    /* Post: PP reduced by 1 */
+    void decrement_pp();
     
     
     //SHOWERS

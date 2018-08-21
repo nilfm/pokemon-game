@@ -35,9 +35,13 @@ Enemy::Enemy(int trainers) {
 }
 
 
-//CONSTRUCTORS
+//GETTERS
 std::vector<Pokemon> Enemy::get_team() const {
     return team;
+}
+
+Pokemon& Enemy::get_first_pokemon() {
+    return team[0];
 }
 
 
@@ -49,6 +53,28 @@ void Enemy::show_team_stats() const {
     for (int i = 0; i < 3; i++) {
         team[i].print_stats();
     }
+}
+
+
+//ACTIONS
+int Enemy::action_choice() const {
+    return 1; //TODO
+    //TODO: CANT RETURN 2 IF NO POKEMON ARE ALIVE TO SWAP
+}
+
+int Enemy::move_choice(const Pokemon& own, const Pokemon& other) const {
+    return Random::randint(1, own.get_moves().size()); //TODO
+}
+
+int Enemy::swap_choice() const {
+    if (team[1].get_hp() != 0) return 2;
+    else return 3;
+}
+
+void Enemy::swap_pokemon(int i, int j) {
+    Pokemon aux = team[i-1];
+    team[i-1] = team[j-1];
+    team[j-1] = aux;
 }
 
 

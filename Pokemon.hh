@@ -48,7 +48,7 @@ public:
 
     //GETTERS
     /* Pre: True */
-    /* Post: Returns this pokemon's moves */
+    /* Post: Returns a reference to this pokemon's moves */
     std::vector<Move> get_moves() const;
     
     /* Pre: True */
@@ -121,6 +121,30 @@ public:
     /* Post: All the Pokemon's moves have restored restore PP */
     void restore_all_moves_pp(int restore);
     
+    /* Pre: dmg >= 0 */
+    /* Post: The Pokemon has received dmg damage, and returns true iff it has fainted */
+    bool receive_damage(int dmg);
+    
+    /* Pre: xp > 0 */
+    /* Post: The Pokemon has gained the XP, may have leveled up and/or evolved */
+    void gain_xp(int xp);
+    
+    /* Pre: True */
+    /* Post: If burned or poisoned will take damage, and may recover from them */
+    void handle_status();
+    
+    /* Pre: True */
+    /* Post: Poisons the Pokemon */
+    void get_poisoned();
+    
+    /* Pre: True */
+    /* Post: Burns the Pokemon */
+    void get_burned();
+    
+    /* Pre: True */
+    /* Post: Stuns the Pokemon */
+    void get_stunned();
+    
     
     //ACTIONS
     /* Pre: name_evolution is a valid pokemon name, 0 < level < 101 */
@@ -141,6 +165,10 @@ public:
     /* Pre: True */
     /* Post: Prints a formatted list with the stats for this Pokemon */
     void print_stats() const;
+    
+    /* Pre: True */
+    /* Post: Prints a formatted list with the moves for this Pokemon */
+    void print_moves() const;
 
 };
 

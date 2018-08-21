@@ -24,6 +24,12 @@ Enemy: Has all the info and functions required for a bot to play against you
 
 ### TODO
 
-+ Make txt files for every Pokemon
-+ Make an Enemy class with basic AI
-+ Make a Combat class which handles battles
++ Make txt files for every Pokemon  
++ Make an Enemy class with basic AI  
++ Make a Combat class which handles battles  
++ Make it possible to get stunned/burned/poisoned
+
+### BUGS
+
++ Charmander/Charmeleon sometimes do like 2k damage with Ember (hasn't happened in a while)  
++ PP not going down (maybe references will work)  

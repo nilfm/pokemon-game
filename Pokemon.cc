@@ -191,6 +191,70 @@ void Pokemon::restore_status(const Status& change) {
     if (change.stun == 1) status.stun = 0;
 }
 
+bool Pokemon::receive_damage(int dmg) {
+    hp = std::max(0, hp-dmg);
+    return (hp == 0);
+}
+
+void Pokemon::gain_xp(int xp) {
+    this->xp += xp;
+    while (this->xp >= 5*level*(level+1)) level_up();
+}
+
+void Pokemon::handle_status() {
+    if (status.poison != 0) {
+        if (Random::randint(0, 100) > 100/status.poison) {
+            status.poison = 0;
+            std::cout << name << " has recovered from its poison" << std::endl;
+        }
+        else status.poison++;
+    }
+    if (status.burn != 0) {
+        if (Random::randint(0, 100) > 100/status.burn) {
+            status.burn = 0;
+            std::cout << name << " has recovered from its burn" << std::endl;
+        }
+        else status.burn++;
+    }
+    if (status.stun != 0) {
+        if (Random::randint(0, 100) > 100/status.stun) {
+            status.stun = 0;
+            std::cout << name << " has recovered from its stun" << std::endl;
+        }
+        else status.stun++;
+    }
+    
+    
+    if (status.poison != 0) {
+        int old_hp = hp;
+        hp = std::max(1, (int)(0.95*hp));
+        std::cout << name << " has taken " << old_hp - hp << " damage from poison" << std::endl;
+    }
+    else if (status.burn != 0) {
+        int old_hp = hp;
+        hp = std::max(1, (int)(0.95*hp));
+        std::cout << name << " has taken " << old_hp - hp << " damage from its burn" << std::endl;
+    }
+}
+
+void Pokemon::get_poisoned() {
+    status.poison = 1;
+    status.burn = 0;
+    status.stun = 0;
+}
+
+void Pokemon::get_burned() {
+    status.poison = 0;
+    status.burn = 1;
+    status.stun = 0;
+}
+
+void Pokemon::get_stunned() {
+    status.poison = 0;
+    status.burn = 0;
+    status.stun = 1;
+}
+
 
 //ACTIONS
 void Pokemon::evolve() {
@@ -232,6 +296,12 @@ void Pokemon::level_up() {
     stats.spdefense += improv.spdefense;
     stats.speed += improv.speed;
     stats.maxhp += improv.maxhp;
+    battle_stats.attack += improv.attack;
+    battle_stats.defense += improv.defense;
+    battle_stats.spattack += improv.spattack;
+    battle_stats.spdefense += improv.spdefense;
+    battle_stats.speed += improv.speed;
+    battle_stats.maxhp += improv.maxhp;
     hp += improv.maxhp;
     //If necessary, (ask to) evolve
     if (level >= level_evolution) {
@@ -295,6 +365,12 @@ void Pokemon::print_stats() const {
     std::cout << std::endl << std::endl;
 }
 
-
+void Pokemon::print_moves() const {
+    std::cout << std::endl << "Moves: " << std::endl;
+    for (int i = 0; i < (int)moves.size(); i++) {
+        std::cout << "  " << i+1 << ". " << moves[i].get_name() << "   PP " << moves[i].get_pp() << "/" << moves[i].get_maxpp() << std::endl;
+    }
+    std::cout << std::endl;
+}
 
 

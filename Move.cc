@@ -58,6 +58,12 @@ bool Move::is_special() const {
 }
 
 
+//SETTERS
+void Move::decrement_pp() {
+    pp--;
+}
+
+
 //SHOWERS
 void Move::print_stats() const {
     std::cout << "  Name: " << name << std::endl;

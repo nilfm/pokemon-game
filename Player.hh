@@ -37,11 +37,11 @@ public:
     
     /* Pre: True */
     /* Post: Removes all the contents from the file associated to the player */
-    void save_empty() const;
+    void clear_file() const;
 
     /* Pre: True */
     /* Post: Saves the given data to the file associated to the player */
-    void save() const;
+    void save();
 
 
     //GETTERS
@@ -64,6 +64,10 @@ public:
     /* Pre: True */
     /* Post: Returns the player's team */
     std::vector<Pokemon> get_team() const;
+    
+    /* Pre: True */
+    /* Post: Returns a reference to the player's first Pokemon */
+    Pokemon& get_first_pokemon();
     
     /* Pre: True */
     /* Post: Returns the player's inventory */
@@ -140,8 +144,14 @@ public:
     void shop();
 
     /* Pre: 0 <= i, j < MAX_POKEMON */
-    /* Post: The pokemon at positions i and j in the team have been swapped */
-    void swap_pokemon(int i, int j);
+    /* Post: The pokemon at positions i and j in the team have been swapped if possible
+     * If a fainted pokemon was to be swapped into first position, it returns false and doesn't */
+    bool swap_pokemon(int i, int j);
+    
+    /* Pre: The first Pokemon is fainted, there is at least another alive Pokemon in the team */
+    /* Post: Returns the position of the Pokemon that has to be swapped for the first */
+    int swap_fainted() const;
+
 
 };
 

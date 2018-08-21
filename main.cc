@@ -84,8 +84,8 @@ int main() {
             }
             else {
                 std::cout << "Oh no! You lost!" << std::endl;
+                player.clear_file();
                 cont = false;
-                player.save_empty();
                 //register high score
             }
         }
@@ -103,7 +103,4 @@ int main() {
         }
         else cont = false;
     }
-    
-    //Save and quit
-    player.save();
 }
