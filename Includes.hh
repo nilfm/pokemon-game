@@ -9,6 +9,7 @@
 #include <unordered_map>
 #include <map>
 #include <cassert>
+#include <iomanip>
 #include "Random.hh"
 #include "Input.hh"
 

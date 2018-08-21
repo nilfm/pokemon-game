@@ -117,6 +117,10 @@ public:
     /* Post: All the Pokemon's moves have max PP */
     void restore_all_pp();
     
+    /* Pre: True */
+    /* Post: All the Pokemon's moves have restored restore PP */
+    void restore_all_moves_pp(int restore);
+    
     
     //ACTIONS
     /* Pre: name_evolution is a valid pokemon name, 0 < level < 101 */

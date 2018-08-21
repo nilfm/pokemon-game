@@ -1,19 +1,20 @@
-Nil 1000 0
+Nil 1500 2
+POKEMON Squirtle 1 0
+6 9 7 8 3 7
+Tackle
+ENDMOVES
+
 POKEMON Bulbasaur 1 0
 6 7 8 8 4 7
 Tackle
 Growl
 ENDMOVES
 
-POKEMON Squirtle 1 0
-6 9 7 8 3 7
-Tackle
-ENDMOVES
-
-POKEMON Weedle 1 0
-6 2 3 3 6 4
-PoisonSting
-StringShot
+POKEMON Charmander 1 0
+6 5 7 5 7 6
+Growl
+Scratch
 ENDMOVES
 
 ITEMS
+RestoreAll 1

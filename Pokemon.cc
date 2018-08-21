@@ -19,6 +19,7 @@ Pokemon::Pokemon(const Pokebase& p, int level) {
     stats.spdefense = p.get_base_stats().spdefense + Random::randint((level-1)*per_level_min.spdefense, (level-1)*per_level_max.spdefense);
     stats.speed     = p.get_base_stats().speed     + Random::randint((level-1)*per_level_min.speed, (level-1)*per_level_max.speed);
     stats.maxhp     = p.get_base_stats().maxhp     + Random::randint((level-1)*per_level_min.maxhp, (level-1)*per_level_max.maxhp);
+    hp = stats.maxhp;
     battle_stats    = stats;
     status.poison = status.burn = status.stun = 0;
     
@@ -87,6 +88,7 @@ Pokemon::Pokemon(const Pokebase& p, int level, int xp, const Stats& current, con
     stats.maxhp     = current.maxhp;
     battle_stats    = stats;
     status.poison = status.burn = status.stun = 0;
+    hp = stats.maxhp;
 
     //Evolution stuff
     level_evolution = p.get_level_evolution();
@@ -174,6 +176,12 @@ void Pokemon::restore_pp(int pos, int restore) {
 void Pokemon::restore_all_pp() {
     for (int i = 0; i < (int)moves.size(); i++) {
         restore_pp(i, -1);
+    }
+}
+
+void Pokemon::restore_all_moves_pp(int restore) {
+    for (int i = 0; i < (int)moves.size(); i++) {
+        restore_pp(i, restore);
     }
 }
 

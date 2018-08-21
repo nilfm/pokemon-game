@@ -149,6 +149,12 @@ void Player::set_pokemon(const Pokemon& p, int i) {
     team[i] = p;
 }
 
+void Player::decrement_item(const std::string& item) {
+    Item it = Item::get_item(item);
+    inventory[it]--;
+    if (inventory[it] == 0) inventory.erase(it);
+}
+
 
 //SHOWERS
 void Player::presentation() const {
@@ -164,11 +170,21 @@ void Player::show_team_stats() const {
     }
 }
 
+void Player::show_team_inline() const {
+    assert(team.size() == 3);
+    
+    std::cout << "\nYour Pokemon" << std::endl;
+    for (int i = 0; i < 3; i++) {
+        std::cout << "  " << i+1 << ". " << team[i].get_name() << " (Level " << team[i].get_level() << ")   HP " << team[i].get_hp() << "/" << team[i].get_battle_stats().maxhp << std::endl;
+    }
+}
+
 void Player::show_inventory() const {
     std::cout << "\nInventory:\n\n";
     for (std::map<Item, int>::const_iterator it = inventory.begin(); it != inventory.end(); it++) {
         std::cout << it->second << " x " << (it->first).get_name() << std::endl;
     }
+    std::cout << std::endl << std::endl;
 }
 
 
@@ -189,9 +205,7 @@ void Player::sort_team() {
     if (p1 == 0) return;
     int p2 = Input::read_int(0, 3, query2, error);
     if (p2 == 0) return;
-    Pokemon aux = team[p1-1];
-    team[p1-1] = team[p2-1];
-    team[p2-1] = aux;
+    swap_pokemon(p1-1, p2-1);
 
     std::cout << std::endl;
     for (int i = 0; i < 3; i++) {
@@ -200,10 +214,10 @@ void Player::sort_team() {
     std::cout << std::endl;
 }
 
-void Player::use_item(Pokemon& p, const Item& it) {
+void Player::use_item(int k, const Item& it) {
     int type = it.get_type();
     if (type == 0) { //Restore PP for one move
-        std::vector<Move> moves = p.get_moves();
+        std::vector<Move> moves = team[k].get_moves();
         int n = moves.size();
         std::string query = "Which move do you want to restore PP for?";
         std::string error = "Oops. Enter a number between 1 and " + std::to_string(n) + ".";
@@ -217,31 +231,27 @@ void Player::use_item(Pokemon& p, const Item& it) {
         std::cout << "Restored PP for " << moves[choice-1].get_name() << "!" << std::endl;
     }
     else if (type == 1) { //Restore PP for all moves
-        std::vector<Move> moves = p.get_moves();
-        int n = moves.size();
-        for (int i = 0; i < n; i++) {
-            moves[i].restore_pp(it.get_restored_pp());
-        }
+        team[k].restore_all_moves_pp(it.get_restored_pp());
         std::cout << "Restored PP for all moves!" << std::endl << std::endl;
     }
     else if (type == 2) { //Heal
-        p.restore_health(it.get_restored_hp());
-        std::cout << p.get_name() << " has restored its HP." << std::endl << std::endl;
+        team[k].restore_health(it.get_restored_hp());
+        std::cout << team[k].get_name() << " has restored its HP." << std::endl << std::endl;
     }
     else if (type == 3) { //Increase stats
-        p.add_battle_stats(it.get_improvement());
-        std::cout << p.get_name() << "'s stats have improved!" << std::endl << std::endl;
+        team[k].add_battle_stats(it.get_improvement());
+        std::cout << team[k].get_name() << "'s stats have improved!" << std::endl << std::endl;
     }
     else if (type == 4) { //Heal one type of status
-        p.restore_status(it.get_status_heal());
-        if (it.get_status_heal().poison == 1) std::cout << p.get_name() << " is no longer poisoned!" << std::endl << std::endl;
-        if (it.get_status_heal().burn == 1) std::cout << p.get_name() << " is no longer burnt!" << std::endl << std::endl;
-        if (it.get_status_heal().stun == 1) std::cout << p.get_name() << " is no longer stunned!" << std::endl << std::endl;
+        team[k].restore_status(it.get_status_heal());
+        if (it.get_status_heal().poison == 1) std::cout << team[k].get_name() << " is no longer poisoned!" << std::endl << std::endl;
+        if (it.get_status_heal().burn == 1) std::cout << team[k].get_name() << " is no longer burnt!" << std::endl << std::endl;
+        if (it.get_status_heal().stun == 1) std::cout << team[k].get_name() << " is no longer stunned!" << std::endl << std::endl;
     }
     else if (type == 5) { //Restore all
-        p.restore_status(it.get_status_heal());
-        p.restore_health(it.get_restored_hp());
-        std::cout << p.get_name() << " is fully healed!" << std::endl;
+        team[k].restore_status(it.get_status_heal());
+        team[k].restore_health(it.get_restored_hp());
+        std::cout << team[k].get_name() << " is fully healed!" << std::endl;
     }
 }
 
@@ -279,7 +289,7 @@ void Player::shop() {
         std::cout << "\nWelcome to the shop!" << std::endl;
         std::cout << "You have " << money << " coins" << std::endl;
         std::string query1 = "\n  1. Ether              100\n  2. Max Ether          200\n  3. Elixir             250\n  4. Max Elixir         300\n  5. Potion              50\n  6. Superpotion        120\n  7. Hyperpotion        250\n  8. Max Potion         300\n  9. XAttack            200\n  10. XDefense          200\n  11. XSpecialAttack    200\n  12. XSpecialDefense   200\n ";
-        std::string query2 = "13. XSpeed            200\n  14. Antidote          100\n  15. Antiburn          100\n  16. Antistun          100\n  17. Restore All       500\n\nEnter 0 to leave the shop\n\n";
+        std::string query2 = " 13. XSpeed            200\n  14. Antidote          100\n  15. Antiburn          100\n  16. Antistun          100\n  17. Restore All       500\n\nEnter 0 to leave the shop\n\n";
         std::string error = "Oops. Enter a number between 0 and 17";
         bool corr = false;
         while (not corr) {
@@ -307,3 +317,8 @@ void Player::shop() {
     }
 }
 
+void Player::swap_pokemon(int i, int j) {
+    Pokemon aux = team[i];
+    team[i] = team[j];
+    team[j] = aux;
+}

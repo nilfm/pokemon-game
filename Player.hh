@@ -99,6 +99,10 @@ public:
     /* Post: The Pokemon at position i (0-indexed) has been replaced by p */
     void set_pokemon(const Pokemon& p, int i);
     
+    /* Pre: item is present in the inventory */
+    /* Post: The amount of item present has decremented by 1, and been removed if it gets to 0 */
+    void decrement_item(const std::string& item);
+    
     
     //SHOWERS
     /* Pre: The file is not empty, the player is loaded */
@@ -110,14 +114,18 @@ public:
     void show_team_stats() const;
     
     /* Pre: True */
+    /* Post: Displays a formatted line for each Pokemon with their level and HP */
+    void show_team_inline() const;
+    
+    /* Pre: True */
     /* Post: Displays a formatted list with the items you have */
     void show_inventory() const;
     
     
     //ACTIONS
-    /* Pre: p is a valid Pokemon, i is a valid Item */
-    /* Post: The item has been used on the Pokemon */
-    void use_item(Pokemon& p, const Item& i);
+    /* Pre: k is a valid position on the team, it is a valid Item */
+    /* Post: The item has been used on the Pokemon at position p */
+    void use_item(int k, const Item& it);
 
     /* Pre: True */
     /* Post: Asks user for input and returns a starting team of Pokemon */
@@ -130,6 +138,11 @@ public:
     /* Pre: True */
     /* Post: The player has shopped for items */
     void shop();
+
+    /* Pre: 0 <= i, j < MAX_POKEMON */
+    /* Post: The pokemon at positions i and j in the team have been swapped */
+    void swap_pokemon(int i, int j);
+
 };
 
 #endif

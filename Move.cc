@@ -53,6 +53,10 @@ Status Move::get_status() const {
     return status;
 }
 
+bool Move::is_special() const {
+    return special;
+}
+
 
 //SHOWERS
 void Move::print_stats() const {

@@ -41,4 +41,4 @@ main.o: main.cc Enemy.cc Enemy.hh Player.cc Player.hh Pokemon.cc Pokemon.hh Poke
 	$(CC) $(OPTIONS) -c main.cc
 
 clean:
-	rm -f *.o *.x
+	rm -f *.o *.x Pokegame

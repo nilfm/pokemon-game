@@ -62,13 +62,12 @@ int main() {
     while (cont) {
         player.save();
         std::cout << "\nTrainers beaten: " << player.get_trainers() << std::endl << std::endl;
-        std::string menu_query = "Menu:\n  0. Quit game\n  1. Go to next fight\n  2. Go to the shop\n  3. See Pokemon stats\n  4. Order your team\n  5. See inventory\n";
+        std::string menu_query = "Menu:\n  0. Quit game\n  1. Go to next fight\n  2. Go to the shop\n  3. See Pokemon stats\n  4. Sort your team\n  5. See inventory\n";
         std::string menu_error = "Oops. Enter a number between 0 and 5";
         int choice = Input::read_int(0, 5, menu_query, menu_error);
         std::cout << std::endl;
         
         if (choice == 1) {
-            std::cout << "\nGet ready to fight!\n";
             player.increment_trainers();
             Enemy enemy(player.get_trainers());
             Combat combat(player, enemy);
