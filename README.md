@@ -25,9 +25,9 @@ Enemy: Has all the info and functions required for a bot to play against you
 ### TODO
 
 + Make txt files for every Pokemon  
-+ Make an Enemy class with basic AI  
-+ Make a Combat class which handles battles  
++ Completely re-do that piece of trash Combat class
 + Make it possible to get stunned/burned/poisoned
++ Redo Enemy to inherit from Player and be called AI (since all it would have is AI functions)  
 
 ### BUGS
 
