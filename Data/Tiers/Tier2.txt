@@ -2,3 +2,5 @@ Charizard
 Venusaur
 Blastoise
 Pidgeot
+Fearow
+Beedrill

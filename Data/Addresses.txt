@@ -18,3 +18,5 @@ Data/Pokedata/Pidgeotto.txt
 Data/Pokedata/Pidgeot.txt
 Data/Pokedata/Rattata.txt
 Data/Pokedata/Raticate.txt
+Data/Pokedata/Spearow.txt
+Data/Pokedata/Fearow.txt

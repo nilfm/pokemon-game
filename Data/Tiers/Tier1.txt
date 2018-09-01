@@ -1,7 +1,6 @@
 Charmeleon
 Wartortle
 Ivysaur
-Beedrill
 Butterfree
 Pidgeotto
 Raticate
