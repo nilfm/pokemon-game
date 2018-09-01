@@ -1,7 +1,7 @@
 #include "Player.hh"
 
-const std::string Player::gamesave_address = "Saves/GameSave";
-const std::string Player::tiers_address = "Tiers/Tier";
+const std::string Player::gamesave_address = "Data/Saves/GameSave";
+const std::string Player::tiers_address = "Data/Tiers/Tier";
 const std::string Player::address_extension = ".txt";
 const std::vector<std::string> hp_items = {"Potion", "Superpotion", "Hyperpotion", "MaxPotion"};
 const std::vector<std::string> pp_items = {"Ether", "MaxEther", "Elixir", "MaxElixir"};

@@ -1,0 +1,106 @@
+Squirtle
+WATER
+16 Wartortle
+
+Attack 6 1 2
+Defense 9 1 3
+SpAttack 7 1 2
+SpDefense 8 1 3
+Speed 3 1 2
+MaxHP 7 2 3
+
+Tackle 1 35
+NORMAL
+P
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+TailWhip 4 30
+NORMAL
+P
+0 100
+0 -2 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+WaterGun 7 25
+WATER
+S
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Withdraw 10 40
+WATER
+P
+0 100
+0 0 0 0 0 0
+0 2 0 0 0 0
+0 0 0
+
+Bubble 13 30
+WATER
+S
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Bite 16 25
+DARK
+P
+60 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+RapidSpin 19 40
+NORMAL
+P
+20 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+WaterPulse 25 20
+WATER
+S
+60 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+AquaTail 28 10
+WATER
+P
+90 90
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+SkullBash 31 10
+NORMAL
+P
+130 50
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+IronDefense 34 15
+STEEL
+P
+0 100
+0 0 0 0 0 0
+0 4 0 0 0 0
+0 0 0
+
+HydroPump 40 5
+WATER
+S
+110 80
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0

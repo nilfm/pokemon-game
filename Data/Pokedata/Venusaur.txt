@@ -1,0 +1,114 @@
+Venusaur
+GRASS
+-1 Nothing
+
+Attack 20 2 3
+Defense 20 2 3
+SpAttack 19 2 3
+SpDefense 22 2 3
+Speed 17 1 3
+MaxHP 21 2 4
+
+Tackle 1 35
+NORMAL
+P
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Growl 1 40
+NORMAL
+P
+0 100
+-2 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Cut 7 30
+NORMAL
+P
+50 95
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+VineWhip 9 25
+GRASS
+S
+45 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+PoisonPowder 13 35
+POISON
+P
+0 75
+0 0 0 0 0 0
+0 0 0 0 0 0
+100 0 0
+
+StunSpore 13 15
+GRASS
+P
+0 75
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 100
+
+TakeDown 15 20
+NORMAL
+P
+90 85
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+BodySlam 20 15
+NORMAL
+P
+85 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+RazorLeaf 27 25
+GRASS
+S
+55 95
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Growth 34 40
+NORMAL
+P
+0 100
+0 0 0 0 0 0
+2 0 2 0 0 0
+0 0 0
+
+SolarBeam 48 10
+GRASS
+S
+90 95
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+LeafStorm 55 5
+GRASS
+S
+130 90
+0 0 0 0 0 0
+0 0 -4 0 0 0
+0 0 0
+
+PetalBlizzard 60 15
+GRASS
+P
+90 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0

@@ -1,0 +1,18 @@
+Metapod
+BUG
+10 Butterfree
+
+Attack 2 0 1
+Defense 10 1 2
+SpAttack 7 0 1
+SpDefense 7 0 1
+Speed 2 1 2
+MaxHP 10 2 3
+
+Harden 1 30
+NORMAL
+P
+0 100
+0 0 0 0 0 0
+0 2 0 0 0 0
+0 0 0

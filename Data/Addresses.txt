@@ -1,0 +1,15 @@
+Data/Pokedata/Bulbasaur.txt
+Data/Pokedata/Ivysaur.txt
+Data/Pokedata/Venusaur.txt
+Data/Pokedata/Charmander.txt
+Data/Pokedata/Charmeleon.txt
+Data/Pokedata/Charizard.txt
+Data/Pokedata/Squirtle.txt
+Data/Pokedata/Wartortle.txt
+Data/Pokedata/Blastoise.txt
+Data/Pokedata/Caterpie.txt
+Data/Pokedata/Metapod.txt
+Data/Pokedata/Butterfree.txt
+Data/Pokedata/Weedle.txt
+Data/Pokedata/Kakuna.txt
+Data/Pokedata/Beedrill.txt

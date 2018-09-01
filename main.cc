@@ -12,8 +12,8 @@ int main() {
     //Things to initialize
     srand(time(0));
     Type::initialize();
-    Pokedex::initialize("addresses.txt");
-    Item::initialize_items("Pokedata/Items.txt");
+    Pokedex::initialize("Data/Addresses.txt");
+    Item::initialize_items("Data/Items.txt");
     
     //Welcome message
     std::cout << "Welcome to Pokegame" << std::endl << std::endl;

@@ -1,0 +1,98 @@
+Charmander
+FIRE
+16 Charmeleon
+
+Attack 6 1 2
+Defense 5 1 2
+SpAttack 7 2 3
+SpDefense 5 1 2
+Speed 7 2 3
+MaxHP 6 1 3
+
+Scratch 1 35
+NORMAL
+P
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Growl 1 40
+NORMAL
+P
+0 100
+-2 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Ember 7 25
+FIRE
+S
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 10 0
+
+DragonRage 13 10
+DRAGON
+S
+50 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+ScaryFace 19 10
+NORMAL
+P
+0 100
+0 0 0 0 -4 0
+0 0 0 0 0 0
+0 0 0
+
+FireFang 25 15
+FIRE
+P
+65 95
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 10 0
+
+FlameBurst 28 15
+FIRE
+S
+70 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Slash 34 20
+NORMAL
+P
+70 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Flamethrower 37 15
+FIRE
+S
+90 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 10 0
+
+FireSpin 43 15
+FIRE
+S
+50 85
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Inferno 46 5
+FIRE
+S
+100 50
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 100 0

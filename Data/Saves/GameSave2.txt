@@ -1,0 +1,19 @@
+Martina 1500 1
+POKEMON Charmander 2 17
+8 7 9 7 9 8
+Scratch
+Growl
+ENDMOVES
+
+POKEMON Bulbasaur 1 0
+6 7 8 8 4 7
+Growl
+Tackle
+ENDMOVES
+
+POKEMON Squirtle 1 0
+6 9 7 8 3 7
+Tackle
+ENDMOVES
+
+ITEMS
