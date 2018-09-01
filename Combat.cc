@@ -212,6 +212,7 @@ bool Combat::attack(int k, Player& player, Player& enemy, Move& move) {
     
     if (not fainted) {
         Pokemon& defending_pokemon = (k == 1 ? enemy.get_first_pokemon() : player.get_first_pokemon());
+        Pokemon& attacking_pokemon = (k == 1 ? player.get_first_pokemon() : enemy.get_first_pokemon());
         Status move_status = move.get_status();
         if (move_status.poison > 0) {
             int rnd = Random::randint(0, 100);
@@ -234,6 +235,35 @@ bool Combat::attack(int k, Player& player, Player& enemy, Move& move) {
                 std::cout << ownerdef << defender_name << " was stunned!" << std::endl;
             }
         }
+        
+        Stats change_stats_opponent = move.get_change_stats_opponent();
+        Stats change_stats_own = move.get_change_stats_own();
+        
+        //Change stats opponent
+        defending_pokemon.add_battle_stats(change_stats_opponent);
+        if (change_stats_opponent.attack < 0) std::cout << ownerdef << defender_name << "'s attack is reduced by " << -change_stats_opponent.attack << std::endl;
+        if (change_stats_opponent.attack > 0) std::cout << ownerdef << defender_name << "'s attack is increased by " << change_stats_opponent.attack << std::endl;
+        if (change_stats_opponent.defense < 0) std::cout << ownerdef << defender_name << "'s defense is reduced by " << -change_stats_opponent.defense << std::endl;
+        if (change_stats_opponent.defense > 0) std::cout << ownerdef << defender_name << "'s defense is increased by " << change_stats_opponent.defense << std::endl;
+        if (change_stats_opponent.spattack < 0) std::cout << ownerdef << defender_name << "'s special attack is reduced by " << -change_stats_opponent.spattack << std::endl;
+        if (change_stats_opponent.spattack > 0) std::cout << ownerdef << defender_name << "'s special attack is increased by " << change_stats_opponent.spattack << std::endl;
+        if (change_stats_opponent.spdefense < 0) std::cout << ownerdef << defender_name << "'s special defense is reduced by " << -change_stats_opponent.spdefense << std::endl;
+        if (change_stats_opponent.spdefense > 0) std::cout << ownerdef << defender_name << "'s special defense is increased by " << change_stats_opponent.spdefense << std::endl;
+        if (change_stats_opponent.speed < 0) std::cout << ownerdef << defender_name << "'s speed is reduced by " << -change_stats_opponent.speed << std::endl;
+        if (change_stats_opponent.speed > 0) std::cout << ownerdef << defender_name << "'s speed is increased by " << change_stats_opponent.speed << std::endl;
+        
+        //Change stats own
+        attacking_pokemon.add_battle_stats(change_stats_own);
+        if (change_stats_own.attack < 0) std::cout << owner << attacker_name << "'s attack is reduced by " << -change_stats_own.attack << std::endl;
+        if (change_stats_own.attack > 0) std::cout << owner << attacker_name << "'s attack is increased by " << change_stats_own.attack << std::endl;
+        if (change_stats_own.defense < 0) std::cout << owner << attacker_name << "'s defense is reduced by " << -change_stats_own.defense << std::endl;
+        if (change_stats_own.defense > 0) std::cout << owner << attacker_name << "'s defense is increased by " << change_stats_own.defense << std::endl;
+        if (change_stats_own.spattack < 0) std::cout << owner << attacker_name << "'s special attack is reduced by " << -change_stats_own.spattack << std::endl;
+        if (change_stats_own.spattack > 0) std::cout << owner << attacker_name << "'s special attack is increased by " << change_stats_own.spattack << std::endl;
+        if (change_stats_own.spdefense < 0) std::cout << owner << attacker_name << "'s special defense is reduced by " << -change_stats_own.spdefense << std::endl;
+        if (change_stats_own.spdefense > 0) std::cout << owner << attacker_name << "'s special defense is increased by " << change_stats_own.spdefense << std::endl;
+        if (change_stats_own.speed < 0) std::cout << owner << attacker_name << "'s speed is reduced by " << -change_stats_own.speed << std::endl;
+        if (change_stats_own.speed > 0) std::cout << owner << attacker_name << "'s speed is increased by " << change_stats_own.speed << std::endl;
     }
     return fainted;
 }

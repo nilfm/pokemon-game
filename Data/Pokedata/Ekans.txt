@@ -1,0 +1,23 @@
+Ekans
+POISON
+22 Arbok
+
+Attack 7 1 3
+Defense 4 1 2
+SpAttack 3 1 2
+SpDefense 6 1 2
+Speed 7 1 2
+MaxHP 4 1 3
+
+Leer 1
+Wrap 1
+PoisonSting 4
+Bite 9
+Glare 12
+Screech 17
+Acid 20
+AcidSpray 28
+MudBomb 33
+Belch 38
+Coil 44
+GunkShot 49

@@ -156,7 +156,7 @@ void Pokemon::add_battle_stats(const Stats& st) {
     battle_stats.spattack = std::max(1, battle_stats.spattack + st.spattack);
     battle_stats.spdefense = std::max(1, battle_stats.spdefense + st.spdefense);
     battle_stats.speed = std::max(1, battle_stats.speed + st.speed);
-    battle_stats.maxhp = std::max(1, battle_stats.attack + st.maxhp);
+    battle_stats.maxhp = std::max(1, battle_stats.maxhp + st.maxhp);
 }
 
 void Pokemon::reset_battle_stats() {

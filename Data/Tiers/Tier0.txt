@@ -8,3 +8,4 @@ Kakuna
 Pidgey
 Rattata
 Spearow
+Ekans

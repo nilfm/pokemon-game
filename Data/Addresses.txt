@@ -20,3 +20,5 @@ Data/Pokedata/Rattata.txt
 Data/Pokedata/Raticate.txt
 Data/Pokedata/Spearow.txt
 Data/Pokedata/Fearow.txt
+Data/Pokedata/Ekans.txt
+Data/Pokedata/Arbok.txt

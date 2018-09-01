@@ -1,0 +1,27 @@
+Arbok
+POISON
+-1 Nothing
+
+Attack 20 2 3
+Defense 14 1 3
+SpAttack 12 1 3
+SpDefense 18 2 3
+Speed 18 2 3
+MaxHP 10 2 3
+
+Leer 1
+Wrap 1
+Crunch 1
+FireFang 1
+IceFang 1
+ThunderFang 1
+PoisonSting 4
+Bite 9
+Glare 12
+Screech 17
+Acid 20
+AcidSpray 32
+MudBomb 39
+Belch 48
+Coil 56
+GunkShot 63

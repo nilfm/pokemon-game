@@ -4,3 +4,4 @@ Blastoise
 Pidgeot
 Fearow
 Beedrill
+Arbok
