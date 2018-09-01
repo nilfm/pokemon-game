@@ -2,7 +2,7 @@ Rattata
 NORMAL
 20 Raticate
 
-Attack 10 1 2
+Attack 9 1 2
 Defense 4 1 2
 SpAttack 2 0 1
 SpDefense 4 1 2
