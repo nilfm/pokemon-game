@@ -2,7 +2,7 @@
 
 Attempt to make a Pokemon copy where you can take a team and fight through trainers until you lose.
 
-### Classes:
+### Classes/Files:
 
 Pokedex: Has info about every Pokemon
 
@@ -18,16 +18,12 @@ Input: Has all the necessary input checking mechanisms
 
 Player: Has info about a player's Pokemon team, items, and actions he can do with them
 
-Gamesave: Has all the info that needs to be saved and loaded back
-
-Enemy: Has all the info and functions required for a bot to play against you
 
 ### TODO
 
 + Make txt files for every Pokemon  
-+ Make it possible to get stunned/burned/poisoned
++ AI choices need work
 
 ### BUGS
 
-+ Charmander/Charmeleon sometimes do like 2k damage with Ember (hasn't happened in a while)  
-+ PP not going down (maybe references will work)  
++ Fine for now! 
