@@ -2,6 +2,7 @@
 
 const std::string Player::gamesave_address = "Data/Saves/GameSave";
 const std::string Player::tiers_address = "Data/Tiers/Tier";
+const std::string Player::starters_address = "Data/Tiers/Starters";
 const std::string Player::address_extension = ".txt";
 const std::vector<std::string> hp_items = {"Potion", "Superpotion", "Hyperpotion", "MaxPotion"};
 const std::vector<std::string> pp_items = {"Ether", "MaxEther", "Elixir", "MaxElixir"};
@@ -292,7 +293,7 @@ void Player::use_item(int k, const Item& it) {
 
 std::vector<Pokemon> Player::choose_starters() const {
     std::set<std::string> starters;
-    std::ifstream in("Pokedata/Starters.txt");
+    std::ifstream in(starters_address + address_extension);
     assert(in.is_open());
     std::string name;
     while (in >> name) starters.insert(name);

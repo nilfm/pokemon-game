@@ -13,6 +13,7 @@ private:
     //Address-related
     const static std::string tiers_address;
     const static std::string gamesave_address;
+    const static std::string starters_address;
     const static std::string address_extension;
     
     //For AI choice of items
