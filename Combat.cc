@@ -2,7 +2,7 @@
 
 //CONSTRUCTORS
 //Necessary to initialize the reference through this weird stuff down here
-Combat::Combat(Player& _player, Enemy& _enemy) : player(_player), enemy(_enemy) {
+Combat::Combat(Player& _player, Player& _enemy) : player(_player), enemy(_enemy) {
     this->player = _player;
     this->enemy = _enemy;
 }
@@ -91,80 +91,49 @@ int Combat::play_turn() {
     else {
         //TODO: enemy.choose_item()
     }
+    
+    //Handle who attacks first and second (if they do attack)
+    bool fainted_enemy = false, fainted_player = false;
     if (picked_move and enemy_picked_move) {
         int first = Combat::pick_first(player.get_first_pokemon().get_battle_stats().speed, enemy.get_first_pokemon().get_battle_stats().speed);
         if (first == 1) {
-            bool fainted_enemy = Combat::attack(1, player, enemy, player_move);
-            if (fainted_enemy) {
-                std::cout << "The enemy " << enemy.get_first_pokemon().get_name() << " has fainted!" << std::endl;
-                int xp_gained = enemy.get_first_pokemon().get_level()*Random::randint(2, 5);
-                std::cout << "Your " << player.get_first_pokemon().get_name() << " has gained " << xp_gained << " XP." << std::endl;
-                player.get_first_pokemon().gain_xp(xp_gained);
-                if (Combat::has_lost(enemy)) return 1;
-                else {
-                    int swap = enemy.swap_choice();
-                    enemy.swap_pokemon(1, swap);
-                }
-            }
-            else {
-                bool fainted_player = Combat::attack(2, player, enemy, enemy_move);
-                if (fainted_player) {
-                    std::cout << "Your " << player.get_first_pokemon().get_name() << " has fainted!" << std::endl;
-                    if (Combat::has_lost(player)) return 2;
-                    else {
-                        int swap = player.swap_fainted();
-                        player.swap_pokemon(0, swap-1);
-                    }
-                }
+            fainted_enemy = Combat::attack(1, player, enemy, player_move);
+            if (not fainted_enemy) {
+                fainted_player = Combat::attack(2, player, enemy, enemy_move);
             }
         }
+        else if (first == 2) {
+            fainted_player = Combat::attack(2, player, enemy, enemy_move);
+            if (not fainted_player) {
+                fainted_enemy = Combat::attack(1, player, enemy, player_move);
+            }
+        }
+    }
+    else if (picked_move) {
+        fainted_enemy = Combat::attack(1, player, enemy, player_move);
+    }
+    else if (enemy_picked_move) {
+        fainted_player = Combat::attack(2, player, enemy, enemy_move);
+    }
+    
+    //Handle fainted Pokemon
+    if (fainted_player) {
+        std::cout << "Your " << player.get_first_pokemon().get_name() << " has fainted!" << std::endl;
+        if (Combat::has_lost(player)) return 2;
         else {
-            bool fainted_player = Combat::attack(2, player, enemy, enemy_move);
-            if (fainted_player) {
-                std::cout << "Your " << player.get_first_pokemon().get_name() << " has fainted!" << std::endl;
-                if (Combat::has_lost(player)) return 2;
-                else {
-                    int swap = player.swap_fainted();
-                    player.swap_pokemon(0, swap-1);
-                }            
-            }
-            else {
-                bool fainted_enemy = Combat::attack(1, player, enemy, player_move);
-                if (fainted_enemy) {
-                    std::cout << "The enemy " << enemy.get_first_pokemon().get_name() << " has fainted!" << std::endl;
-                    int xp_gained = enemy.get_first_pokemon().get_level()*Random::randint(2, 5);
-                    std::cout << "Your " << player.get_first_pokemon().get_name() << " has gained " << xp_gained << " XP." << std::endl;
-                    if (Combat::has_lost(enemy)) return 1;
-                    else {
-                        int swap = enemy.swap_choice();
-                        enemy.swap_pokemon(1, swap);
-                    }
-                }
-            }    
+            int swap = player.swap_fainted();
+            player.swap_pokemon(0, swap-1);
         }
     }
-    else if (picked_move) { //only player attacks
-        bool fainted_enemy = Combat::attack(1, player, enemy, player_move);
-        if (fainted_enemy) {
-            std::cout << "The enemy " << enemy.get_first_pokemon().get_name() << " has fainted!" << std::endl;
-            int xp_gained = enemy.get_first_pokemon().get_level()*Random::randint(2, 5);
-            std::cout << "Your " << player.get_first_pokemon().get_name() << " has gained " << xp_gained << " XP." << std::endl;
-            if (Combat::has_lost(enemy)) return 1;
-            else {
-                int swap = enemy.swap_choice();
-                enemy.swap_pokemon(1, swap);
-            }
-        } 
-    }
-    else { //only enemy attacks
-        bool fainted_player = Combat::attack(2, player, enemy, enemy_move);
-        if (fainted_player) {
-            std::cout << "Your " << player.get_first_pokemon().get_name() << " has fainted!" << std::endl;
-            if (Combat::has_lost(player)) return 2;
-            else {
-                int swap = player.swap_fainted();
-                player.swap_pokemon(0, swap-1);
-            } 
+    if (fainted_enemy) {
+        std::cout << "The enemy " << enemy.get_first_pokemon().get_name() << " has fainted!" << std::endl;
+        int xp_gained = enemy.get_first_pokemon().get_level()*Random::randint(3, 10);
+        std::cout << "Your " << player.get_first_pokemon().get_name() << " has gained " << xp_gained << " XP." << std::endl;
+        player.get_first_pokemon().gain_xp(xp_gained);
+        if (Combat::has_lost(enemy)) return 1;
+        else {
+            int swap = enemy.swap_choice();
+            enemy.swap_pokemon(0, swap);
         }
     }
     return 0; //battle continues
@@ -202,86 +171,68 @@ void Combat::pick_enemy_pokemon() {
 }
 
 
-bool Combat::attack(int k, Player& player, Enemy& enemy, Move& move) {
-    move.decrement_pp();
+bool Combat::attack(int k, Player& player, Player& enemy, Move& move) {
+    if (k == 1) player.get_first_pokemon().decrement_pp(move);
+    else enemy.get_first_pokemon().decrement_pp(move);
+    
+    bool critical, missed, not_effective, little_effective, very_effective, stunned;
+    critical = missed = not_effective = little_effective = very_effective = stunned = false;
+
+    int dmg;
     if (k == 1) {
-        std::cout << std::endl << "Your " <<  player.get_first_pokemon().get_name() << " used " << move.get_name() << "." << std::endl << std::endl;
-        bool critical, missed, not_effective, little_effective, very_effective, stunned;
-        critical = missed = not_effective = little_effective = very_effective = stunned = false;
-        int dmg = calculate_damage(player.get_first_pokemon(), enemy.get_first_pokemon(), move, critical, missed, not_effective, little_effective, very_effective, stunned);
-        if (stunned) std::cout << "But it was stunned" << std::endl << std::endl;
-        else if (missed) std::cout << "But it missed!" << std::endl << std::endl;
-        else if (not_effective) std::cout << "But it didn't affect " << enemy.get_first_pokemon().get_name() << std::endl << std::endl;
-        else if (little_effective) std::cout << "It wasn't very effective..." << std::endl << std::endl;
-        else if (very_effective) std::cout << "It was very effective!" << std::endl << std::endl;
-        if (dmg > 0 and critical) std::cout << "Critical hit!" << std::endl << std::endl;
-        if (dmg > 0) std::cout << "It did " << dmg << " damage to " << enemy.get_first_pokemon().get_name() << std::endl << std::endl;
-        bool fainted = enemy.get_first_pokemon().receive_damage(dmg);
-        if (not fainted) {
-            Status move_status = move.get_status();
-            if (move_status.poison > 0) {
-                int rnd = Random::randint(0, 100);
-                if (move_status.poison > rnd) {
-                    enemy.get_first_pokemon().get_poisoned();
-                    std::cout << "The enemy's " << enemy.get_first_pokemon().get_name() << " was poisoned!" << std::endl;
-                }
-            }
-            if (move_status.burn > 0) {
-                int rnd = Random::randint(0, 100);
-                if (move_status.burn > rnd) {
-                    enemy.get_first_pokemon().get_burned();
-                    std::cout << "The enemy's " << enemy.get_first_pokemon().get_name() << " was burned!" << std::endl;
-                }
-            }
-            if (move_status.stun > 0) {
-                int rnd = Random::randint(0, 100);
-                if (move_status.stun > rnd) {
-                    enemy.get_first_pokemon().get_stunned();
-                    std::cout << "The enemy's " << enemy.get_first_pokemon().get_name() << " was stunned!" << std::endl;
-                }
-            }
-        }
-        return fainted;
+        dmg = calculate_damage(player.get_first_pokemon(), enemy.get_first_pokemon(), move, critical, missed, not_effective, little_effective, very_effective, stunned);
     }
     else {
-        std::cout << std::endl << "The enemy " << enemy.get_first_pokemon().get_name() << " used " << move.get_name() << "." << std::endl << std::endl;
-        bool critical, missed, not_effective, little_effective, very_effective, stunned;
-        critical = missed = not_effective = little_effective = very_effective = stunned = false;
-        int dmg = calculate_damage(enemy.get_first_pokemon(), player.get_first_pokemon(), move, critical, missed, not_effective, little_effective, very_effective, stunned);
-        if (stunned) std::cout << "But it was stunned" << std::endl << std::endl;
-        else if (missed) std::cout << "But it missed!" << std::endl << std::endl;
-        else if (not_effective) std::cout << "But it didn't affect " << player.get_first_pokemon().get_name() << std::endl << std::endl;
-        else if (little_effective) std::cout << "It wasn't very effective..." << std::endl << std::endl;
-        else if (very_effective) std::cout << "It was very effective!" << std::endl << std::endl;
-        if (dmg > 0 and critical) std::cout << "Critical hit!" << std::endl << std::endl;
-        if (dmg > 0) std::cout << "It did " << dmg << " damage to " << player.get_first_pokemon().get_name() << std::endl << std::endl;
-        bool fainted = player.get_first_pokemon().receive_damage(dmg);
-        if (not fainted) {
-            Status move_status = move.get_status();
-            if (move_status.poison > 0) {
-                int rnd = Random::randint(0, 100);
-                if (move_status.poison > rnd) {
-                    player.get_first_pokemon().get_poisoned();
-                    std::cout << "Your " << player.get_first_pokemon().get_name() << " was poisoned!" << std::endl;
-                }
-            }
-            if (move_status.burn > 0) {
-                int rnd = Random::randint(0, 100);
-                if (move_status.burn > rnd) {
-                    player.get_first_pokemon().get_burned();
-                    std::cout << "Your " << player.get_first_pokemon().get_name() << " was burned!" << std::endl;
-                }
-            }
-            if (move_status.stun > 0) {
-                int rnd = Random::randint(0, 100);
-                if (move_status.stun > rnd) {
-                    player.get_first_pokemon().get_stunned();
-                    std::cout << "Your " << player.get_first_pokemon().get_name() << " was stunned!" << std::endl;
-                }
+        dmg = calculate_damage(enemy.get_first_pokemon(), player.get_first_pokemon(), move, critical, missed, not_effective, little_effective, very_effective, stunned);
+    }
+    
+    std::string owner = "Your ";
+    if (k == 2) owner = "The enemy ";
+    
+    std::string attacker_name = player.get_first_pokemon().get_name();
+    if (k == 2) attacker_name = enemy.get_first_pokemon().get_name();
+    
+    std::string defender_name = enemy.get_first_pokemon().get_name();
+    if (k == 2) defender_name = player.get_first_pokemon().get_name();  
+      
+    std::cout << std::endl << owner << attacker_name << " used " << move.get_name() << "." << std::endl;
+    if (stunned) std::cout << "But it was stunned" << std::endl;
+    else if (missed) std::cout << "But it missed!" << std::endl;
+    else if (not_effective) std::cout << "But it didn't affect " << player.get_first_pokemon().get_name() << std::endl;
+    else if (little_effective) std::cout << "It wasn't very effective..." << std::endl;
+    else if (very_effective) std::cout << "It was very effective!" << std::endl;
+    if (dmg > 0 and critical) std::cout << "Critical hit!" << std::endl;
+    if (dmg > 0) std::cout << "It did " << dmg << " damage to " << defender_name << std::endl;
+    bool fainted = false;
+    if (k == 1) fainted = enemy.get_first_pokemon().receive_damage(dmg);
+    else fainted = player.get_first_pokemon().receive_damage(dmg);
+    
+    if (not fainted) {
+        Pokemon& defending_pokemon = (k == 1 ? enemy.get_first_pokemon() : player.get_first_pokemon());
+        Status move_status = move.get_status();
+        if (move_status.poison > 0) {
+            int rnd = Random::randint(0, 100);
+            if (move_status.poison > rnd) {
+                defending_pokemon.get_poisoned();
+                std::cout << owner << defender_name << " was poisoned!" << std::endl;
             }
         }
-        return fainted;
+        if (move_status.burn > 0) {
+            int rnd = Random::randint(0, 100);
+            if (move_status.burn > rnd) {
+                defending_pokemon.get_burned();
+                std::cout << owner << defender_name << " was burned!" << std::endl;
+            }
+        }
+        if (move_status.stun > 0) {
+            int rnd = Random::randint(0, 100);
+            if (move_status.stun > rnd) {
+                defending_pokemon.get_stunned();
+                std::cout << owner << defender_name << " was stunned!" << std::endl;
+            }
+        }
     }
+    return fainted;
 }
 
 
@@ -291,6 +242,9 @@ void Combat::show_current_game() {
     std::cout << enemy.get_first_pokemon().get_name() << " (Level " << enemy.get_first_pokemon().get_level() << ")    HP " << enemy.get_first_pokemon().get_hp() << "/" << enemy.get_first_pokemon().get_battle_stats().maxhp << std::endl;
     std::cout << std::endl << "           VS            " << std::endl << std::endl;
     std::cout << "         " << player.get_first_pokemon().get_name() << " (Level " << player.get_first_pokemon().get_level() << ")    HP " << player.get_first_pokemon().get_hp() << "/" << player.get_first_pokemon().get_battle_stats().maxhp << std::endl;
+    int xp = player.get_first_pokemon().get_xp();
+    int level = player.get_first_pokemon().get_level();
+    std::cout << "         " << "XP: " << xp - 5*level*(level-1) << "/" << 10*level << std::endl; 
     std::cout << std::endl << std::endl;
 }
 
@@ -365,9 +319,3 @@ bool Combat::has_lost(const Player& p) {
     return true;
 }
 
-bool Combat::has_lost(const Enemy& p) {
-    for (int i = 0; i < (int)p.get_team().size(); i++) {
-        if (p.get_team()[i].get_hp() != 0) return false;
-    }
-    return true;
-}

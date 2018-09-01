@@ -10,8 +10,16 @@
 
 class Player {
 private:
+    //Address-related
+    const static std::string tiers_address;
     const static std::string gamesave_address;
     const static std::string address_extension;
+    
+    //For AI choice of items
+    const static std::vector<std::string> hp_items;
+    const static std::vector<std::string> pp_items;
+    const static std::vector<std::string> x_items;
+    
     const static int MAX_POKEMON = 3;
     int slot;
     std::string name;
@@ -153,6 +161,34 @@ public:
     int swap_fainted() const;
 
 
+
+
+    //Previous AI class here
+    //CONSTRUCTORS
+    
+    /* Pre: trainers > 0 */
+    /* Post: Returns an AI at the level required */
+    Player(int trainers, bool AI);
+    
+
+    //ACTIONS
+    /* Pre: True */
+    /* Post: Returns int between 1 and 3 representing action choice. Can't return 2 if no Pokemon are alive to swap. */
+    int action_choice() const;
+    
+    /* Pre: either the second or third Pokemon are alive */
+    /* Post: Returns int between 1 and 2 representing the choice of Pokemon to swap. (0-indexed) */
+    int swap_choice() const;
+    
+    /* Pre: True */
+    /* Post: Returns int between 1 and amount of moves for own representing action choice */
+    int move_choice(const Pokemon& own, const Pokemon& other) const;
+    
+
+    //AUXILIARY
+    /* Pre: trainers > 0 */
+    /* Post: Returns a vector of 4 positions indicating how many Pokemon of each tier this enemy will have */
+    std::vector<int> calculate_tiers(int trainer);
 };
 
 #endif

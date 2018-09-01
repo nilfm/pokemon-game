@@ -4,26 +4,24 @@
 #include "Includes.hh"
 #include "Player.hh"
 #include "Pokemon.hh"
-#include "Enemy.hh"
 #include "Move.hh"
 #include "Type.hh"
 
 class Combat {
 private:
-    Player& player;
-    Enemy& enemy;
+    Player& player, enemy;
     
 public:
     //CONSTRUCTORS
     /* Pre: both player and enemy have a full Pokemon team (3) */
     /* Post: A combat is initialized between player and enemy */
-    Combat(Player& _player, Enemy& _enemy);
+    Combat(Player& _player, Player& _enemy);
     
     
     //ACTIONS
     /* Pre: True */
     /* Post: Returns 0 if battle goes on, 1 if player beats enemy, 2 if enemy beats player */
-    int play_turn(); //TODO
+    int play_turn();
     
     /* Pre: Player just won a combat */
     /* Post: Player has picked a pokemon from the enemy team to swap for one of his pokemon, or chosen to do nothing */
@@ -31,7 +29,7 @@ public:
     
     /* Pre: k is either 1 or 2 */
     /* Post: If k is 1, player attacks enemy. Else, enemy attacks player. Returns true iff defender has fainted */
-    static bool attack(int k, Player& player, Enemy& enemy, Move& move);
+    static bool attack(int k, Player& player, Player& enemy, Move& move);
     
     //SHOWERS
     /* Pre: True */
@@ -51,10 +49,6 @@ public:
     /* Pre: True */
     /* Post: Returns true iff the player has no alive Pokemon */
     static bool has_lost(const Player& p);
-    
-    /* Pre: True */
-    /* Post: Returns true iff the enemy has no alive Pokemon */
-    static bool has_lost(const Enemy& p);
 };
 
 #endif

@@ -6,7 +6,6 @@
 #include "Pokebase.hh"
 #include "Player.hh"
 #include "Random.hh"
-#include "Enemy.hh"
 #include "Combat.hh"
 
 int main() {
@@ -69,7 +68,7 @@ int main() {
         
         if (choice == 1) {
             player.increment_trainers();
-            Enemy enemy(player.get_trainers());
+            Player enemy(player.get_trainers(), true);
             Combat combat(player, enemy);
             int winner = 0;
             while (not winner) {

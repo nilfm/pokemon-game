@@ -145,6 +145,10 @@ public:
     /* Post: Stuns the Pokemon */
     void get_stunned();
     
+    /* Pre: move is in the Pokemon's active moves, move has PP > 0 */
+    /* Post: The PP for move have been decremented in 1 */
+    void decrement_pp(const Move& move);
+    
     
     //ACTIONS
     /* Pre: name_evolution is a valid pokemon name, 0 < level < 101 */

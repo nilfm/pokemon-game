@@ -1,7 +1,11 @@
 #include "Player.hh"
 
 const std::string Player::gamesave_address = "Saves/GameSave";
+const std::string Player::tiers_address = "Tiers/Tier";
 const std::string Player::address_extension = ".txt";
+const std::vector<std::string> hp_items = {"Potion", "Superpotion", "Hyperpotion", "MaxPotion"};
+const std::vector<std::string> pp_items = {"Ether", "MaxEther", "Elixir", "MaxElixir"};
+const std::vector<std::string> x_items = {"XAttack", "XDefense", "XSpecialAttack", "XSpecialDefense", "XSpeed"};
 
 //CONSTRUCTORS
 Player::Player() {}
@@ -10,6 +14,33 @@ Player::Player(int slot) {
     this->slot = slot;
     this->money = 1000;
     this->trainers = 0;
+}
+
+Player::Player(int trainers, bool AI) { //AI related
+    //Set the trainer variable
+    this->trainers = trainers;
+    //Calculate how many Pokemon for each tier
+    std::vector<int> tiers = calculate_tiers(trainers);
+    //Retrieve those Pokemon on the team vector
+    for (int i = 0; i < 4; i++) {
+        if (tiers[i] != 0) {
+            std::string address = tiers_address + std::to_string(i) + address_extension;
+            std::ifstream in(address);
+            assert(in.is_open());
+            std::vector<std::string> available;
+            std::string s;
+            while (in >> s) available.push_back(s);
+            for (int j = 0; j < tiers[i]; j++) {
+                int rnd = Random::randint(0, (int)available.size()-1);
+                Pokebase chosen = Pokedex::get_pokebase(available[rnd]);
+                //1 <= level <= 100, 0.9*trainer <= level <= trainer
+                int level = std::min(std::max(1, Random::randint((int)(0.5*trainers), (int)0.9*trainers)), 100);
+                team.push_back(Pokemon(chosen, level));
+                available.erase(available.begin()+rnd);
+            }
+            in.close();
+        }
+    }
 }
 
 
@@ -351,3 +382,89 @@ bool Player::swap_pokemon(int i, int j) {
     team[j] = aux;
     return true;
 }
+
+int Player::action_choice() const { //AI related
+    return 1; //TODO
+    //TODO: CANT RETURN 2 IF NO POKEMON ARE ALIVE TO SWAP
+}
+
+int Player::move_choice(const Pokemon& own, const Pokemon& other) const { //AI related
+    std::vector<int> points(4, 0);
+    
+    int choice = 0;
+    int max = 0;
+    
+    for (int i = 0; i < (int)(own.get_moves().size()); i++) {
+        Move curr = own.get_moves()[i];
+        if (curr.get_type().get_name() == own.get_type().get_name()) points[i] += 3;
+        if (Type::advantage(curr.get_type(), other.get_type())) points[i] += 7;
+        points[i] += curr.get_power()/20;
+        points[i] -= (100-curr.get_accuracy())/10;
+        Stats opp = curr.get_change_stats_opponent();
+        Stats own = curr.get_change_stats_own();
+        points[i] += own.attack + own.defense + own.spattack + own.spdefense + own.speed + own.maxhp
+            - opp.attack - opp.defense - opp.spattack - opp.spdefense - opp.speed - opp.maxhp;
+        Status st = curr.get_status();
+        if (st.poison != 0 or st.stun != 0 or st.burn != 0) points[i] += 5;
+        int rnd = Random::randint(1, 3);
+        points[i] *= rnd;
+        points[i] /= 2;
+        if (curr.get_pp() == 0) points[i] = 0;
+        
+        if (points[i] > max) {
+            max = points[i];
+            choice = i;
+        }
+    }
+ 
+    return choice+1;
+}
+
+int Player::swap_choice() const { //AI related
+    if (team[1].get_hp() != 0) return 1;
+    else return 2;
+}
+
+
+//AUXILIARY
+std::vector<int> Player::calculate_tiers(int trainer) { //AI related
+    std::vector<int> tiers(4, 0);
+    if (trainer < 5) {
+        tiers[0] = 3;
+    }
+    else if (trainer < 10) {
+        tiers[0] = 2;
+        tiers[1] = 1;
+    }
+    else if (trainer < 15) {
+        tiers[0] = 1;
+        tiers[1] = 2;
+    }
+    else if (trainer < 20) {
+        tiers[0] = 1;
+        tiers[1] = 1;
+        tiers[2] = 1;
+    }
+    else if (trainer < 30) {
+        tiers[1] = 2;
+        tiers[2] = 1;
+    }
+    else if (trainer < 50) {
+        tiers[1] = 1;
+        tiers[2] = 2;
+    }
+    else if (trainer < 75) {
+        tiers[2] = 3;
+    }
+    else if (trainer < 100) {
+        tiers[2] = 2;
+        tiers[3] = 1;
+    }
+    else {
+        tiers[3] = Random::randint(1, 3);
+        tiers[2] = 3-tiers[3];
+    }
+    return tiers;
+}
+
+

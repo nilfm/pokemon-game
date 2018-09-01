@@ -255,6 +255,16 @@ void Pokemon::get_stunned() {
     status.stun = 1;
 }
 
+void Pokemon::decrement_pp(const Move& move) {
+    for (int i = 0; i < (int)moves.size(); i++) {
+        if (moves[i].get_name() == move.get_name()) {
+            assert(moves[i].get_pp() > 0);
+            moves[i].decrement_pp();
+            return;
+        }
+    }
+}
+
 
 //ACTIONS
 void Pokemon::evolve() {
