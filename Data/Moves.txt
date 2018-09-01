@@ -1,0 +1,543 @@
+Agility 30
+PSYCHIC
+P
+0 100
+0 0 0 0 0 0
+0 0 0 0 4 0
+0 0 0
+
+AirSlash 20
+FLYING
+S
+75 95
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+AquaTail 10
+WATER
+P
+90 90
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Assurance 10
+DARK
+P
+80 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Bite 25
+DARK
+P
+60 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+BodySlam 15
+NORMAL
+P
+85 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Bubble 30
+WATER
+S
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+BugBite 20
+BUG
+P
+60 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+BugBuzz 10
+BUG
+S
+90 100
+0 0 0 -1 0 0
+0 0 0 0 0 0
+0 0 0
+
+Captivate 20
+NORMAL
+P
+0 100
+0 0 -4 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Confusion 25
+PSYCHIC
+S
+50 100
+0 0 0 -1 0 0
+0 0 0 0 0 0
+0 0 0
+
+Cut 30
+NORMAL
+P
+50 95
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+DragonClaw 15
+DRAGON
+P
+80 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+DragonPulse 10
+DRAGON
+S
+90 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+DragonRage 10
+DRAGON
+S
+50 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Ember 25
+FIRE
+S
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 10 0
+
+FeatherDance 15
+FLYING
+P
+0 100
+-4 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+FellStinger 25
+BUG
+P
+50 100
+0 0 0 0 0 0
+2 0 0 0 0 0
+0 0 0
+
+FireFang 15
+FIRE
+P
+65 95
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 10 0
+
+FireSpin 15
+FIRE
+S
+50 85
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+FlameBurst 15
+FIRE
+S
+70 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Flamethrower 15
+FIRE
+S
+90 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 10 0
+
+FlareBlitz 15
+FIRE
+P
+120 90
+0 0 0 -1 0 0
+0 0 0 0 0 0
+0 10 0
+
+FlashCannon 10
+STEEL
+S
+80 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+FuryAttack 20
+NORMAL
+P
+45 65
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Growl 40
+NORMAL
+P
+0 100
+-2 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Growth 40
+NORMAL
+P
+0 100
+0 0 0 0 0 0
+2 0 2 0 0 0
+0 0 0
+
+Gust 35
+FLYING
+S
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Harden 30
+NORMAL
+P
+0 100
+0 0 0 0 0 0
+0 2 0 0 0 0
+0 0 0
+
+HeatWave 10
+FIRE
+S
+95 90
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 10 0
+
+Hurricane 10
+FLYING
+S
+110 70
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+HydroPump 5
+WATER
+S
+110 80
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Inferno 5
+FIRE
+S
+100 50
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 100 0
+
+IronDefense 15
+STEEL
+P
+0 100
+0 0 0 0 0 0
+0 4 0 0 0 0
+0 0 0
+
+LeafStorm 5
+GRASS
+S
+130 90
+0 0 0 0 0 0
+0 0 -4 0 0 0
+0 0 0
+
+PetalBlizzard 15
+GRASS
+P
+90 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+PinMissile 20
+BUG
+P
+60 95
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+PoisonJab 20
+POISON
+P
+80 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+30 0 0
+
+PoisonPowder 35
+POISON
+P
+0 75
+0 0 0 0 0 0
+0 0 0 0 0 0
+100 0 0
+
+PoisonSting 35
+NORMAL
+P
+15 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+30 0 0
+
+Psybeam 20
+PSYCHIC
+S
+65 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Pursuit 20
+DARK
+P
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+QuickAttack 30
+NORMAL
+P
+40 100
+0 0 0 0 0 0
+0 0 0 0 1 0
+0 0 0
+
+QuiverDance 20
+BUG
+P
+0 100
+0 0 0 0 0 0
+0 0 2 2 2 0
+0 0 0
+
+RapidSpin 40
+NORMAL
+P
+20 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+RazorLeaf 25
+GRASS
+S
+55 95
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+ScaryFace 10
+NORMAL
+P
+0 100
+0 0 0 0 -4 0
+0 0 0 0 0 0
+0 0 0
+
+Scratch 35
+NORMAL
+P
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+ShadowClaw 15
+GHOST
+P
+70 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+SilverWind 5
+BUG
+S
+60 100
+0 0 0 0 0 0
+1 1 1 1 1 1
+0 0 0
+
+SkullBash 10
+NORMAL
+P
+130 50
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Slash 20
+NORMAL
+P
+70 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+SolarBeam 10
+GRASS
+S
+90 95
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+StringShot 40
+BUG
+P
+0 95
+0 0 0 0 -4 0
+0 0 0 0 0 0
+0 0 0
+
+StunSpore 15
+GRASS
+P
+0 75
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 100
+
+Tackle 35
+NORMAL
+P
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+TailWhip 30
+NORMAL
+P
+0 100
+0 -2 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Tailwind 30
+FLYING
+P
+0 100
+0 0 0 0 0 0
+0 0 0 0 10 0
+0 0 0
+
+TakeDown 20
+NORMAL
+P
+90 85
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+ToxicSpikes 10
+POISON
+P
+0 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+100 0 0
+
+Twineedle 20
+BUG
+P
+50 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+20 0 0
+
+Twister 20
+DRAGON
+S
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Venoshock 10
+POISON
+S
+80 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+VineWhip 25
+GRASS
+S
+45 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+WaterGun 25
+WATER
+S
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+WaterPulse 20
+WATER
+S
+60 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+WingAttack 35
+FLYING
+P
+60 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Withdraw 40
+WATER
+P
+0 100
+0 0 0 0 0 0
+0 2 0 0 0 0
+0 0 0

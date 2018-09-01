@@ -13,3 +13,6 @@ Data/Pokedata/Butterfree.txt
 Data/Pokedata/Weedle.txt
 Data/Pokedata/Kakuna.txt
 Data/Pokedata/Beedrill.txt
+Data/Pokedata/Pidgey.txt
+Data/Pokedata/Pidgeotto.txt
+Data/Pokedata/Pidgeot.txt

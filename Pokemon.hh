@@ -14,7 +14,7 @@ private:
     const static int MAX_MOVES = 4;
     int level_evolution;
     std::string next_evolution;
-    Type type;
+    std::string type;
     std::string name;
     int xp, hp, level;
     Stats stats;
@@ -85,7 +85,7 @@ public:
 
     /* Pre: True */
     /* Post: Returns the type of this pokemon */
-    Type get_type() const;
+    std::string get_type() const;
     
     /* Pre: True */
     /* Post: Returns the name of this pokemon */

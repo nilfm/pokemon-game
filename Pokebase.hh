@@ -10,7 +10,7 @@ private:
     std::string name;
     int level_evolution;
     std::string next_evolution;
-    Type type;
+    std::string type;
     Stats base_stats;
     Stats level_stats_min;
     Stats level_stats_max;
@@ -55,7 +55,7 @@ public:
 
     /* Pre: True */
     /* Post: Returns the type of this pokemon */
-    Type get_type() const;
+    std::string get_type() const;
     
     /* Pre: True */
     /* Post: Returns the whole moveset for this pokemon */

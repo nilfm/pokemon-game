@@ -1,28 +1,9 @@
 #include "Type.hh"
 
 std::unordered_map<std::string, int> Type::types;
-std::vector< std::vector<int> > Type::weaknesses;
+std::vector<std::vector <int> > Type::weaknesses;
 
-//CONSTRUCTORS
-Type::Type() {}
-
-Type::Type(std::string name) {
-    this->name = name;
-}
-
-//GETTERS
-std::string Type::get_name() const {
-    std::unordered_map<std::string, int>::iterator it = types.find(name);
-    assert(it != types.end());
-    return name;
-}
-
-int Type::advantage(Type t1, Type t2) {
-    std::string name1 = t1.get_name();
-    std::string name2 = t2.get_name();
-    return advantage(name1, name2);
-}
-
+//INFORMATION
 int Type::advantage(std::string t1, std::string t2) {
     std::unordered_map<std::string, int>::iterator it1 = types.find(t1);
     std::unordered_map<std::string, int>::iterator it2 = types.find(t2);

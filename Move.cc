@@ -1,12 +1,14 @@
 #include "Move.hh"
 
+std::unordered_map<std::string, Move> Move::moves;
+
 //CONSTRUCTORS
 Move::Move() {}
 
 Move::Move(bool special, const std::string& name, const std::string& type, int power, int accuracy, int maxpp, const Stats& change_stats_opponent, const Stats& change_stats_own, const Status& status) {
     this->special = special;
     this->name = name;
-    this->type = Type(type);
+    this->type = type;
     this->power = power;
     this->accuracy = accuracy;
     this->pp = this->maxpp = maxpp;
@@ -21,7 +23,7 @@ std::string Move::get_name() const {
     return name;
 }
 
-Type Move::get_type() const {
+std::string Move::get_type() const {
     return type;
 }
 
@@ -57,6 +59,12 @@ bool Move::is_special() const {
     return special;
 }
 
+Move Move::get_move(const std::string& name) {
+    std::unordered_map<std::string, Move>::iterator it = moves.find(name);
+    assert(it != moves.end());
+    return it->second;
+}
+
 
 //SETTERS
 void Move::decrement_pp() {
@@ -67,7 +75,7 @@ void Move::decrement_pp() {
 //SHOWERS
 void Move::print_stats() const {
     std::cout << "  Name: " << name << std::endl;
-    std::cout << "  Type: " << type.get_name() << std::endl;
+    std::cout << "  Type: " << type << std::endl;
     std::cout << "  PP: " << pp << std::endl;
     std::cout << "  Power: " << power << std::endl;
     std::cout << "  Accuracy: " << accuracy << std::endl;
@@ -107,17 +115,19 @@ void Move::restore_pp(int restore) {
 }
 
 
-//SEARCHERS
-Move Move::search_move(const std::string& name, const std::map<int, std::vector<Move> >& moveset) {
-    Move to_return;
-    bool found = false;
-    for (std::map<int, std::vector<Move> >::const_iterator it = moveset.begin(); it != moveset.end() and not found; it++) {
-        for (int j = 0; j < (int)(it->second).size() and not found; j++) {
-            if ((it->second)[j].get_name() == name) {
-                found = true;
-                to_return = (it->second)[j];
-            }
-        }
+//INITIALIZERS
+void Move::initialize_moves(const std::string address) {
+    std::ifstream in(address);
+    assert(in.is_open());
+    std::string name;
+    int pp;
+    std::string type;
+    char sp;
+    int power, accuracy;
+    Stats own, opp;
+    Status st;
+    while (in >> name >> pp >> type >> sp >> power >> accuracy >> opp.attack >> opp.defense >> opp.spattack >> opp.spdefense >> opp.speed >> opp.maxhp >> own.attack >> own.defense >> own.spattack >> own.spdefense >> own.speed >> own.maxhp >> st.poison >> st.burn >> st.stun) {
+        bool special = (sp == 'S');
+        moves[name] = Move(special, name, type, power, accuracy, pp, opp, own, st);
     }
-    return to_return;
 }

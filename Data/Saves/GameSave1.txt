@@ -1,0 +1,18 @@
+Nil 1000 0
+POKEMON Pidgey 1 0
+6 5 4 4 7 6
+Tackle
+ENDMOVES
+
+POKEMON Squirtle 1 0
+6 9 7 8 3 7
+Tackle
+ENDMOVES
+
+POKEMON Weedle 1 0
+6 2 3 3 6 4
+PoisonSting
+StringShot
+ENDMOVES
+
+ITEMS

@@ -3,3 +3,4 @@ Wartortle
 Ivysaur
 Beedrill
 Butterfree
+Pidgeotto

@@ -9,98 +9,15 @@ SpDefense 18 2 3
 Speed 10 1 2
 MaxHP 10 2 3
 
-Tackle 1 35
-NORMAL
-P
-40 100
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0
-
-TailWhip 4 30
-NORMAL
-P
-0 100
-0 -2 0 0 0 0
-0 0 0 0 0 0
-0 0 0
-
-WaterGun 7 25
-WATER
-S
-40 100
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0
-
-Withdraw 10 40
-WATER
-P
-0 100
-0 0 0 0 0 0
-0 2 0 0 0 0
-0 0 0
-
-Bubble 13 30
-WATER
-S
-40 100
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0
-
-Bite 17 25
-DARK
-P
-60 100
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0
-
-RapidSpin 21 40
-NORMAL
-P
-20 100
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0
-
-WaterPulse 29 20
-WATER
-S
-60 100
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0
-
-AquaTail 33 10
-WATER
-P
-90 90
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0
-
-SkullBash 37 10
-NORMAL
-P
-130 50
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0
-
-IronDefense 41 15
-STEEL
-P
-0 100
-0 0 0 0 0 0
-0 4 0 0 0 0
-0 0 0
-
-HydroPump 49 5
-WATER
-S
-110 80
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0
+Tackle 1
+TailWhip 4
+WaterGun 7
+Withdraw 10
+Bubble 13
+Bite 17
+RapidSpin 21
+WaterPulse 29
+AquaTail 33
+SkullBash 37
+IronDefense 41
+HydroPump 49

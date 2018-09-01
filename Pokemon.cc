@@ -97,7 +97,7 @@ Pokemon::Pokemon(const Pokebase& p, int level, int xp, const Stats& current, con
     //Give it the given moves (fatal d'eficiencia lol)
     this->moveset = p.get_moveset();
     for (int i = 0; i < (int)moves.size(); i++) {
-        Move to_push = Move::search_move(moves[i], moveset);
+        Move to_push = Move::get_move(moves[i]);
         (this->moves).push_back(to_push);
     }
 }
@@ -140,7 +140,7 @@ std::string Pokemon::get_name() const {
     return name;
 }
 
-Type Pokemon::get_type() const {
+std::string Pokemon::get_type() const {
     return type;
 }
 

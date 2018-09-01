@@ -269,7 +269,7 @@ int Combat::calculate_damage(const Pokemon& attacker, const Pokemon& defender, c
         defense = defender.get_battle_stats().defense;
     }
     double stab = 1;
-    if (attacker.get_type().get_name() == move.get_type().get_name()) stab = 1.5;
+    if (attacker.get_type() == move.get_type()) stab = 1.5;
     int power = move.get_power();
     int accuracy = move.get_accuracy();
     int level = attacker.get_level();

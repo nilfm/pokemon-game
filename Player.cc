@@ -397,7 +397,7 @@ int Player::move_choice(const Pokemon& own, const Pokemon& other) const { //AI r
     
     for (int i = 0; i < (int)(own.get_moves().size()); i++) {
         Move curr = own.get_moves()[i];
-        if (curr.get_type().get_name() == own.get_type().get_name()) points[i] += 3;
+        if (curr.get_type() == own.get_type()) points[i] += 3;
         if (Type::advantage(curr.get_type(), other.get_type())) points[i] += 7;
         points[i] += curr.get_power()/20;
         points[i] -= (100-curr.get_accuracy())/10;

@@ -11,7 +11,8 @@
 int main() {
     //Things to initialize
     srand(time(0));
-    Type::initialize();
+    Type::initialize(); //has to be before Pokedex and Move
+    Move::initialize_moves("Data/Moves.txt"); //has to be before Pokedex
     Pokedex::initialize("Data/Addresses.txt");
     Item::initialize_items("Data/Items.txt");
     

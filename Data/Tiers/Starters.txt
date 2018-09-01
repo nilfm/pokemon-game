@@ -3,3 +3,4 @@ Charmander
 Squirtle
 Caterpie
 Weedle
+Pidgey
