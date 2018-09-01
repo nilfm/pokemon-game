@@ -35,7 +35,9 @@ Player::Player(int trainers, bool AI) { //AI related
                 int rnd = Random::randint(0, (int)available.size()-1);
                 Pokebase chosen = Pokedex::get_pokebase(available[rnd]);
                 //1 <= level <= 100, 0.9*trainer <= level <= trainer
-                int level = std::min(std::max(1, Random::randint((int)(0.5*trainers), (int)0.9*trainers)), 100);
+                std::cerr << trainers << std::endl;
+                int level = std::min(std::max(1, Random::randint((int)(0.5*trainers), trainers)), 100);
+                std::cerr << level << std::endl;
                 team.push_back(Pokemon(chosen, level));
                 available.erase(available.begin()+rnd);
             }

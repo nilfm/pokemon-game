@@ -10,6 +10,9 @@ Combat::Combat(Player& _player, Player& _enemy) : player(_player), enemy(_enemy)
 
 //ACTIONS
 int Combat::play_turn() {
+    player.get_first_pokemon().handle_status();
+    enemy.get_first_pokemon().handle_status();
+    
     show_current_game();
     Move player_move;
     Move enemy_move;
@@ -17,9 +20,6 @@ int Combat::play_turn() {
     bool enemy_picked_move = false;
 
     bool corr = false;
-    
-    player.get_first_pokemon().handle_status();
-    enemy.get_first_pokemon().handle_status();
     
     while (not corr) {
         std::string query = "\nWhat to do?\n  1. Attack\n  2. Switch Pokemon\n  3. Use Item\n";
@@ -60,7 +60,7 @@ int Combat::play_turn() {
             for (int i = 0; i < (int)choices.size(); i++) {
                 std::cout << "  " << i+1 << ". " << choices[i] << std::endl;
             }
-            std::string query2 = "Select one of the items (0 to cancel) : ";
+            std::string query2 = "Select one of the items (0 to cancel): ";
             std::string error2 = "Oops. Enter a number between 1 and " + std::to_string(choices.size());
             int item = Input::read_int(0, (int)choices.size(), query2, error2);
             if (item == 0) std::cout << std::endl;
@@ -189,6 +189,9 @@ bool Combat::attack(int k, Player& player, Player& enemy, Move& move) {
     std::string owner = "Your ";
     if (k == 2) owner = "The enemy ";
     
+    std::string ownerdef = "The enemy ";
+    if (k == 2) ownerdef = "Your ";
+    
     std::string attacker_name = player.get_first_pokemon().get_name();
     if (k == 2) attacker_name = enemy.get_first_pokemon().get_name();
     
@@ -214,21 +217,21 @@ bool Combat::attack(int k, Player& player, Player& enemy, Move& move) {
             int rnd = Random::randint(0, 100);
             if (move_status.poison > rnd) {
                 defending_pokemon.get_poisoned();
-                std::cout << owner << defender_name << " was poisoned!" << std::endl;
+                std::cout << ownerdef << defender_name << " was poisoned!" << std::endl;
             }
         }
         if (move_status.burn > 0) {
             int rnd = Random::randint(0, 100);
             if (move_status.burn > rnd) {
                 defending_pokemon.get_burned();
-                std::cout << owner << defender_name << " was burned!" << std::endl;
+                std::cout << ownerdef << defender_name << " was burned!" << std::endl;
             }
         }
         if (move_status.stun > 0) {
             int rnd = Random::randint(0, 100);
             if (move_status.stun > rnd) {
                 defending_pokemon.get_stunned();
-                std::cout << owner << defender_name << " was stunned!" << std::endl;
+                std::cout << ownerdef << defender_name << " was stunned!" << std::endl;
             }
         }
     }

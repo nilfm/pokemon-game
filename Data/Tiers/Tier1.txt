@@ -4,3 +4,4 @@ Ivysaur
 Beedrill
 Butterfree
 Pidgeotto
+Raticate

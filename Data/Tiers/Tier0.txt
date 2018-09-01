@@ -6,3 +6,4 @@ Metapod
 Weedle
 Kakuna
 Pidgey
+Rattata

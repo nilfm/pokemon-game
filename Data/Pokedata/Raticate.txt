@@ -1,0 +1,21 @@
+Raticate
+NORMAL
+-1 Nothing
+
+Attack 20 1 3
+Defense 9 1 3
+SpAttack 7 1 2
+SpDefense 15 1 3
+Speed 26 2 3
+MaxHP 9 2 3
+
+Tackle 1
+TailWhip 1
+QuickAttack 1
+ScaryFace 1
+Bite 10
+Pursuit 13
+HyperFang 16
+Assurance 19
+Crunch 22
+SuckerPunch 25

@@ -86,6 +86,14 @@ S
 0 0 0 0 0 0
 0 0 0
 
+Crunch 15
+DARK
+P
+80 100
+0 -1 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
 Cut 30
 NORMAL
 P
@@ -250,6 +258,14 @@ HydroPump 5
 WATER
 S
 110 80
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+HyperFang 15
+NORMAL
+P
+80 90
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0
@@ -437,6 +453,14 @@ P
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 100
+
+SuckerPunch 5
+DARK
+P
+70 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
 
 Tackle 35
 NORMAL

@@ -16,3 +16,5 @@ Data/Pokedata/Beedrill.txt
 Data/Pokedata/Pidgey.txt
 Data/Pokedata/Pidgeotto.txt
 Data/Pokedata/Pidgeot.txt
+Data/Pokedata/Rattata.txt
+Data/Pokedata/Raticate.txt
