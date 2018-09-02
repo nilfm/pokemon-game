@@ -35,7 +35,7 @@ Player::Player(int trainers, bool AI) { //AI related
                 int rnd = Random::randint(0, (int)available.size()-1);
                 Pokebase chosen = Pokedex::get_pokebase(available[rnd]);
                 //1 <= level <= 100, 0.9*trainer <= level <= trainer
-                int level = std::min(std::max(1, Random::randint((int)(0.5*trainers), trainers)), 100);
+                int level = std::min(std::max(1, Random::randint((int)(0.7*trainers), trainers)), 100);
                 team.push_back(Pokemon(chosen, level));
                 available.erase(available.begin()+rnd);
             }
@@ -415,7 +415,7 @@ int Player::move_choice(const Pokemon& own, const Pokemon& other) const { //AI r
         int rnd = Random::randint(1, 3);
         points[i] *= rnd;
         points[i] /= 2;
-        if (curr.get_pp() == 0) points[i] = 0;
+        if (curr.get_pp() == 0) points[i] = -100;
         
         if (points[i] > max) {
             max = points[i];

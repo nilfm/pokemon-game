@@ -1,19 +1,28 @@
-Dev 2000 2
-POKEMON Squirtle 3 30
-8 13 10 12 7 11
-Tackle
+Dev 16300 45
+POKEMON Charizard 41 8554
+106 128 158 133 148 111
+Slash
+AirSlash
+WingAttack
+FireFang
 ENDMOVES
 
-POKEMON Pikachu 2 22
-9 5 8 8 13 7
-ThunderShock
-TailWhip
-ENDMOVES
-
-POKEMON Charmander 1 0
-6 5 7 5 7 6
-Scratch
+POKEMON Venusaur 35 5950
+112 121 113 115 95 106
+PoisonPowder
 Growl
+BodySlam
+RazorLeaf
+ENDMOVES
+
+POKEMON Arbok 41 8200
+113 108 117 108 107 129
+Crunch
+ThunderFang
+Screech
+FireFang
 ENDMOVES
 
 ITEMS
+MaxPotion 19
+Superpotion 3

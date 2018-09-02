@@ -84,10 +84,10 @@ int main() {
             }
             else {
                 if (player.get_name() == "Dev") {
-                    std::cout << "Oh no! You \"lost\"!" << std::endl;
+                    std::cout << "\nOh no! You \"lost\"!" << std::endl;
                 }
                 else {
-                    std::cout << "Oh no! You lost!" << std::endl;
+                    std::cout << "\nOh no! You lost!" << std::endl;
                     player.clear_file();
                 }
                 cont = false;
