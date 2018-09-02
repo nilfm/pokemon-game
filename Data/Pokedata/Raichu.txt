@@ -1,0 +1,27 @@
+Raichu
+ELECTRIC
+-1 Nothing
+
+Attack 22 2 3
+Defense 12 1 2
+SpAttack 22 2 3
+SpDefense 17 1 3
+Speed 25 2 4
+MaxHP 16 2 3
+
+TailWhip 1
+ThunderShock 1
+Growl 5
+PlayNice 7
+QuickAttack 10
+ElectroBall 13
+ThunderWave 18
+Feint 21
+Spark 26
+Nuzzle 30
+Discharge 35
+Slam 39
+Thunderbolt 44
+Agility 48
+WildCharge 55
+Thunder 65

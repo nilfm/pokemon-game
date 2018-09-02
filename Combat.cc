@@ -54,11 +54,13 @@ int Combat::play_turn() {
             std::cout << "\nYour inventory:" << std::endl;
             std::map<Item, int> inv = player.get_inventory();
             std::vector<std::string> choices;
+            std::vector<int> amounts;
             for (auto it = inv.begin(); it != inv.end(); it++) {
                 choices.push_back((it->first).get_name());
+                amounts.push_back(it->second);
             }
             for (int i = 0; i < (int)choices.size(); i++) {
-                std::cout << "  " << i+1 << ". " << choices[i] << std::endl;
+                std::cout << "  " << i+1 << ". " << choices[i] << " x" << amounts[i] << std::endl;
             }
             std::string query2 = "Select one of the items (0 to cancel): ";
             std::string error2 = "Oops. Enter a number between 1 and " + std::to_string(choices.size());
@@ -71,8 +73,9 @@ int Combat::play_turn() {
                 int poke = Input::read_int(0, 3, query3, error3);
                 if (poke == 0) std::cout << std::endl;
                 else {
-                    player.use_item(poke-1, Item::get_item(choices[item-1]));
-                    player.decrement_item(choices[item-1]);
+                    corr = player.use_item(poke-1, Item::get_item(choices[item-1]));
+                    if (corr) player.decrement_item(choices[item-1]);
+
                 }
             } 
         }

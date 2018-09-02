@@ -26,4 +26,4 @@ Player: Has info about a player's Pokemon team, items, and actions he can do wit
 
 ### BUGS
 
-+ Fine for now! 
++ Sometimes the assertion that PP has run out pops up even though the move has 20+ PP

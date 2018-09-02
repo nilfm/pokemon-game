@@ -22,3 +22,5 @@ Data/Pokedata/Spearow.txt
 Data/Pokedata/Fearow.txt
 Data/Pokedata/Ekans.txt
 Data/Pokedata/Arbok.txt
+Data/Pokedata/Pikachu.txt
+Data/Pokedata/Raichu.txt

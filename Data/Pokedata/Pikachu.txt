@@ -1,0 +1,27 @@
+Pikachu
+ELECTRIC
+25 Raichu
+
+Attack 7 1 2
+Defense 3 1 2
+SpAttack 6 1 2
+SpDefense 6 1 2
+Speed 11 1 3
+MaxHP 5 2 3
+
+TailWhip 1
+ThunderShock 1
+Growl 5
+PlayNice 7
+QuickAttack 10
+ElectroBall 13
+ThunderWave 18
+Feint 21
+Spark 26
+Nuzzle 29
+Discharge 34
+Slam 37
+Thunderbolt 42
+Agility 45
+WildCharge 50
+Thunder 58

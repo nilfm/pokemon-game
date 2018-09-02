@@ -142,6 +142,14 @@ P
 0 0 0 0 0 0
 0 0 0
 
+Discharge 15
+ELECTRIC
+S
+80 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 30
+
 DragonClaw 15
 DRAGON
 P
@@ -182,6 +190,14 @@ P
 0 0 0 0 0 0
 0 0 0
 
+ElectroBall 10
+ELECTRIC
+S
+75 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
 Ember 25
 FIRE
 S
@@ -195,6 +211,14 @@ FLYING
 P
 0 100
 -4 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Feint 10
+NORMAL
+P
+50 100
+0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0
 
@@ -390,6 +414,14 @@ S
 0 0 0 0 0 0
 0 0 0
 
+Nuzzle 20
+ELECTRIC
+P
+20 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 100
+
 Peck 35
 FLYING
 P
@@ -411,6 +443,14 @@ BUG
 P
 60 95
 0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+PlayNice 20
+NORMAL
+P
+0 100
+-2 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0
 
@@ -542,6 +582,14 @@ P
 0 0 0 0 0 0
 0 0 0
 
+Slam 20
+NORMAL
+P
+80 75
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
 Slash 20
 NORMAL
 P
@@ -557,6 +605,14 @@ S
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0
+
+Spark 20
+ELECTRIC
+P
+65 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 30
 
 StringShot 40
 BUG
@@ -614,6 +670,22 @@ P
 0 0 0 0 0 0
 0 0 0
 
+Thunder 10
+ELECTRIC
+S
+110 70
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 30
+
+Thunderbolt 15
+ELECTRIC
+S
+90 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 10
+
 ThunderFang 15
 ELECTRIC
 P
@@ -621,6 +693,23 @@ P
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 10
+
+ThunderShock 30
+ELECTRIC
+S
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 10
+
+ThunderWave 20
+ELECTRIC
+P
+0 90
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 100
+
 
 ToxicSpikes 10
 POISON
@@ -674,6 +763,14 @@ WaterPulse 20
 WATER
 S
 60 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+WildCharge 15
+ELECTRIC
+P
+75 100
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0

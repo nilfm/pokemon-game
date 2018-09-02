@@ -83,8 +83,13 @@ int main() {
                 player.heal_pokemon();
             }
             else {
-                std::cout << "Oh no! You lost!" << std::endl;
-                player.clear_file();
+                if (player.get_name() == "Dev") {
+                    std::cout << "Oh no! You \"lost\"!" << std::endl;
+                }
+                else {
+                    std::cout << "Oh no! You lost!" << std::endl;
+                    player.clear_file();
+                }
                 cont = false;
                 //register high score
             }

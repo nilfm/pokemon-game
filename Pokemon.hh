@@ -38,7 +38,7 @@ public:
     //This is for evolving Pokemon and keeping movesets
     /* Pre: Pokebase is a valid base for a pokemon, level is such that 0 < level < 101 */
     /* Post: Returns an instance of the pokemon described in the pokebase, at the level given, with the moveset given */
-    Pokemon(const Pokebase& p, int level, const std::vector<Move>& moves, int xp);
+    Pokemon(const Pokebase& p, int level, const std::vector<Move>& moves, int xp, int missing_hp);
     
     //This is for loading a Pokemon through a Gamesave
     /* Pre: Pokebase is a valid base for a pokemon, level is such that 0 < level < 101, every string in moves refers to a valid Move */

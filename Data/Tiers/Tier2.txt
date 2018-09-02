@@ -5,3 +5,4 @@ Pidgeot
 Fearow
 Beedrill
 Arbok
+Raichu

@@ -4,10 +4,10 @@ BUG
 
 Attack 7 1 2
 Defense 8 1 2
-SpAttack 24 1 3
+SpAttack 18 1 3
 SpDefense 20 1 3
 Speed 12 1 3
-MaxHP 12 2 3
+MaxHP 10 2 3
 
 Gust 1
 Confusion 11

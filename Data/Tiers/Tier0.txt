@@ -9,3 +9,4 @@ Pidgey
 Rattata
 Spearow
 Ekans
+Pikachu

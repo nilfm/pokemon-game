@@ -138,7 +138,7 @@ public:
     //ACTIONS
     /* Pre: k is a valid position on the team, it is a valid Item */
     /* Post: The item has been used on the Pokemon at position p */
-    void use_item(int k, const Item& it);
+    bool use_item(int k, const Item& it);
 
     /* Pre: True */
     /* Post: Asks user for input and returns a starting team of Pokemon */

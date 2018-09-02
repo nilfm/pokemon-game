@@ -4,3 +4,4 @@ Squirtle
 Caterpie
 Weedle
 Pidgey
+Pikachu

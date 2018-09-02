@@ -1,21 +1,19 @@
-Nil 1700 2
-POKEMON Charmander 3 52
-8 9 11 9 10 9
-Scratch
+Dev 1500 1
+POKEMON Charmander 2 10
+7 7 9 7 8 7
 Growl
+Scratch
 ENDMOVES
 
-POKEMON Bulbasaur 1 0
-6 7 8 8 4 7
-Growl
+POKEMON Squirtle 1 3
+6 9 7 8 3 7
 Tackle
 ENDMOVES
 
-POKEMON Weedle 1 3
-6 2 3 3 6 4
-StringShot
-PoisonSting
+POKEMON Pikachu 1 4
+7 3 6 6 11 5
+ThunderShock
+TailWhip
 ENDMOVES
 
 ITEMS
-Potion 6

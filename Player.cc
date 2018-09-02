@@ -35,9 +35,7 @@ Player::Player(int trainers, bool AI) { //AI related
                 int rnd = Random::randint(0, (int)available.size()-1);
                 Pokebase chosen = Pokedex::get_pokebase(available[rnd]);
                 //1 <= level <= 100, 0.9*trainer <= level <= trainer
-                std::cerr << trainers << std::endl;
                 int level = std::min(std::max(1, Random::randint((int)(0.5*trainers), trainers)), 100);
-                std::cerr << level << std::endl;
                 team.push_back(Pokemon(chosen, level));
                 available.erase(available.begin()+rnd);
             }
@@ -252,7 +250,7 @@ void Player::sort_team() {
     std::cout << std::endl;
 }
 
-void Player::use_item(int k, const Item& it) {
+bool Player::use_item(int k, const Item& it) {
     int type = it.get_type();
     if (type == 0) { //Restore PP for one move
         std::vector<Move> moves = team[k].get_moves();
@@ -273,6 +271,10 @@ void Player::use_item(int k, const Item& it) {
         std::cout << "Restored PP for all moves!" << std::endl << std::endl;
     }
     else if (type == 2) { //Heal
+        if (team[k].get_hp() == 0) {
+            std::cout << "Cannot heal a fainted Pokemon" << std::endl;
+            return false;
+        }
         team[k].restore_health(it.get_restored_hp());
         std::cout << team[k].get_name() << " has restored its HP." << std::endl << std::endl;
     }
@@ -291,6 +293,7 @@ void Player::use_item(int k, const Item& it) {
         team[k].restore_health(it.get_restored_hp());
         std::cout << team[k].get_name() << " is fully healed!" << std::endl;
     }
+    return true;
 }
 
 std::vector<Pokemon> Player::choose_starters() const {

@@ -43,7 +43,7 @@ Pokemon::Pokemon(const Pokebase& p, int level) {
     }
 }
 
-Pokemon::Pokemon(const Pokebase& p, int level, const std::vector<Move>& moves, int xp) {
+Pokemon::Pokemon(const Pokebase& p, int level, const std::vector<Move>& moves, int xp, int missing_hp) {
     //Copy type, name
     type = p.get_type();
     name = p.get_name();
@@ -59,6 +59,7 @@ Pokemon::Pokemon(const Pokebase& p, int level, const std::vector<Move>& moves, i
     stats.spdefense = p.get_base_stats().spdefense + (level-1)*Random::randint(per_level_min.spdefense, per_level_max.spdefense);
     stats.speed     = p.get_base_stats().speed     + (level-1)*Random::randint(per_level_min.speed, per_level_max.speed);
     stats.maxhp     = p.get_base_stats().maxhp     + (level-1)*Random::randint(per_level_min.maxhp, per_level_max.maxhp);
+    hp = std::max(1, stats.maxhp - missing_hp);
     battle_stats    = stats;
     
     //Evolution stuff
@@ -276,7 +277,7 @@ void Pokemon::evolve() {
     if (choice == 2) std::cout << "Evolution stopped" << std::endl << std::endl;
     else {
         Pokebase p = Pokedex::get_pokebase(next_evolution);
-        *this = Pokemon(p, level, moves, xp);
+        *this = Pokemon(p, level, moves, xp, stats.maxhp-hp);
         std::cout << "Your " << old_name << " just evolved to a " << name << "!" << std::endl << std::endl;
     }
 }
@@ -314,7 +315,7 @@ void Pokemon::level_up() {
     battle_stats.maxhp += improv.maxhp;
     hp += improv.maxhp;
     //If necessary, (ask to) evolve
-    if (level >= level_evolution) {
+    if (level >= level_evolution and level_evolution != -1) {
         evolve();
     }
     //If necessary, (ask to) learn a new move
