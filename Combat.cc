@@ -28,15 +28,17 @@ int Combat::play_turn() {
         if (choice == 1) {
             player.get_first_pokemon().print_moves();
             int howmany = player.get_first_pokemon().get_moves().size();
-            std::string query0 = "Select a move to perform: ";
+            std::string query0 = "Select a move to perform (0 to cancel): ";
             std::string error0 = "Oops. Enter a number between 1 and " + std::to_string(howmany) + " (0 to cancel): ";
             int move_picked = Input::read_int(0, howmany, query0, error0);
-            if (player.get_first_pokemon().get_moves()[move_picked-1].get_pp() > 0) {
-                picked_move = true;
-                player_move = player.get_first_pokemon().get_moves()[move_picked-1];
-                corr = true;
+            if (move_picked != 0) {
+                if (player.get_first_pokemon().get_moves()[move_picked-1].get_pp() > 0) {
+                    picked_move = true;
+                    player_move = player.get_first_pokemon().get_moves()[move_picked-1];
+                    corr = true;
+                }
+                else std::cout << "This move has no PP!" << std::endl << std::endl;
             }
-            else std::cout << "This move has no PP!" << std::endl << std::endl;
         }
         else if (choice == 2) {
             player.show_team_inline();
@@ -47,7 +49,6 @@ int Combat::play_turn() {
             else {
                 corr = player.swap_pokemon(0, swap-1);
                 if (corr) player.get_first_pokemon() = player.get_first_pokemon();
-                else std::cout << "Can't have a fainted Pokemon as your leader" << std::endl;
             }
         }
         else {
