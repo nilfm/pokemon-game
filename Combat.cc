@@ -64,13 +64,13 @@ int Combat::play_turn() {
             for (int i = 0; i < (int)choices.size(); i++) {
                 std::cout << "  " << i+1 << ". " << choices[i] << " x" << amounts[i] << std::endl;
             }
-            std::string query2 = "Select one of the items (0 to cancel): ";
+            std::string query2 = "\nSelect one of the items (0 to cancel): ";
             std::string error2 = "Oops. Enter a number between 1 and " + std::to_string(choices.size());
             int item = Input::read_int(0, (int)choices.size(), query2, error2);
             if (item == 0) std::cout << std::endl;
             else {
                 player.show_team_inline();
-                std::string query3 = "Select a Pokemon to use the item on (0 to cancel): ";
+                std::string query3 = "\nSelect a Pokemon to use the item on (0 to cancel): ";
                 std::string error3 = "Oops. Enter a number between 0 and 3";
                 int poke = Input::read_int(0, 3, query3, error3);
                 if (poke == 0) std::cout << std::endl;

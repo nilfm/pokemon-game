@@ -255,15 +255,15 @@ bool Player::use_item(int k, const Item& it) {
     if (type == 0) { //Restore PP for one move
         std::vector<Move> moves = team[k].get_moves();
         int n = moves.size();
-        std::string query = "Which move do you want to restore PP for?";
+        std::string query = "Which move do you want to restore PP for? ";
         std::string error = "Oops. Enter a number between 1 and " + std::to_string(n) + ".";
-        std::cout << "Moves:" << std::endl;
+        std::cout << std::endl << "Moves:" << std::endl;
         for (int i = 0; i < n; i++) {
-            std::cout << i+1 << ": " << moves[i].get_name() << std::endl << std::endl;
+            std::cout << "  " << i+1 << ". " << moves[i].get_name() << std::endl;
         }
         std::cout << std::endl;
         int choice = Input::read_int(1, n, query, error);
-        team[k].restore_pp(choice, it.get_restored_pp());
+        team[k].restore_pp(choice-1, it.get_restored_pp());
         std::cout << "Restored PP for " << moves[choice-1].get_name() << "!" << std::endl;
     }
     else if (type == 1) { //Restore PP for all moves
@@ -482,13 +482,17 @@ int Player::move_choice(const Pokemon& own, const Pokemon& other) const { //AI r
 }
 
 int Player::swap_choice(const Pokemon& enemy) const { //AI related
+    int choice = 1;
     if (team[1].get_hp() != 0 and team[2].get_hp() != 0) { //both alive
-        if (Type::advantage(team[1].get_type(), enemy.get_type())) return 1;
-        else if (Type::advantage(team[1].get_type(), enemy.get_type())) return 2;
+        if (Type::advantage(team[1].get_type(), enemy.get_type())) choice = 1;
+        else if (Type::advantage(team[1].get_type(), enemy.get_type())) choice =  2;
         else return Random::randint(1, 2);
     }
-    else if (team[1].get_hp() != 0) return 1;
-    else return 2;
+    else if (team[1].get_hp() != 0) choice = 1;
+    else choice = 2;
+    std::cout << std::endl << "The enemy has taken back " << team[0].get_name() << "." << std::endl;
+    std::cout << "And the enemy brought out " << team[choice].get_name() << "!" << std::endl;
+    return choice;
 }
 
 
