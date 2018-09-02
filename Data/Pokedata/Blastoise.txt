@@ -9,14 +9,7 @@ SpDefense 24 2 4
 Speed 15 2 3
 MaxHP 20 2 4
 
-FlashCannon 1 10
-STEEL
-S
-80 100
-0 0 0 -1 0 0
-0 0 0 0 0 0
-0 0 0
-
+FlashCannon 1
 Tackle 1
 TailWhip 4
 WaterGun 7
