@@ -174,16 +174,20 @@ public:
 
     //ACTIONS
     /* Pre: True */
-    /* Post: Returns int between 1 and 3 representing action choice. Can't return 2 if no Pokemon are alive to swap. */
+    /* Post: Returns 1 if attack, 2 if swap Pokemon, 3 if use healing item, 4 if use PP item. Can't return 2 if no Pokemon are alive to swap. */
     int action_choice() const;
     
     /* Pre: either the second or third Pokemon are alive */
     /* Post: Returns int between 1 and 2 representing the choice of Pokemon to swap. (0-indexed) */
-    int swap_choice() const;
+    int swap_choice(const Pokemon& enemy) const;
     
     /* Pre: True */
     /* Post: Returns int between 1 and amount of moves for own representing action choice */
     int move_choice(const Pokemon& own, const Pokemon& other) const;
+    
+    /* Pre: k is either 0 or 1, representing "heal HP" or "heal PP" */
+    /* Post: The enemy has used an item according to what k represents, and its own level */
+    void use_item_AI(int k);
     
 
     //AUXILIARY

@@ -4,9 +4,9 @@ const std::string Player::gamesave_address = "Data/Saves/GameSave";
 const std::string Player::tiers_address = "Data/Tiers/Tier";
 const std::string Player::starters_address = "Data/Tiers/Starters";
 const std::string Player::address_extension = ".txt";
-const std::vector<std::string> hp_items = {"Potion", "Superpotion", "Hyperpotion", "MaxPotion"};
-const std::vector<std::string> pp_items = {"Ether", "MaxEther", "Elixir", "MaxElixir"};
-const std::vector<std::string> x_items = {"XAttack", "XDefense", "XSpecialAttack", "XSpecialDefense", "XSpeed"};
+const std::vector<std::string> Player::hp_items = {"Potion", "Superpotion", "Hyperpotion", "MaxPotion", "RestoreAll"};
+const std::vector<std::string> Player::pp_items = {"Ether", "MaxEther", "Elixir", "MaxElixir"};
+const std::vector<std::string> Player::x_items = {"XAttack", "XDefense", "XSpecialAttack", "XSpecialDefense", "XSpeed"};
 
 //CONSTRUCTORS
 Player::Player() {}
@@ -263,7 +263,7 @@ bool Player::use_item(int k, const Item& it) {
         }
         std::cout << std::endl;
         int choice = Input::read_int(1, n, query, error);
-        moves[choice-1].restore_pp(it.get_restored_pp());
+        team[k].restore_pp(choice, it.get_restored_pp());
         std::cout << "Restored PP for " << moves[choice-1].get_name() << "!" << std::endl;
     }
     else if (type == 1) { //Restore PP for all moves
@@ -294,6 +294,47 @@ bool Player::use_item(int k, const Item& it) {
         std::cout << team[k].get_name() << " is fully healed!" << std::endl;
     }
     return true;
+}
+
+void Player::use_item_AI(int k) { //AI related
+    if (k == 0) { //restore HP
+        // up to 15 uses potion, up to 30 uses superpotion, up to 45 uses hyperpotion, up to 60 uses max potion, then uses restore all
+        int choice = std::min(trainers/15, 4); 
+        Item it = Item::get_item(Player::hp_items[choice]);
+        std::cout << "The enemy used " << it.get_name() << "." << std::endl;
+        if (choice < 4) { //one of the *potions
+            team[0].restore_health(it.get_restored_hp());
+            std::cout << "The enemy " << team[0].get_name() << " has restored its HP." << std::endl << std::endl;
+        }
+        else { //restore all
+            team[0].restore_status(it.get_status_heal());
+            team[0].restore_health(it.get_restored_hp());
+            std::cout << "The enemy " << team[0].get_name() << " is fully healed!" << std::endl;
+        }
+    }
+    else { //restore PP
+        int choice = Random::randint(0, 3);
+        Item it = Item::get_item(Player::hp_items[choice]);
+        std::cout << "The enemy used " << it.get_name() << "." << std::endl;
+        if (choice < 2) { //Ether, MaxEther
+            std::vector<Move> moves = team[0].get_moves();
+            assert(moves.size() > 0); //the move list is not empty
+            int minindex = 0;
+            int min = moves[0].get_pp();
+            for (int i = 1; i < (int)moves.size(); i++) { //search for move with least PP
+                if (moves[i].get_pp() < min) {
+                    minindex = i;
+                    min = moves[i].get_pp();
+                }
+            }
+            team[0].restore_pp(minindex, it.get_restored_pp());
+            std::cout << "The enemy restored PP for " << moves[minindex].get_name() << "!" << std::endl;
+        }
+        else { //Elixir, MaxElixir
+            team[0].restore_all_moves_pp(it.get_restored_pp());
+            std::cout << "The enemy restored PP for all moves!" << std::endl << std::endl;
+        }
+    }
 }
 
 std::vector<Pokemon> Player::choose_starters() const {
@@ -390,8 +431,22 @@ bool Player::swap_pokemon(int i, int j) {
 }
 
 int Player::action_choice() const { //AI related
-    return 1; //TODO
-    //TODO: CANT RETURN 2 IF NO POKEMON ARE ALIVE TO SWAP
+    bool can_swap (team[1].get_hp() != 0 or team[2].get_hp() != 0);
+    int percent_hp = 100*team[0].get_hp()/team[0].get_battle_stats().maxhp;
+    int move_no_pp = 0; //0 -> all moves have pp, 1 -> move 1 has no pp, etc
+    for (int i = 0; i < (int)team[0].get_moves().size(); i++) {
+        if (team[0].get_moves()[i].get_pp() < 2) move_no_pp = i+1;
+    }
+    if (can_swap and percent_hp < Random::randint(10, 40)) { //swap
+        return 2;
+    }
+    else if (percent_hp < Random::randint(10, 30)) { //use healing item
+        return 3;
+    }
+    else if (move_no_pp != 0 and Random::randint(0, 100) < 33) { //use pp item
+        return 4;
+    }
+    return 1; //attack
 }
 
 int Player::move_choice(const Pokemon& own, const Pokemon& other) const { //AI related
@@ -426,8 +481,13 @@ int Player::move_choice(const Pokemon& own, const Pokemon& other) const { //AI r
     return choice+1;
 }
 
-int Player::swap_choice() const { //AI related
-    if (team[1].get_hp() != 0) return 1;
+int Player::swap_choice(const Pokemon& enemy) const { //AI related
+    if (team[1].get_hp() != 0 and team[2].get_hp() != 0) { //both alive
+        if (Type::advantage(team[1].get_type(), enemy.get_type())) return 1;
+        else if (Type::advantage(team[1].get_type(), enemy.get_type())) return 2;
+        else return Random::randint(1, 2);
+    }
+    else if (team[1].get_hp() != 0) return 1;
     else return 2;
 }
 

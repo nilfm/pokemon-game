@@ -21,6 +21,7 @@ int Combat::play_turn() {
 
     bool corr = false;
     
+    //PLAYER CHOICES
     while (not corr) {
         std::string query = "\nWhat to do?\n  1. Attack\n  2. Switch Pokemon\n  3. Use Item\n";
         std::string error = "Oops. Enter a number between 1 and 3";
@@ -81,6 +82,8 @@ int Combat::play_turn() {
             } 
         }
     }
+    
+    //AI CHOICES
     int choice_ai = enemy.action_choice();
     if (choice_ai == 1) {
         int enemy_move_picked = enemy.move_choice(enemy.get_first_pokemon(), player.get_first_pokemon());
@@ -88,12 +91,16 @@ int Combat::play_turn() {
         enemy_move = enemy.get_first_pokemon().get_moves()[enemy_move_picked-1];
     }
     else if (choice_ai == 2) {
-        int swap = enemy.swap_choice();
-        enemy.swap_pokemon(1, swap);
-        enemy.get_first_pokemon() = enemy.get_first_pokemon();
+        int swap = enemy.swap_choice(player.get_first_pokemon());
+        enemy.swap_pokemon(0, swap);
     }
     else {
-        //TODO: enemy.choose_item()
+        if (choice_ai == 3) {
+            //TODO: Use healing item
+        }
+        else if (choice_ai == 4) {
+            //TODO: Use PP item
+        }
     }
     
     //Handle who attacks first and second (if they do attack)
@@ -136,7 +143,7 @@ int Combat::play_turn() {
         player.get_first_pokemon().gain_xp(xp_gained);
         if (Combat::has_lost(enemy)) return 1;
         else {
-            int swap = enemy.swap_choice();
+            int swap = enemy.swap_choice(player.get_first_pokemon());
             enemy.swap_pokemon(0, swap);
         }
     }
