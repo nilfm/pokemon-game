@@ -1,18 +1,18 @@
-Dev 20800 84
-POKEMON Mewtwo 79 31176
+Dev 21300 85
+POKEMON Mew 76 28771
+268 215 205 191 282 257
+Superpower
+HeatWave
+Pound
+MegaPunch
+ENDMOVES
+
+POKEMON Mewtwo 79 31428
 315 247 265 239 300 300
 PsychoCut
 PsychUp
 Confusion
 Psywave
-ENDMOVES
-
-POKEMON Mew 75 27750
-264 212 202 189 279 254
-Superpower
-HeatWave
-Pound
-MegaPunch
 ENDMOVES
 
 POKEMON Raichu 81 32968
