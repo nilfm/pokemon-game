@@ -37,5 +37,14 @@ Combat.o: Combat.cc Combat.hh Includes.hh Player.cc Player.hh Pokemon.cc Pokemon
 main.o: main.cc Player.cc Player.hh Pokemon.cc Pokemon.hh Pokebase.cc Pokebase.hh Pokedex.cc Pokedex.hh Item.cc Item.hh Move.cc Move.hh Includes.hh Random.cc Random.hh Type.cc Type.hh Input.cc Input.hh Random.hh
 	$(CC) $(OPTIONS) -c main.cc
 
+release: Pokegame Cleaner Data
+	cp Pokegame ../PokegameRelease
+	cp Cleaner ../PokegameRelease
+	cp -r Data/Pokedata ../PokegameRelease/Data
+	cp -r Data/Tiers ../PokegameRelease/Data
+	cp Data/Addresses.txt ../PokegameRelease/Data
+	cp Data/Items.txt ../PokegameRelease/Data
+	cp Data/Moves.txt ../PokegameRelease/Data
+
 clean:
 	rm -f *.o *.x Pokegame
