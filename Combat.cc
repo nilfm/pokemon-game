@@ -96,10 +96,10 @@ int Combat::play_turn() {
     }
     else {
         if (choice_ai == 3) {
-            //TODO: Use healing item
+            enemy.use_item_AI(0);
         }
         else if (choice_ai == 4) {
-            //TODO: Use PP item
+            enemy.use_item_AI(1);
         }
     }
     
@@ -139,7 +139,7 @@ int Combat::play_turn() {
     if (fainted_enemy) {
         std::cout << "The enemy " << enemy.get_first_pokemon().get_name() << " has fainted!" << std::endl;
         int xp_gained = enemy.get_first_pokemon().get_level()*Random::randint(3, 10);
-        std::cout << "Your " << player.get_first_pokemon().get_name() << " has gained " << xp_gained << " XP." << std::endl;
+        if (player.get_first_pokemon().get_xp() < 5*100*101) std::cout << "Your " << player.get_first_pokemon().get_name() << " has gained " << xp_gained << " XP." << std::endl;
         player.get_first_pokemon().gain_xp(xp_gained);
         if (Combat::has_lost(enemy)) return 1;
         else {
@@ -221,7 +221,7 @@ bool Combat::attack(int k, Player& player, Player& enemy, Move& move) {
     if (k == 1) fainted = enemy.get_first_pokemon().receive_damage(dmg);
     else fainted = player.get_first_pokemon().receive_damage(dmg);
     
-    if (not fainted and not missed) {
+    if (not fainted and not missed and not stunned and not not_effective) {
         Pokemon& defending_pokemon = (k == 1 ? enemy.get_first_pokemon() : player.get_first_pokemon());
         Pokemon& attacking_pokemon = (k == 1 ? player.get_first_pokemon() : enemy.get_first_pokemon());
         Status move_status = move.get_status();

@@ -437,13 +437,13 @@ int Player::action_choice() const { //AI related
     for (int i = 0; i < (int)team[0].get_moves().size(); i++) {
         if (team[0].get_moves()[i].get_pp() < 2) move_no_pp = i+1;
     }
-    if (can_swap and percent_hp < Random::randint(10, 40)) { //swap
+    if (can_swap and percent_hp < Random::randint(10, 40) and Random::randint(0, 1) == 0) { //swap
         return 2;
     }
-    else if (percent_hp < Random::randint(10, 30)) { //use healing item
+    else if (percent_hp < Random::randint(10, 30) and Random::randint(0, 2) == 0) { //use healing item
         return 3;
     }
-    else if (move_no_pp != 0 and Random::randint(0, 100) < 33) { //use pp item
+    else if (move_no_pp != 0 and Random::randint(0, 3) == 0) { //use pp item
         return 4;
     }
     return 1; //attack
@@ -486,12 +486,14 @@ int Player::swap_choice(const Pokemon& enemy) const { //AI related
     if (team[1].get_hp() != 0 and team[2].get_hp() != 0) { //both alive
         if (Type::advantage(team[1].get_type(), enemy.get_type())) choice = 1;
         else if (Type::advantage(team[1].get_type(), enemy.get_type())) choice =  2;
-        else return Random::randint(1, 2);
+        else choice = Random::randint(1, 2);
     }
     else if (team[1].get_hp() != 0) choice = 1;
     else choice = 2;
-    std::cout << std::endl << "The enemy has taken back " << team[0].get_name() << "." << std::endl;
-    std::cout << "And the enemy brought out " << team[choice].get_name() << "!" << std::endl;
+    if (team[0].get_hp() != 0) {
+        std::cout << std::endl << "The enemy took back " << team[0].get_name() << "." << std::endl;
+        std::cout << "And the enemy brought out " << team[choice].get_name() << "!" << std::endl;
+    }
     return choice;
 }
 

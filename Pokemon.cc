@@ -198,8 +198,8 @@ bool Pokemon::receive_damage(int dmg) {
 }
 
 void Pokemon::gain_xp(int xp) {
-    this->xp += xp;
-    while (this->xp >= 5*level*(level+1)) level_up();
+    this->xp = std::min(xp+this->xp, 5*100*101);
+    while (this->xp >= 5*level*(level+1) and level != 100) level_up();
 }
 
 void Pokemon::handle_status() {

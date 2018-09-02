@@ -1,31 +1,30 @@
-Dev 19450 88
-POKEMON Raichu 87 37410
-222 132 212 242 240 249
-QuickAttack
-ElectroBall
-TailWhip
-Discharge
-ENDMOVES
-
-POKEMON Mewtwo 82 33416
-324 256 272 248 309 310
-PsychoCut
+Dev 35450 120
+POKEMON Mewtwo 100 50500
+356 294 261 250 378 335
+Psystrike
+Psychic
 PsychUp
-Confusion
-Psywave
+PsychoCut
 ENDMOVES
 
-POKEMON Mew 78 30379
-274 219 211 196 288 262
-Superpower
-HeatWave
-Pound
-MegaPunch
+POKEMON Charizard 100 49500
+235 262 250 261 328 221
+ShadowClaw
+Inferno
+Flamethrower
+DragonRage
+ENDMOVES
+
+POKEMON Mew 100 49500
+231 320 309 272 325 370
+SignalBeam
+IceBeam
+Psychic
+WaterPulse
 ENDMOVES
 
 ITEMS
 Ether 10
-MaxEther 10
-MaxPotion 2
-RestoreAll 30
+MaxEther 9
+RestoreAll 26
 Superpotion 3
