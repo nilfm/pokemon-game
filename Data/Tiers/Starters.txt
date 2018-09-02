@@ -1,7 +1,5 @@
 Bulbasaur
 Charmander
 Squirtle
-Caterpie
-Weedle
 Pidgey
 Pikachu

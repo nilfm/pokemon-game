@@ -1,28 +1,29 @@
-Dev 16300 45
-POKEMON Charizard 41 8554
-106 128 158 133 148 111
-Slash
+Dev 10300 53
+POKEMON Charizard 52 13369
+134 157 184 161 175 137
+Flamethrower
 AirSlash
 WingAttack
 FireFang
 ENDMOVES
 
-POKEMON Venusaur 35 5950
-112 121 113 115 95 106
-PoisonPowder
-Growl
-BodySlam
-RazorLeaf
+POKEMON Pidgeot 51 12750
+159 133 137 109 169 136
+Agility
+Tailwind
+Twister
+Tackle
 ENDMOVES
 
-POKEMON Arbok 41 8200
-113 108 117 108 107 129
-Crunch
-ThunderFang
-Screech
-FireFang
+POKEMON Venusaur 51 12975
+125 129 165 131 149 183
+TakeDown
+StunSpore
+VineWhip
+BodySlam
 ENDMOVES
 
 ITEMS
-MaxPotion 19
+MaxPotion 17
+RestoreAll 20
 Superpotion 3

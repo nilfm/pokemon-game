@@ -216,9 +216,9 @@ void Player::show_team_inline() const {
 }
 
 void Player::show_inventory() const {
-    std::cout << "\nInventory:\n\n";
+    std::cout << "\nInventory:\n";
     for (std::map<Item, int>::const_iterator it = inventory.begin(); it != inventory.end(); it++) {
-        std::cout << it->second << " x " << (it->first).get_name() << std::endl;
+        std::cout << "  " << it->second << " x " << (it->first).get_name() << std::endl;
     }
     std::cout << std::endl << std::endl;
 }
@@ -230,7 +230,7 @@ void Player::sort_team() {
 
     std::cout << "Sorting team" << std::endl;
     for (int i = 0; i < 3; i++) {
-        std::cout << i+1 << " - " << team[i].get_name() << "(Level " << team[i].get_level() << ")" << std::endl;
+        std::cout << "  " << i+1 << ". " << team[i].get_name() << "(Level " << team[i].get_level() << ")" << std::endl;
     }
     std::cout << std::endl;
 
@@ -245,7 +245,7 @@ void Player::sort_team() {
     if (not corr) std::cout << "Can't have a fainted Pokemon as your leader" << std::endl;
     std::cout << std::endl;
     for (int i = 0; i < 3; i++) {
-        std::cout << i+1 << " - " << team[i].get_name() << " (Level " << team[i].get_level() << ")" << std::endl;
+        std::cout << "  " << i+1 << ". " << team[i].get_name() << " (Level " << team[i].get_level() << ")" << std::endl;
     }
     std::cout << std::endl;
 }
@@ -307,12 +307,12 @@ std::vector<Pokemon> Player::choose_starters() const {
     std::vector<Pokemon> team(3);
     std::cout << "Choose three Pokemon for your starting team out of the following:" << std::endl;
     for (auto it = starters.begin(); it != starters.end(); it++) {
-        std::cout << *it << std::endl;
+        std::cout << "  " << *it << std::endl;
     }
             
     std::cout << std::endl;
     for (int i = 0; i < 3; i++) {
-        std::string query = std::to_string(3-i) + " choice(s) left: ";
+        std::string query = "  " + std::to_string(3-i) + " choice(s) left: ";
         std::string error = "Oops. That wasn't a correct name.";
         std::string choice = Input::read_string(starters, query, error);
         Pokebase chosen = Pokedex::get_pokebase(choice);
