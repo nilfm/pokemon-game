@@ -353,7 +353,7 @@ std::vector<Pokemon> Player::choose_starters() const {
             
     std::cout << std::endl;
     for (int i = 0; i < 3; i++) {
-        std::string query = "  " + std::to_string(3-i) + " choice(s) left: ";
+        std::string query = std::to_string(3-i) + " choice(s) left: ";
         std::string error = "Oops. That wasn't a correct name.";
         std::string choice = Input::read_string(starters, query, error);
         Pokebase chosen = Pokedex::get_pokebase(choice);
