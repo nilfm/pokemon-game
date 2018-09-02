@@ -6,3 +6,4 @@ Fearow
 Beedrill
 Arbok
 Raichu
+Sandslash

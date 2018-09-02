@@ -214,7 +214,7 @@ bool Combat::attack(int k, Player& player, Player& enemy, Move& move) {
     if (k == 1) fainted = enemy.get_first_pokemon().receive_damage(dmg);
     else fainted = player.get_first_pokemon().receive_damage(dmg);
     
-    if (not fainted) {
+    if (not fainted and not missed) {
         Pokemon& defending_pokemon = (k == 1 ? enemy.get_first_pokemon() : player.get_first_pokemon());
         Pokemon& attacking_pokemon = (k == 1 ? player.get_first_pokemon() : enemy.get_first_pokemon());
         Status move_status = move.get_status();

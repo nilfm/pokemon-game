@@ -17,7 +17,7 @@ int Type::advantage(std::string t1, std::string t2) {
 //INITIALIZERS
 void Type::initialize() {
     types["NORMAL"] = 0;
-    types["FIGHT"] = 1;
+    types["FIGHTING"] = 1;
     types["FLYING"] = 2;
     types["POISON"] = 3;
     types["GROUND"] = 4;

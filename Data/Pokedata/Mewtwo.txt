@@ -1,0 +1,25 @@
+Mewtwo
+PSYCHIC
+-1 Nothing
+
+Attack 25 2 4
+Defense 22 2 3
+SpAttack 40 2 5
+SpDefense 22 2 3
+Speed 32 2 4
+MaxHP 30 3 4
+
+Confusion 1
+Psywave 1
+Swift 8
+FutureSight 15
+PsychUp 22
+PsychoCut 36
+Flamethrower 40
+Thunderbolt 48
+Psychic 57
+SignalBeam 61
+Barrier 64
+AuraSphere 70
+Amnesia 79
+Psystrike 100

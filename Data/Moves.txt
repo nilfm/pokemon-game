@@ -38,6 +38,22 @@ S
 0 0 0 0 0 0
 0 0 0
 
+Amnesia 20
+PSYCHIC
+P
+0 100
+0 0 0 0 0 0
+0 0 0 4 0 0
+0 0 0
+
+AncientPower 5
+ROCK
+S
+60 100
+0 0 0 0 0 0
+1 1 1 1 1 0
+0 0 0
+
 AquaTail 10
 WATER
 P
@@ -52,6 +68,22 @@ P
 80 100
 0 0 0 0 0 0
 0 0 0 0 0 0
+0 0 0
+
+AuraSphere 20
+FIGHTING
+S
+80 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Barrier 20
+PSYCHIC
+P
+0 100
+0 0 0 0 0 0
+0 4 0 0 0 0
 0 0 0
 
 Belch 10
@@ -134,10 +166,34 @@ P
 0 0 0 0 0 0
 0 0 0
 
+CrushClaw 10
+NORMAL
+P
+75 95
+0 -1 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
 Cut 30
 NORMAL
 P
 50 95
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+DefenseCurl 40
+NORMAL
+P
+0 100
+0 0 0 0 0 0
+0 2 0 0 0 0
+0 0 0
+
+Dig 10
+GROUND
+P
+80 100
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0
@@ -186,6 +242,14 @@ DrillRun 10
 GROUND
 P
 80 95
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Earthquake 10
+GROUND
+P
+100 100
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0
@@ -286,6 +350,30 @@ P
 0 0 0 0 0 0
 0 0 0
 
+FuryCutter 20
+BUG
+P
+70 85
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+FurySwipes 15
+NORMAL
+P
+55 80
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+FutureSight 10
+PSYCHIC
+S
+120 50
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
 Glare 30
 NORMAL
 P
@@ -322,6 +410,14 @@ Gust 35
 FLYING
 S
 40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+GyroBall 5
+STEEL
+P
+90 100
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0
@@ -366,6 +462,14 @@ P
 0 0 0 0 0 0
 0 0 0
 
+IceBeam 10
+ICE
+S
+90 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 10
+
 IceFang 15
 ICE
 P
@@ -406,6 +510,22 @@ P
 0 0 0 0 0 0
 0 0 0
 
+Magnitude 30
+GROUND
+P
+70 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+MegaPunch 20
+NORMAL 
+P 
+80 85
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 
+
 MudBomb 10
 GROUND
 S
@@ -413,6 +533,14 @@ S
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0
+
+NastyPlot 20
+DARK
+P
+0 100
+0 0 0 0 0 0 
+0 0 4 0 0 0
+0 0 0 
 
 Nuzzle 20
 ELECTRIC
@@ -486,10 +614,58 @@ P
 0 0 0 0 0 0
 30 0 0
 
+Pound 35
+NORMAL
+P
+40 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
 Psybeam 20
 PSYCHIC
 S
 65 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Psychic 10
+PSYCHIC
+S
+90 100
+0 0 0 -1 0 0
+0 0 0 0 0 0
+0 0 0
+
+PsychoCut 20
+PSYCHIC
+P
+70 100
+0 0 0 -2 0 0
+0 0 0 0 0 0
+0 0 0
+
+PsychUp 10
+NORMAL
+P
+0 100
+0 0 0 0 0 0
+0 2 0 2 0 0
+0 0 0
+
+Psystrike 5
+PSYCHIC
+S
+150 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+Psywave 15
+PSYCHIC
+S
+90 100
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0
@@ -533,6 +709,22 @@ S
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0
+
+Rollout 20
+ROCK
+P
+50 90
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+SandTomb 15
+GROUND
+P
+35 85
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 100 0
 
 ScaryFace 10
 NORMAL
@@ -598,6 +790,14 @@ P
 0 0 0 0 0 0
 0 0 0
 
+SignalBeam 15
+BUG
+S
+80 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
 SolarBeam 10
 GRASS
 S
@@ -636,6 +836,30 @@ P
 70 100
 0 0 0 0 0 0
 0 0 0 0 0 0
+0 0 0
+
+Superpower 5
+FIGHTING
+P
+120 100
+0 0 0 0 0 0
+-2 -2 0 0 0 0
+0 0 0
+
+Swift 20
+NORMAL
+S
+60 100
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0
+
+SwordsDance 20
+NORMAL
+P
+0 100 
+0 0 0 0 0 0
+4 0 0 0 0 0
 0 0 0
 
 Tackle 35
@@ -709,7 +933,6 @@ P
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 100
-
 
 ToxicSpikes 10
 POISON

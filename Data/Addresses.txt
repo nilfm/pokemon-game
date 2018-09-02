@@ -24,3 +24,7 @@ Data/Pokedata/Ekans.txt
 Data/Pokedata/Arbok.txt
 Data/Pokedata/Pikachu.txt
 Data/Pokedata/Raichu.txt
+Data/Pokedata/Sandshrew.txt
+Data/Pokedata/Sandslash.txt
+Data/Pokedata/Mewtwo.txt
+Data/Pokedata/Mew.txt

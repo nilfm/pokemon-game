@@ -1,0 +1,26 @@
+Sandshrew
+GROUND
+22 Sandslash
+
+Attack 10 1 3
+Defense 13 1 3
+SpAttack 2 0 1
+SpDefense 4 0 1
+Speed 3 1 2
+MaxHP 8 2 3
+
+DefenseCurl 1
+Scratch 1
+PoisonSting 5
+Rollout 7
+RapidSpin 9
+FuryCutter 11
+Magnitude 14
+Swift 17
+FurySwipes 20
+SandTomb 23
+Slash 26
+Dig 30
+GyroBall 34
+SwordsDance 38
+Earthquake 46

@@ -1,0 +1,27 @@
+Sandslash
+GROUND
+-1 Nothing
+
+Attack 22 2 3
+Defense 26 2 3
+SpAttack 6 1 2
+SpDefense 8 1 2
+Speed 12 1 3
+MaxHP 18 2 4
+
+CrushClaw 1
+DefenseCurl 1
+Scratch 1
+PoisonSting 5
+Rollout 7
+RapidSpin 9
+FuryCutter 11
+Magnitude 14
+Swift 17
+FurySwipes 20
+SandTomb 24
+Slash 28
+Dig 33
+GyroBall 38
+SwordsDance 43
+Earthquake 53

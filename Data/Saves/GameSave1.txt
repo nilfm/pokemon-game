@@ -1,29 +1,29 @@
-Dev 10300 53
-POKEMON Charizard 52 13369
-134 157 184 161 175 137
-Flamethrower
-AirSlash
-WingAttack
-FireFang
+Dev 20300 83
+POKEMON Mewtwo 78 30042
+311 243 261 237 297 298
+PsychoCut
+PsychUp
+Confusion
+Psywave
 ENDMOVES
 
-POKEMON Pidgeot 51 12750
-159 133 137 109 169 136
-Agility
-Tailwind
-Twister
-Tackle
+POKEMON Mew 75 27750
+264 212 202 189 279 254
+Superpower
+HeatWave
+Pound
+MegaPunch
 ENDMOVES
 
-POKEMON Venusaur 51 12975
-125 129 165 131 149 183
-TakeDown
-StunSpore
-VineWhip
-BodySlam
+POKEMON Raichu 81 32968
+222 154 236 206 228 217
+WildCharge
+Nuzzle
+QuickAttack
+PlayNice
 ENDMOVES
 
 ITEMS
-MaxPotion 17
-RestoreAll 20
+MaxPotion 3
+RestoreAll 30
 Superpotion 3

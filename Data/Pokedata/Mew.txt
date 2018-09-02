@@ -1,0 +1,24 @@
+Mew
+PSYCHIC
+-1 Nothing
+
+Attack 23 2 4
+Defense 23 2 4
+SpAttack 23 2 4
+SpDefense 23 2 4
+Speed 23 2 4
+MaxHP 27 3 4
+
+Pound 1
+WaterPulse 1
+SignalBeam 1
+MegaPunch 10
+HeatWave 20
+Psychic 30
+Barrier 40 
+AncientPower 50
+Amnesia 60
+Superpower 70
+IceBeam 80
+NastyPlot 90
+AuraSphere 100
