@@ -1,23 +1,21 @@
-# PokemonGame
+# Pokegame
 
-Attempt to make a Pokemon copy where you can take a team and fight through trainers until you lose.
+Clone of a Pokemon game for terminal: Advance through trainers until you lose
 
-### Classes/Files:
+## Installation (Linux)
 
-Pokedex: Has info about every Pokemon
++ `git clone https://github.com/nilfm/PokemonGame` to clone the repo on a folder on your PC.  
++ `cd PokemonGame` to enter the directory.
++ `make` to compile the source code and produce `Pokegame`
++ `./Pokegame` to execute the game.  
 
-Pokebase: Has info about a specific Pokemon in order to generate one
+## Cleaning up gamesaves
 
-Pokemon: Has an instance of a Pokemon, with its level, xp, etc
+There is a `Cleaner` executable included in the folder, which you can execute with the command `./Cleaner` and follow its steps to clean up one or all of the gamesave data. This process is irreversible.
 
-Move: Has info about an instance of a Pokemon move
+## Updating the game
 
-Type: Has all the info related to types (fire, water, etc)
-
-Input: Has all the necessary input checking mechanisms
-
-Player: Has info about a player's Pokemon team, items, and actions he can do with them
-
+This game is being updated constanly, adding new Pokemon and fixing many, many bugs. To update, execute `git pull` and it will update to the newest version.
 
 ### TODO
 
