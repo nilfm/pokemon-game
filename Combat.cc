@@ -212,7 +212,7 @@ bool Combat::attack(int k, Player& player, Player& enemy, Move& move) {
     std::cout << std::endl << owner << attacker_name << " used " << move.get_name() << "." << std::endl;
     if (stunned) std::cout << "But it was stunned" << std::endl;
     else if (missed) std::cout << "But it missed!" << std::endl;
-    else if (not_effective) std::cout << "But it didn't affect " << player.get_first_pokemon().get_name() << std::endl;
+    else if (not_effective) std::cout << "But it didn't affect " << defender_name << std::endl;
     else if (little_effective) std::cout << "It wasn't very effective..." << std::endl;
     else if (very_effective) std::cout << "It was very effective!" << std::endl;
     if (dmg > 0 and critical) std::cout << "Critical hit!" << std::endl;
