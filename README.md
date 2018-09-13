@@ -21,6 +21,9 @@ This game is being updated constantly, adding new Pokemon and fixing many, many 
 
 + Make txt files for every Pokemon  
 + AI choices need work
++ Add permanent unlocks for reaching certain levels
++ Change the stats calculation to the standard one
++ nerf sandslash lol 
 
 ### BUGS
 
