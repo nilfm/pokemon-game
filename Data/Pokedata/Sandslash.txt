@@ -3,11 +3,11 @@ GROUND
 -1 Nothing
 
 Attack 22 2 3
-Defense 26 2 3
+Defense 24 2 3
 SpAttack 6 1 2
 SpDefense 8 1 2
 Speed 12 1 3
-MaxHP 18 2 4
+MaxHP 15 2 4
 
 CrushClaw 1
 DefenseCurl 1
