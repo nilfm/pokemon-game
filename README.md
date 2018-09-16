@@ -1,6 +1,6 @@
 # Pokegame
 
-Clone of a Pokemon game for terminal: Advance through trainers until you lose. You can pick a Pokemon from every trainer you defeat.
+Pokemon Battles style game for terminal: Advance through trainers until you lose. You can pick a Pokemon from every trainer you defeat.
 
 ## Installation (Linux)
 
