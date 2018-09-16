@@ -124,9 +124,30 @@ void Move::initialize_moves(const std::string address) {
     std::string type;
     char sp;
     int power, accuracy;
-    Stats own, opp;
-    Status st;
-    while (in >> name >> pp >> type >> sp >> power >> accuracy >> opp.attack >> opp.defense >> opp.spattack >> opp.spdefense >> opp.speed >> opp.maxhp >> own.attack >> own.defense >> own.spattack >> own.spdefense >> own.speed >> own.maxhp >> st.poison >> st.burn >> st.stun) {
+    while (in >> name >> pp >> type >> sp >> power >> accuracy) {
+        Stats opp = {0, 0, 0, 0, 0, 0};
+        Stats own = {0, 0, 0, 0, 0, 0};
+        Status st = {0, 0, 0};
+        std::string info;
+        while (in >> info and info != "ENDMOVE") {
+            int k;
+            in >> k;
+            if (info == "OPPATTACK") opp.attack = k;
+            if (info == "OPPDEFENSE") opp.defense = k;
+            if (info == "OPPSPATTACK") opp.spattack = k;
+            if (info == "OPPSPDEFENSE") opp.spdefense = k;
+            if (info == "OPPSPEED") opp.speed = k;
+            if (info == "OPPMAXHP") opp.maxhp = k;
+            if (info == "OWNATTACK") own.attack = k;
+            if (info == "OWNDEFENSE") own.defense = k;
+            if (info == "OWNSPATTACK") own.spattack = k;
+            if (info == "OWNSPDEFENSE") own.spdefense = k;
+            if (info == "OWNSPEED") own.speed = k;
+            if (info == "OWNMAXHP") own.maxhp = k;
+            if (info == "POISON") st.poison = k;
+            if (info == "BURN") st.burn = k;
+            if (info == "STUN") st.stun = k;
+        }
         bool special = (sp == 'S');
         moves[name] = Move(special, name, type, power, accuracy, pp, opp, own, st);
     }

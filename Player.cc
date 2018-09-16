@@ -18,6 +18,7 @@ Player::Player(int slot) {
 }
 
 Player::Player(int trainers, bool AI) { //AI related
+    assert(AI);
     //Set the trainer variable
     this->trainers = trainers;
     //Calculate how many Pokemon for each tier
