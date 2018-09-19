@@ -15,7 +15,9 @@ There is a `Cleaner` executable included in the folder, which you can execute wi
 
 ## Updating the game
 
-This game is being updated constantly, adding new Pokemon and fixing many, many bugs. Just execute `git pull` and it will update to the newest version.
+This game is being updated constantly, adding new Pokemon and fixing many, many bugs. To update:  
++ `git pull` will update the files to the newest version.  
++ `make` will update the executable.  
 
 ### TODO
 
