@@ -394,18 +394,20 @@ void Player::shop() {
                 return;
             }
             else {
-                std::string query2 = "How many do you want to buy? (1-10) ";
-                std::string error2 = "Oops. Enter a number between 1 and 10";
-                int amount = Input::read_int(1, 10, query2, error2);
-                Item to_buy = Item::get_item(list_items[choice-1]);
-                if (to_buy.get_price()*amount <= money) {
-                    inventory[to_buy] += amount;
-                    money -= to_buy.get_price()*amount;
-                    std::cout << "You bought " << amount << " " << list_items[choice-1] << "(s)." << std::endl;
-                    corr = true;
-                }
-                else {
-                    std::cout << "You don't have enough money" << std::endl << std::endl;
+                std::string query2 = "How many do you want to buy? (1-10, 0 to cancel) ";
+                std::string error2 = "Oops. Enter a number between 0 and 10";
+                int amount = Input::read_int(0, 10, query2, error2);
+                if (amount > 0) {
+                    Item to_buy = Item::get_item(list_items[choice-1]);
+                    if (to_buy.get_price()*amount <= money) {
+                        inventory[to_buy] += amount;
+                        money -= to_buy.get_price()*amount;
+                        std::cout << "You bought " << amount << " " << list_items[choice-1] << "(s)." << std::endl;
+                        corr = true;
+                    }
+                    else {
+                        std::cout << "You don't have enough money" << std::endl << std::endl;
+                    }
                 }
             }
         }
