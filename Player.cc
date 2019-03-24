@@ -348,18 +348,30 @@ std::vector<Pokemon> Player::choose_starters() const {
     
     std::vector<Pokemon> team(3);
     std::cout << "Choose three Pokemon for your starting team out of the following:" << std::endl;
+    
+    int j = 1;
     for (auto it = starters.begin(); it != starters.end(); it++) {
-        std::cout << "  " << *it << std::endl;
+        std::cout << j << ". " << *it << std::endl;
+        j++;
     }
-            
+    
+    std::set<int> chosen;
+    int total = starters.size();
+    std::vector<std::string> aux(total);
+    j = 0;
+    for (auto it = starters.begin(); it != starters.end(); it++) {
+        aux[j] = *it;
+        j++;
+    }
+    
     std::cout << std::endl;
     for (int i = 0; i < 3; i++) {
         std::string query = std::to_string(3-i) + " choice(s) left: ";
-        std::string error = "Oops. That wasn't a correct name.";
-        std::string choice = Input::read_string(starters, query, error);
-        Pokebase chosen = Pokedex::get_pokebase(choice);
-        team[i] = Pokemon(chosen, 1);
-        starters.erase(choice);
+        std::string error = "Oops. Enter a new valid number.";
+        int choice = Input::read_int(1, total, chosen, query, error);
+        Pokebase poke = Pokedex::get_pokebase(aux[choice-1]);
+        team[i] = Pokemon(poke, 1);
+        chosen.insert(choice);
     }
     return team;
 }

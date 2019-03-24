@@ -4,4 +4,4 @@ Ivysaur
 Butterfree
 Pidgeotto
 Raticate
-Sandslash
+Sandshrew
