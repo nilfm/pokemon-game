@@ -545,7 +545,7 @@ std::vector<int> Player::calculate_tiers(int trainer) { //AI related
     }
     else if (trainer < 100) { //33% of a legendary
         int rnd = Random::randint(0, 2);
-        if (rnd == 3) tiers[3] = 1;
+        if (rnd == 2) tiers[3] = 1;
         else tiers[3] = 0;
         tiers[2] = 3-tiers[3];
     }
