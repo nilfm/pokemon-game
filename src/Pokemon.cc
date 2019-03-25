@@ -1,4 +1,4 @@
-#include "Pokemon.hh"
+#include "../inc/Pokemon.hh"
 
 //CONSTRUCTORS
 Pokemon::Pokemon() {}

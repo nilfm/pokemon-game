@@ -1,4 +1,4 @@
-#include "Type.hh"
+#include "../inc/Type.hh"
 
 std::unordered_map<std::string, int> Type::types;
 std::vector<std::vector <int> > Type::weaknesses;

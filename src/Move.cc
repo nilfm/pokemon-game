@@ -1,4 +1,4 @@
-#include "Move.hh"
+#include "../inc/Move.hh"
 
 std::unordered_map<std::string, Move> Move::moves;
 

@@ -1,4 +1,4 @@
-#include "Combat.hh"
+#include "../inc/Combat.hh"
 
 //CONSTRUCTORS
 //Necessary to initialize the reference through this weird stuff down here

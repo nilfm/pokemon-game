@@ -1,4 +1,4 @@
-#include "Item.hh"
+#include "../inc/Item.hh"
 
 std::unordered_map<std::string, Item> Item::items;
 

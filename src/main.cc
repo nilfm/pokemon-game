@@ -1,12 +1,12 @@
-#include "Includes.hh"
-#include "Type.hh"
-#include "Move.hh"
-#include "Pokedex.hh"
-#include "Pokemon.hh"
-#include "Pokebase.hh"
-#include "Player.hh"
-#include "Random.hh"
-#include "Combat.hh"
+#include "../inc/Includes.hh"
+#include "../inc/Type.hh"
+#include "../inc/Move.hh"
+#include "../inc/Pokedex.hh"
+#include "../inc/Pokemon.hh"
+#include "../inc/Pokebase.hh"
+#include "../inc/Player.hh"
+#include "../inc/Random.hh"
+#include "../inc/Combat.hh"
 
 int main() {
     //Things to initialize

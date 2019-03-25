@@ -1,4 +1,4 @@
-#include "Input.hh"
+#include "../inc/Input.hh"
 
 std::string Input::read_string(const std::set<std::string>& choices, const std::string& query, const std::string& err) {
     assert(choices.size() > 0);

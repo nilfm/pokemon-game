@@ -1,4 +1,4 @@
-#include "Pokebase.hh"
+#include "../inc/Pokebase.hh"
 
 //CONSTRUCTORS
 Pokebase::Pokebase() {}

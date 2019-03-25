@@ -1,41 +1,42 @@
 CC = g++
 OPTIONS = -std=c++11 -Wall -Wextra -Wpedantic -O2
 
-all: main.o Type.o Move.o Pokemon.o Pokebase.o Pokedex.o Item.o Player.o Input.o Random.o Combat.o
-	$(CC) $(OPTIONS) -o Pokegame main.o Type.o Move.o Pokemon.o Pokebase.o Pokedex.o Item.o Player.o Input.o Random.o Combat.o
+all: obj/main.o obj/Type.o obj/Move.o obj/Pokemon.o obj/Pokebase.o obj/Pokedex.o obj/Item.o obj/Player.o obj/Input.o obj/Random.o obj/Combat.o src/Cleaner.cc
+	$(CC) $(OPTIONS) -o Pokegame obj/main.o obj/Type.o obj/Move.o obj/Pokemon.o obj/Pokebase.o obj/Pokedex.o obj/Item.o obj/Player.o obj/Input.o obj/Random.o obj/Combat.o
+	$(CC) $(OPTIONS) -o Cleaner src/Cleaner.cc
 
-Type.o: Type.cc Type.hh Includes.hh Random.cc Random.hh
-	$(CC) $(OPTIONS) -c Type.cc
+obj/Type.o: src/Type.cc inc/Type.hh inc/Includes.hh src/Random.cc inc/Random.hh
+	$(CC) $(OPTIONS) -c src/Type.cc -o obj/Type.o
 
-Move.o: Move.cc Type.cc Move.hh Type.hh Includes.hh Random.cc Random.hh
-	$(CC) $(OPTIONS) -c Move.cc
+obj/Move.o: src/Move.cc src/Type.cc inc/Move.hh inc/Type.hh inc/Includes.hh src/Random.cc inc/Random.hh
+	$(CC) $(OPTIONS) -c src/Move.cc -o obj/Move.o
 
-Pokemon.o: Pokemon.cc Pokemon.hh Move.cc Move.hh Type.cc Type.hh Pokebase.cc Pokebase.hh Includes.hh Random.cc Random.hh
-	$(CC) $(OPTIONS) -c Pokemon.cc
+obj/Pokemon.o: src/Pokemon.cc inc/Pokemon.hh src/Move.cc inc/Move.hh src/Type.cc inc/Type.hh src/Pokebase.cc inc/Pokebase.hh inc/Includes.hh src/Random.cc inc/Random.hh
+	$(CC) $(OPTIONS) -c src/Pokemon.cc -o obj/Pokemon.o
 
-Pokebase.o: Pokebase.cc Pokebase.hh Move.cc Move.hh Type.cc Type.hh Includes.hh Random.cc Random.hh Player.cc Player.hh
-	$(CC) $(OPTIONS) -c Pokebase.cc
+obj/Pokebase.o: src/Pokebase.cc inc/Pokebase.hh src/Move.cc inc/Move.hh src/Type.cc inc/Type.hh inc/Includes.hh src/Random.cc inc/Random.hh src/Player.cc inc/Player.hh
+	$(CC) $(OPTIONS) -c src/Pokebase.cc -o obj/Pokebase.o
 
-Pokedex.o: Pokedex.cc Pokedex.hh Pokebase.cc Pokebase.hh Includes.hh Random.cc Random.hh
-	$(CC) $(OPTIONS) -c Pokedex.cc
+obj/Pokedex.o: src/Pokedex.cc inc/Pokedex.hh src/Pokebase.cc inc/Pokebase.hh inc/Includes.hh src/Random.cc inc/Random.hh
+	$(CC) $(OPTIONS) -c src/Pokedex.cc -o obj/Pokedex.o
 
-Item.o: Item.cc Item.hh Includes.hh Random.cc Random.hh
-	$(CC) $(OPTIONS) -c Item.cc
+obj/Item.o: src/Item.cc inc/Item.hh inc/Includes.hh src/Random.cc inc/Random.hh
+	$(CC) $(OPTIONS) -c src/Item.cc -o obj/Item.o
 
-Player.o: Player.cc Player.hh Pokemon.cc Pokemon.hh Pokebase.cc Pokebase.hh Pokedex.cc Pokedex.hh Item.cc Item.hh Move.cc Move.hh Includes.hh Random.cc Random.hh
-	$(CC) $(OPTIONS) -c Player.cc
+obj/Player.o: src/Player.cc inc/Player.hh src/Pokemon.cc inc/Pokemon.hh src/Pokebase.cc inc/Pokebase.hh src/Pokedex.cc inc/Pokedex.hh src/Item.cc inc/Item.hh src/Move.cc inc/Move.hh inc/Includes.hh src/Random.cc inc/Random.hh
+	$(CC) $(OPTIONS) -c src/Player.cc -o obj/Player.o
 
-Input.o: Input.cc Input.hh
-	$(CC) $(OPTIONS) -c Input.cc
+obj/Input.o: src/Input.cc inc/Input.hh
+	$(CC) $(OPTIONS) -c src/Input.cc -o obj/Input.o
 
-Random.o: Random.cc Random.hh 
-	$(CC) $(OPTIONS) -c Random.cc
+obj/Random.o: src/Random.cc inc/Random.hh 
+	$(CC) $(OPTIONS) -c src/Random.cc -o obj/Random.o
 
-Combat.o: Combat.cc Combat.hh Includes.hh Player.cc Player.hh Pokemon.cc Pokemon.hh Move.cc Move.hh Random.cc Random.hh
-	$(CC) $(OPTIONS) -c Combat.cc
+obj/Combat.o: src/Combat.cc inc/Combat.hh inc/Includes.hh src/Player.cc inc/Player.hh src/Pokemon.cc inc/Pokemon.hh src/Move.cc inc/Move.hh src/Random.cc inc/Random.hh
+	$(CC) $(OPTIONS) -c src/Combat.cc -o obj/Combat.o
 
-main.o: main.cc Player.cc Player.hh Pokemon.cc Pokemon.hh Pokebase.cc Pokebase.hh Pokedex.cc Pokedex.hh Item.cc Item.hh Move.cc Move.hh Includes.hh Random.cc Random.hh Type.cc Type.hh Input.cc Input.hh Random.hh
-	$(CC) $(OPTIONS) -c main.cc
+obj/main.o: src/main.cc src/Player.cc inc/Player.hh src/Pokemon.cc inc/Pokemon.hh src/Pokebase.cc inc/Pokebase.hh src/Pokedex.cc inc/Pokedex.hh src/Item.cc inc/Item.hh src/Move.cc inc/Move.hh inc/Includes.hh src/Random.cc inc/Random.hh src/Type.cc inc/Type.hh src/Input.cc inc/Input.hh inc/Random.hh
+	$(CC) $(OPTIONS) -c src/main.cc -o obj/main.o
 
 clean:
-	rm -f *.o *.x Pokegame
+	rm -f obj/*.o Pokegame Cleaner

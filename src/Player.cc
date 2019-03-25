@@ -1,4 +1,4 @@
-#include "Player.hh"
+#include "../inc/Player.hh"
 
 const std::string Player::gamesave_address = "Data/Saves/GameSave";
 const std::string Player::tiers_address = "Data/Tiers/Tier";

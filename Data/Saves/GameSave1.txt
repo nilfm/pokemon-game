@@ -1,0 +1,18 @@
+Nil 1500 1
+POKEMON Charmander 1 5
+6 5 7 5 7 6
+Growl
+Scratch
+ENDMOVES
+
+POKEMON Pidgey 1 0
+6 5 4 4 7 6
+Tackle
+ENDMOVES
+
+POKEMON Pidgey 1 0
+6 5 4 4 7 6
+Tackle
+ENDMOVES
+
+ITEMS

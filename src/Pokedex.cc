@@ -1,4 +1,4 @@
-#include "Pokedex.hh"
+#include "../inc/Pokedex.hh"
 
 std::unordered_map<std::string, Pokebase> Pokedex::pokedex;
 
