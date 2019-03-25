@@ -11,7 +11,7 @@ Pokemon Battles style game for terminal: Advance through trainers until you lose
 
 ## Cleaning up gamesaves
 
-After executing `make`, there will be a `Cleaner` executable included in the folder, which you can execute with the command `./Cleaner` and follow its steps to clean up one or all of the gamesave data. This process is irreversible.
+After executing `make`, there will be a `Cleaner` executable in the folder, which you can execute with the command `./Cleaner` and follow its steps to clean up one or all of the gamesave data. This process is irreversible.
 
 ## Updating the game
 
