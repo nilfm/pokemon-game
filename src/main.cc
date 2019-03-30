@@ -34,9 +34,11 @@ int main() {
     std::cout << std::endl;
     
     //Get input for which game to open
-    std::string query = "Enter a number from 1 to 9 to choose the game to load. \nIf it's not started, a new game will start: ";
-    std::string error = "Oops. Enter a number between 1 and 9."; 
-    int slot = Input::read_int(1, 9, query, error);
+    std::string query = "Enter a number from 1 to 9 to choose the game to load (0 to exit). \nIf it's not started, a new game will start: ";
+    std::string error = "Oops. Enter a number between 0 and 9."; 
+    int slot = Input::read_int(0, 9, query, error);
+    
+    if (slot == 0) return 0;
     
     Player player(slot);
     //If new game
