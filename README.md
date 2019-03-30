@@ -25,7 +25,7 @@ This game is being updated constantly, adding new Pokemon and fixing bugs. To up
 + AI choices need work
 + Add permanent unlocks for reaching certain levels
 + Change the stats calculation to the standard one
-+ nerf sandslash lol 
++ Add TM's (and for every pokemon specify which TMs it can learn in its file)
 
 ### BUGS
 
