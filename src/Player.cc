@@ -455,7 +455,7 @@ int Player::action_choice() const { //AI related
     if (can_swap and percent_hp < Random::randint(10, 40) and Random::randint(0, 1) == 0) { //swap
         return 2;
     }
-    else if (percent_hp < Random::randint(10, 30) and Random::randint(0, 2) == 0) { //use healing item
+    else if (percent_hp < Random::randint(10, 30) and Random::randint(0, 3) == 0) { //use healing item
         return 3;
     }
     else if (move_no_pp != 0 and Random::randint(0, 3) == 0) { //use pp item
